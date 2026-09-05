@@ -33,7 +33,7 @@ flowchart TD
 
     subgraph External["AI & Routing Providers"]
         Ollama["Local Ollama (llama3.2:3b @ host.docker.internal:11434)"]
-        Gemini["Google Gemini API (gemini-3.6-flash)"]
+        Gemini["Google Gemini API (gemini-flash-lite-latest)"]
         OSRM["OSRM Routing (HTTP / Mock fallback)"]
     end
 
@@ -63,7 +63,7 @@ flowchart TD
 | **Database Driver & ORM** | Asyncpg + SQLAlchemy | `SQLAlchemy: ^2.0.35`, `asyncpg: ^0.29.0`, `GeoAlchemy2` | `backend/app/db/session.py` |
 | **Database Migrations** | Alembic | `1.13.3+` (4 linear migration versions) | `backend/alembic/versions/` |
 | **Cache & Rate Limiting** | Redis | `redis:7-alpine` (`redis-py: ^5.0.8` async) | `backend/app/cache/` |
-| **AI LLM Routing** | Multi-Provider Router | Primary: Local Ollama (`llama3.2:3b`); Fallback: Hosted Gemini (`gemini-3.6-flash`) | `backend/app/ai/router.py` |
+| **AI LLM Routing** | Multi-Provider Router | Primary: Local Ollama (`llama3.2:3b`); Fallback: Hosted Gemini (`gemini-flash-lite-latest`) | `backend/app/ai/router.py` |
 | **Routing / Commute** | Mock / OSRM | `http://router.project-osrm.org` or in-memory mock | `backend/app/services/routing/` |
 
 ---
@@ -81,8 +81,9 @@ flowchart TD
 | **Ranking Engine** | `backend/app/services/ranking_service.py`<br>`backend/app/utils/ranking.py` | `RankingService.rank_properties`, `calculate_price_score`, `calculate_bedroom_score`, `calculate_area_score`, `calculate_locality_score`, `calculate_location_score`, `calculate_commute_score` | 6-factor deterministic scoring, proportional weight redistribution, deterministic tie-breaking. |
 | **Cache Service** | `backend/app/cache/cache_service.py`<br>`backend/app/cache/cache_keys.py` | `CacheService` (`get`, `set`, `get_json`, `set_json`, `delete`, `delete_pattern`), `CacheKeys` | Redis cache management with deterministic namespacing (`estatemap:v1:...`) and non-blocking `SCAN` invalidation. |
 | **AI Orchestration** | `backend/app/services/ai_service.py`<br>`backend/app/ai/router.py` | `AIService`, `AIRouter`, `GeminiProvider`, `OllamaProvider`, `MockProvider` | Multi-provider AI orchestration with zero LLM database access, strict Pydantic parsing, and deterministic fallback. |
+| **Data Synthesizer** | `backend/app/services/property_synthesizer.py` | `PropertySynthesizer.synthesize_for_locality` | On-demand dynamic real estate listing generation and persistence when 0 results match a requested locality or city. |
 | **Search State** | `backend/app/services/search_orchestrator.py`<br>`backend/app/schemas/conversational_search.py` | `SearchOrchestrator.apply_patch`, `ConversationalSearchState`, `SearchStatePatch` | Stateless server-side validated state machine applying client-supplied patches to search criteria. |
-| **Location Resolver**| `backend/app/utils/location_resolver.py` | `LocationResolver.resolve`, `KNOWN_LOCATIONS`, `METRO_BOUNDS` | Bounded in-memory dictionary lookup for Bengaluru and Chennai landmarks and IT corridors. |
+| **Location Resolver**| `backend/app/utils/location_resolver.py` | `LocationResolver.resolve_locality`, `KNOWN_LOCATIONS`, `METRO_BOUNDS` | Bounded in-memory dictionary lookup for Bengaluru and Chennai landmarks and IT corridors. |
 | **Commute Service** | `backend/app/services/commute_service.py`<br>`backend/app/services/routing/factory.py` | `CommuteService`, `RoutingProviderFactory`, `OSRMProvider`, `MockRoutingProvider` | Travel duration, distance, and GeoJSON LineString route generation. |
 | **Comparison** | `backend/app/services/comparison_service.py` | `ComparisonService`, `format_inr_amount` | 2-3 property side-by-side comparison matrix with deterministic dimension winners and rank diffs. |
 

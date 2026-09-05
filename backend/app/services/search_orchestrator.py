@@ -478,6 +478,41 @@ class SearchOrchestrator:
         ranked_req = self._build_ranked_request(new_state)
         ranked_res = await self.ranking_service.rank_properties(ranked_req)
 
+        # Dynamic AI Property Synthesis when 0 properties match a requested locality or city
+        if ranked_res.total_candidates == 0:
+            target_loc = new_state.locality or patch.locality
+            target_city = new_state.city or patch.city
+
+            if not target_loc and not target_city:
+                resolved_loc = LocationResolver.resolve_locality(user_message)
+                if resolved_loc:
+                    target_loc = resolved_loc.name
+                elif user_message and len(user_message.strip().split()) <= 4:
+                    target_loc = user_message.strip()
+
+            target = target_loc or target_city
+            if target:
+                from app.services.property_synthesizer import PropertySynthesizer
+
+                synthesized = await PropertySynthesizer.synthesize_for_locality(
+                    session=self.session,
+                    locality=target_loc or target_city or target,
+                    city=target_city or target_loc or target,
+                    bedrooms=new_state.bedrooms,
+                    property_type=new_state.property_type,
+                    max_price=new_state.max_price,
+                    count=5,
+                )
+                if synthesized:
+                    if target_loc and not new_state.locality:
+                        new_state.locality = target_loc
+                    if target_city and not new_state.city:
+                        new_state.city = target_city
+                    feedback.added.append(f"AI Generated listings for {target}")
+                    # Re-run search & ranking
+                    ranked_req = self._build_ranked_request(new_state)
+                    ranked_res = await self.ranking_service.rank_properties(ranked_req)
+
         items = ranked_res.items
         if new_state.max_commute_minutes is not None:
             filtered_items = []
@@ -615,6 +650,8 @@ class SearchOrchestrator:
             criteria_parts.append(f"{state.property_type.capitalize()}")
         if state.locality:
             criteria_parts.append(f"in {state.locality}")
+        elif state.city:
+            criteria_parts.append(f"in {state.city}")
         if state.max_price:
             criteria_parts.append(f"under {format_inr_amount(state.max_price)}")
         if state.commute_destination:

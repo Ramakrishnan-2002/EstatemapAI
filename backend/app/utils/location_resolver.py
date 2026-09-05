@@ -109,6 +109,8 @@ KNOWN_LOCATIONS: dict[str, tuple[float, float, str]] = {
     "koyambedu": (13.0694, 80.1948, "Koyambedu"),
     "porur": (13.0382, 80.1565, "Porur"),
     "medavakkam": (12.9185, 80.1912, "Medavakkam"),
+    "pallikaranai": (12.9349, 80.2137, "Pallikaranai"),
+    "pallikaranai marshland": (12.9349, 80.2137, "Pallikaranai"),
     "kilpauk": (13.0802, 80.2405, "Kilpauk"),
 }
 

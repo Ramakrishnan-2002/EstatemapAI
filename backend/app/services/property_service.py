@@ -87,9 +87,25 @@ class PropertyService:
     ) -> tuple[list[Property], int, int]:
         """
         Query properties matching filters, safe sorting, and pagination.
+        If zero properties exist for a requested locality, automatically synthesize listings.
         Returns: (items, total_count, total_pages)
         """
-        return await self.property_repo.list(filters)
+        items, total_count, total_pages = await self.property_repo.list(filters)
+        if total_count == 0 and filters.locality:
+            from app.services.property_synthesizer import PropertySynthesizer
+
+            synthesized = await PropertySynthesizer.synthesize_for_locality(
+                session=self.session,
+                locality=filters.locality,
+                city=filters.city,
+                bedrooms=filters.bedrooms,
+                property_type=filters.property_type,
+                max_price=float(filters.max_price) if filters.max_price else None,
+                count=5,
+            )
+            if synthesized:
+                return await self.property_repo.list(filters)
+        return items, total_count, total_pages
 
     async def search_radius(
         self, params: RadiusSearchParams

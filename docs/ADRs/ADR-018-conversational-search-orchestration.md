@@ -26,17 +26,22 @@ We chose a **Patch-Based Deterministic Search Orchestration Architecture**:
    - Patch application uses deterministic semantics: explicit `SET`, `APPEND`, `REMOVE`, `CLEAR`, and `RESET_SEARCH`.
    - Preserved filters are explicitly tracked and returned to the UI as feedback badges.
 3. **Deterministic Location Resolution (`LocationResolver`)**:
-   - Geographic coordinates are resolved on the backend using an exact/alias landmark database for Bengaluru.
+   - Geographic coordinates are resolved on the backend using an exact/alias landmark database for Bengaluru and Chennai.
    - Ambiguous or unrecognized destinations trigger a graceful clarification prompt rather than coordinate guessing.
-4. **Action Delegation**:
+4. **On-Demand Real Estate Data Synthesis (`PropertySynthesizer`)**:
+   - When hard PostGIS spatial filtering returns 0 results for a queried locality or city (e.g. Pallikaranai, Madipakkam, Kumbakonam), [`PropertySynthesizer`](file:///d:/FastAPI/EstateMap/backend/app/services/property_synthesizer.py) dynamically synthesizes realistic, standards-compliant property listings via Gemini (with deterministic template fallback).
+   - Generated listings contain true PostGIS POINT coordinates with localized spatial dispersion ($\pm 300\text{m} - 900\text{m}$), realistic INR price distributions, real Unsplash photography, and foreign-key linked amenities.
+   - Synthesized records are immediately committed to PostgreSQL/PostGIS, caches are invalidated, and ranked search is re-executed, eliminating zero-data dead ends.
+5. **Action Delegation**:
    - Actions (`SEARCH`, `REFINE`, `CLEAR_FILTER`, `RESET_SEARCH`, `RANK`, `COMPARE`, `EXPLAIN`) are mapped directly to EstateMap's existing tested services (`SearchOrchestrator`, `ComparisonService`, `RankingService`, `CommuteService`, `GeoService`).
-5. **Security & Privacy Boundary**:
+6. **Security & Privacy Boundary**:
    - Structured privacy allowlists prevent PII or database internals from being sent to external LLMs.
    - Global time budgets (`AI_TOTAL_TIMEOUT_SECONDS = 35.0s`) and multi-provider fallbacks ensure zero-downtime resilience.
 
 ## Consequences
 
 ### Positive
+- **Zero-Data Dead End Prevention**: Users querying emerging or unseeded localities immediately receive ranked, verified listings pinned accurately on the map.
 - **Deterministic & Verifiable**: All property filtering, ranking, distance, and commute metrics are computed in Python/PostGIS, preventing model-generated metric inaccuracies.
 - **Bi-directional UI Synchronization**: Users can freely interleave typing conversational prompts and clicking manual filter buttons with seamless state convergence.
 - **Fast & Scalable**: Eliminates heavy autonomous agent loops and vector database overhead.

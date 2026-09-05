@@ -2293,55 +2293,56 @@ Schema validation and sanitization are essential defenses against prompt injecti
 - **Automated Test Command:** `docker compose exec backend pytest tests/integration/test_ai_failover.py`
 
 #### 1. Why This Matters in Production
-Local or cloud AI providers can experience timeouts, rate limits, or connectivity issues.
+Local or cloud AI providers can experience timeouts, rate limits, or connectivity issues (e.g., local Ollama offline, uninstalled, or host GPU crash).
 
 #### 2. Core Engineering Concept
-Sequential loop failover tries configured providers within a global time budget bounded by AI_TOTAL_TIMEOUT_SECONDS (35.0s).
+Sequential loop failover tries configured providers within a global time budget bounded by `AI_TOTAL_TIMEOUT_SECONDS` (35.0s). When local Ollama is absent or offline, the router seamlessly fails over to Google Gemini (`gemini-flash-lite-latest`), and subsequently to deterministic rules if all hosted providers fail.
 
 #### 3. How It Works Under the Hood
-AIRoutingPolicy selects attempt order; AIService loops over providers with attempt_timeout = min(remaining_budget, prov_timeout) and executes at most once per provider.
+AIRoutingPolicy selects attempt order (default `['ollama', 'gemini']`); AIService loops over providers with attempt_timeout = min(remaining_budget, prov_timeout) and executes at most once per provider. Catches `AIProviderUnavailableException` and immediately switches to the secondary provider in the same request.
 
 #### 4. EstateMap Implementation Reality
-app/ai/router.py resolves providers; app/services/ai_service.py iterates providers with asyncio.wait_for and falls back to deterministic rules if all fail.
+`app/ai/router.py` resolves providers; `app/services/ai_service.py` iterates providers with `asyncio.wait_for`, seamless catches provider disconnects/timeouts, executes Google Gemini (`gemini-flash-lite-latest`), and falls back to deterministic rules if all fail.
 
 #### 5. Step-by-Step Code Flow
-AI Request -> AIService calculates remaining budget -> Calls Provider 1 with timeout -> On Timeout/Error: logs warning -> Calls Provider 2 with remaining budget -> If all fail: executes deterministic fallback.
+AI Request -> AIService calculates remaining budget -> Calls Provider 1 (Ollama) with timeout -> On Connection Failure/Timeout/429: logs warning -> Calls Provider 2 (Gemini) with remaining budget -> If all fail: executes deterministic fallback.
 
 #### 6. Build It Yourself (Topic-Specific Exercise)
 ```python
-# Topic Build: Build a multi-provider failover loop with global deadline budgeting
+# Topic Build: Build a multi-provider failover loop with global deadline budgeting and provider absence recovery
 import asyncio
 import time
 
 async def execute_with_failover(providers: list, execute_fn, total_timeout: float = 35.0):
     deadline = time.monotonic() + total_timeout
     last_err = None
-    for prov in providers:
+    for idx, prov in enumerate(providers):
         remaining = deadline - time.monotonic()
         if remaining <= 0: break
         timeout = min(remaining, getattr(prov, "timeout", 20.0))
         try:
-            return await asyncio.wait_for(execute_fn(prov), timeout=timeout)
+            res = await asyncio.wait_for(execute_fn(prov), timeout=timeout)
+            return {"result": res, "fallback_used": idx > 0, "provider": getattr(prov, "name", "unknown")}
         except Exception as e:
             last_err = e
             continue
-    # Trigger deterministic fallback
-    return {"fallback": True, "error": str(last_err)}
+    # Trigger deterministic rule-based fallback
+    return {"fallback": True, "error": str(last_err), "provider": "deterministic_fallback"}
 ```
 
 #### 7. Break It & Debug It (Specific Failure Mode)
-Not checking remaining time budget before attempting the second provider causes total request duration to exceed API gateway limits.
+Not checking remaining time budget before attempting the second provider causes total request duration to exceed API gateway limits. Failing to catch `AIProviderUnavailableException` when Ollama is offline will crash the request instead of triggering Gemini failover.
 
 #### 8. Architectural Tradeoffs & Rejected Alternatives
-Loop-bounded failover improves service resilience without unbounded execution time.
+Loop-bounded failover improves service resilience without unbounded execution time. Multi-tier failover (`Ollama -> Gemini -> Heuristic`) provides zero-downtime availability across both local and cloud deployments.
 
 #### 9. System Design & Scalability Angle
-Provider failover and deterministic fallbacks improve resilience when individual AI providers fail.
+Provider failover and deterministic fallbacks improve resilience when individual AI providers fail or when local daemon processes terminate.
 
 #### 10. Senior Backend Interview Prep
-**Q:** How do you implement timeout budgets in multi-provider failover chains?
+**Q:** How do you implement timeout budgets and absence recovery in multi-provider failover chains?
 
-**A:** Set a global deadline at request start; for each provider attempt, set timeout to min(remaining_budget, provider_timeout), and fall back if the budget is exhausted.
+**A:** Set a global deadline at request start; for each provider attempt, set timeout to min(remaining_budget, provider_timeout), catch network/absence exceptions cleanly, seamlessly proceed to secondary providers, and fall back to rule-based parsing if the budget is exhausted.
 
 #### 11. Self-Assessment & Mastery Check
 - [ ] I can explain this mechanism from memory without looking at notes.
@@ -2532,53 +2533,72 @@ Stateless state machines allow backend API replicas to process any conversation 
 
 ---
 
-### Story 41: Multi-Turn Criteria Modification, History Merging & Orchestrated Search [ESSENTIAL]
+### Story 41: Multi-Turn Criteria Modification, Zero-Data AI Synthesis & Orchestrated Search [ESSENTIAL]
 - **Module:** Module 11: Ask-the-Map Conversational Orchestration
 - **Prerequisites:** Story 39, Story 40
 - **Leads To:** Story 42, Story 46
-- **Code Truth Files:** `backend/app/services/search_orchestrator.py`, `backend/app/services/ranking_service.py`
-- **Key Symbol(s):** `SearchOrchestrator.execute / SearchOrchestrator._build_geojson / AskMapResponse`
+- **Code Truth Files:** `backend/app/services/search_orchestrator.py`, `backend/app/services/ranking_service.py`, `backend/app/services/property_synthesizer.py`
+- **Key Symbol(s):** `SearchOrchestrator.execute / PropertySynthesizer.synthesize_for_locality / SearchOrchestrator._build_geojson / AskMapResponse`
 - **Automated Test Command:** `docker compose exec backend pytest tests/integration/test_ask_the_map.py`
 
 #### 1. Why This Matters in Production
-A conversational assistant must support iterative refinement (e.g. 'under 1.5 Cr', 'now make it 3 BHK') seamlessly.
+A conversational real estate assistant must support iterative multi-turn refinement (e.g. 'under 1.5 Cr', 'now make it 3 BHK') and guarantee zero-data dead-end prevention when users query unseeded or emerging localities/cities (e.g. Pallikaranai, Kumbakonam).
 
 #### 2. Core Engineering Concept
-SearchOrchestrator coordinates Domain Services (LocationResolver -> PropertyRepository -> RankingService -> ComparisonService).
+SearchOrchestrator coordinates Domain Services (LocationResolver -> PropertyRepository -> PropertySynthesizer -> RankingService -> ComparisonService). When hard spatial filtering yields 0 matches, the orchestrator triggers on-demand standards-compliant synthesis via Gemini with deterministic fallback, immediately persisting and ranking the new listings.
 
 #### 3. How It Works Under the Hood
-SearchOrchestrator.execute coordinates the full pipeline, resolving destinations, applying ranking, and building GeoJSON responses.
+SearchOrchestrator.execute coordinates the full pipeline, resolving destinations, applying ranking, triggering on-demand synthesis when match count is 0, and building GeoJSON responses.
 
 #### 4. EstateMap Implementation Reality
-app/services/search_orchestrator.py coordinates multi-service execution, handles destination ambiguity, and formats conversational responses.
+`app/services/search_orchestrator.py` coordinates multi-service execution, handles destination ambiguity, invokes `PropertySynthesizer` for zero-result localities/cities, and formats conversational responses with GeoJSON features and feedback badges.
 
 #### 5. Step-by-Step Code Flow
-Turn 1: 'Find 3BHK in Whitefield' -> Sets bedrooms=3, locality=Whitefield -> Turn 2: 'Under 1.5 Cr' -> Merges max_price=15000000 -> Re-executes ranked search.
+Turn 1: 'Find 3BHK in Kumbakonam' -> AI extracts city=Kumbakonam -> DB query returns 0 items -> `PropertySynthesizer.synthesize_for_locality` creates 5 standards-compliant properties with true PostGIS coordinates, photos, and amenities -> Commits to DB -> Re-runs ranking -> Returns 5 ranked items with GeoJSON pins.
 
 #### 6. Build It Yourself (Topic-Specific Exercise)
 ```python
-# Topic Build: Coordinate multi-turn state merging with domain service execution
+# Topic Build: Coordinate multi-turn state merging with on-demand zero-data synthesis
 async def orchestrate_turn(orchestrator, current_state, patch, user_message):
     new_state, feedback, notes, unresolved = orchestrator.apply_patch(current_state, patch)
     if unresolved:
         return {"needs_clarification": True, "prompt": f"Could you clarify '{unresolved}'?", "state": current_state}
-    # Execute database filter and ranking...
-    return {"state": new_state, "feedback": feedback, "results": []}
+    
+    # 1. Execute database query
+    ranked_req = orchestrator._build_ranked_request(new_state)
+    ranked_res = await orchestrator.ranking_service.rank_properties(ranked_req)
+    
+    # 2. Dynamic Synthesis on zero matches
+    if ranked_res.total_candidates == 0 and (new_state.locality or new_state.city or user_message):
+        target = new_state.locality or new_state.city or user_message.strip()
+        synthesized = await PropertySynthesizer.synthesize_for_locality(
+            session=orchestrator.session,
+            locality=target,
+            city=new_state.city,
+            bedrooms=new_state.bedrooms,
+            max_price=new_state.max_price,
+            count=5,
+        )
+        if synthesized:
+            feedback.added.append(f"AI Generated listings for {target}")
+            ranked_res = await orchestrator.ranking_service.rank_properties(ranked_req)
+            
+    return {"state": new_state, "feedback": feedback, "results": ranked_res.items}
 ```
 
 #### 7. Break It & Debug It (Specific Failure Mode)
-Overwriting previous valid filters when applying a partial patch (e.g. wiping out bedrooms when updating max_price) breaks conversational context.
+Overwriting previous valid filters when applying a partial patch breaks context. Failing to synthesize listings when 0 results match a requested city leaves the map empty and degrades user trust.
 
 #### 8. Architectural Tradeoffs & Rejected Alternatives
-Centralizing orchestration in a dedicated domain service keeps API route handlers clean and testable.
+Centralizing orchestration in a dedicated domain service keeps API route handlers clean, testable, and capable of autonomous recovery from zero-data states.
 
 #### 9. System Design & Scalability Angle
-Domain service orchestration decouples conversational logic from raw database storage and third-party APIs.
+Domain service orchestration decouples conversational logic from raw database storage and ensures graceful on-demand catalog expansion.
 
 #### 10. Senior Backend Interview Prep
-**Q:** Trace the end-to-end execution of a natural language search query.
+**Q:** How do you handle zero-result searches in a conversational real estate application?
 
-**A:** 1. AI extracts patch; 2. Resolver checks destination; 3. State Reducer updates criteria; 4. PostGIS filters DB; 5. Ranking scores results; 6. Response returned.
+**A:** 1. Check if the query targets a valid locality/city; 2. Invoke an on-demand synthesizer via LLM/templates to generate standards-compliant listings with PostGIS coordinates and linked amenities; 3. Persist to PostgreSQL; 4. Immediately rank and return the new listings on the map.
 
 #### 11. Self-Assessment & Mastery Check
 - [ ] I can explain this mechanism from memory without looking at notes.

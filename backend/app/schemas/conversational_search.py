@@ -181,6 +181,44 @@ class SearchStatePatch(BaseModel):
 
     confidence: float = Field(default=1.0, ge=0.0, le=1.0)
 
+    @field_validator("target_property_indices", mode="before")
+    @classmethod
+    def normalize_target_indices(cls, val: Any) -> list[int]:
+        if val is None:
+            return []
+        if isinstance(val, list):
+            return [int(x) for x in val if str(x).isdigit()]
+        if isinstance(val, int | str) and str(val).isdigit():
+            return [int(val)]
+        return []
+
+    @field_validator("clear_fields", mode="before")
+    @classmethod
+    def normalize_clear_fields(cls, val: Any) -> list[Any]:
+        if val is None:
+            return []
+        if isinstance(val, list):
+            return val
+        return [val]
+
+    @field_validator("requested_action", mode="before")
+    @classmethod
+    def normalize_requested_action(cls, val: Any) -> Any:
+        if val is None or val == "":
+            return ConversationAction.SEARCH
+        return val
+
+    @field_validator("confidence", mode="before")
+    @classmethod
+    def normalize_confidence(cls, val: Any) -> float:
+        if val is None:
+            return 1.0
+        try:
+            c = float(val)
+            return max(0.0, min(1.0, c))
+        except Exception:
+            return 1.0
+
     @field_validator("min_price", "max_price", mode="before")
     @classmethod
     def normalize_price_val(cls, val: Any) -> float | None:

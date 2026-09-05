@@ -69,7 +69,7 @@ class Settings(BaseSettings):
 
     # Gemini Hosted Provider Configuration
     GEMINI_API_KEY: str = ""
-    GEMINI_MODEL: str = "gemini-3.6-flash"
+    GEMINI_MODEL: str = "gemini-flash-lite-latest"
     GEMINI_TIMEOUT_SECONDS: float = 20.0
     GEMINI_MAX_OUTPUT_TOKENS: int = 4096
     GEMINI_TEMPERATURE_INTENT: float = 0.0
