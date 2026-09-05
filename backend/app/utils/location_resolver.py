@@ -69,7 +69,6 @@ KNOWN_LOCATIONS: dict[str, tuple[float, float, str]] = {
     "cubbon park": (12.9763, 77.5929, "Cubbon Park"),
     "majestic": (12.9781, 77.5697, "Majestic (KSR Railway Station)"),
     "ksr bengaluru": (12.9781, 77.5697, "Majestic (KSR Railway Station)"),
-
     # --- Chennai Locations ---
     "tidel park": (12.9897, 80.2483, "TIDEL Park"),
     "tidel": (12.9897, 80.2483, "TIDEL Park"),

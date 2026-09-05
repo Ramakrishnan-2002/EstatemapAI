@@ -85,16 +85,17 @@ npm run test:unit
 
 ---
 
-## 📚 Documentation
-Comprehensive design documents and Architecture Decision Records (ADRs) are available in `/docs`:
-- [`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md)
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
-- [`docs/SYSTEM_DESIGN.md`](docs/SYSTEM_DESIGN.md)
-- [`docs/DATABASE_DESIGN.md`](docs/DATABASE_DESIGN.md)
-- [`docs/MAP_ARCHITECTURE.md`](docs/MAP_ARCHITECTURE.md)
-- [`docs/AI_PROVIDER_ARCHITECTURE.md`](docs/AI_PROVIDER_ARCHITECTURE.md)
-- [`docs/PROPERTY_COMPARISON_ARCHITECTURE.md`](docs/PROPERTY_COMPARISON_ARCHITECTURE.md)
-- [`docs/ASK_THE_MAP_ARCHITECTURE.md`](docs/ASK_THE_MAP_ARCHITECTURE.md)
-- [`docs/CACHING_AND_PERFORMANCE.md`](docs/CACHING_AND_PERFORMANCE.md)
-- [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md)
-- [`docs/ADR/`](docs/ADR/) (ADR-001 through ADR-018)
+## 📚 Documentation & Technical Mastery Curriculum
+Comprehensive engineering documentation, system design deep dives, and interview defense resources are available in [`docs/mastery/`](docs/mastery/):
+- 📘 [**EstateMap Master Book**](docs/mastery/ESTATEMAP_MASTER_BOOK.md): The definitive 32-chapter technical textbook for this codebase.
+- 🎓 [**100 Connected Engineering Stories**](docs/mastery/ENGINEERING_STORIES.md): Step-by-step curriculum with build-it-yourself exercises.
+- 🏛️ [**System Design Interview Guide**](docs/mastery/SYSTEM_DESIGN_INTERVIEW.md): Complete 45-minute whiteboard defense guide.
+- 🎯 [**250+ Active Recall Questions**](docs/mastery/ACTIVE_RECALL.md) & [**Answer Key**](docs/mastery/ACTIVE_RECALL_ANSWERS.md).
+- 💬 [**200+ Interview Questions & Answers**](docs/mastery/INTERVIEW_QUESTIONS.md) with 3-tier depths ([**Answers**](docs/mastery/INTERVIEW_ANSWERS.md)).
+- 🗺️ [**Know Your Codebase Map**](docs/mastery/KNOW_YOUR_CODE.md) & [**End-to-End Request Traces**](docs/mastery/REQUEST_TRACES.md).
+- ⚖️ [**Tradeoff Matrix**](docs/mastery/TRADEOFF_MATRIX.md) & [**Technology Necessity Matrix**](docs/mastery/TECHNOLOGY_NECESSITY_MATRIX.md).
+- ⚠️ [**Failure Modes & Resilience Matrix**](docs/mastery/FAILURE_MODES.md) & [**Interview Red Flags**](docs/mastery/INTERVIEW_RED_FLAGS.md).
+- 📑 [**ADR Master Index**](docs/mastery/ADR_MASTER_INDEX.md) (Auditing all 18 Architecture Decision Records).
+- 🧭 [**Master Curriculum Navigation**](docs/mastery/README.md).
+
+Additional legacy design specifications remain preserved in [`docs/`](docs/).

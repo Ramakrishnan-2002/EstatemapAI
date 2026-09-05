@@ -1,9 +1,10 @@
 import asyncio
 import random
 from decimal import Decimal
+
 from geoalchemy2.shape import from_shape
 from shapely.geometry import Point
-from sqlalchemy import select, insert, func
+from sqlalchemy import func, insert, select
 
 from app.core.security import get_password_hash
 from app.db.session import async_session_factory
@@ -78,39 +79,229 @@ BENGALURU_PROPERTIES = [
 ]
 
 CHENNAI_LOCALITIES = [
-    {"locality": "Sholinganallur", "lat": 12.8988, "lng": 80.2281, "type": "IT Hub", "price_multiplier": 0.9},
-    {"locality": "Thoraipakkam", "lat": 12.9416, "lng": 80.2362, "type": "IT Corridor", "price_multiplier": 1.0},
-    {"locality": "Perungudi", "lat": 12.9654, "lng": 80.2461, "type": "IT Corridor", "price_multiplier": 1.1},
-    {"locality": "Navalur", "lat": 12.8458, "lng": 80.2265, "type": "Suburban", "price_multiplier": 0.75},
-    {"locality": "Siruseri", "lat": 12.8256, "lng": 80.2185, "type": "SIPCOT IT", "price_multiplier": 0.7},
-    {"locality": "Karapakkam", "lat": 12.9142, "lng": 80.2274, "type": "IT Hub", "price_multiplier": 0.85},
-    {"locality": "Velachery", "lat": 12.9815, "lng": 80.2180, "type": "Urban Hub", "price_multiplier": 1.25},
-    {"locality": "Adyar", "lat": 13.0012, "lng": 80.2565, "type": "Premium South", "price_multiplier": 2.1},
-    {"locality": "Besant Nagar", "lat": 13.0003, "lng": 80.2667, "type": "Coastal Luxury", "price_multiplier": 2.4},
-    {"locality": "Thiruvanmiyur", "lat": 12.9830, "lng": 80.2594, "type": "Coastal", "price_multiplier": 1.8},
-    {"locality": "East Coast Road (ECR)", "lat": 12.9490, "lng": 80.2550, "type": "Luxury Coast", "price_multiplier": 2.2},
-    {"locality": "T. Nagar", "lat": 13.0418, "lng": 80.2341, "type": "Central Commercial", "price_multiplier": 1.9},
-    {"locality": "Nungambakkam", "lat": 13.0569, "lng": 80.2425, "type": "Central Premium", "price_multiplier": 2.2},
-    {"locality": "Alwarpet", "lat": 13.0336, "lng": 80.2514, "type": "Historic Luxury", "price_multiplier": 2.5},
-    {"locality": "Mylapore", "lat": 13.0368, "lng": 80.2676, "type": "Cultural Hub", "price_multiplier": 1.8},
-    {"locality": "Anna Nagar", "lat": 13.0850, "lng": 80.2101, "type": "Planned Metro Hub", "price_multiplier": 1.9},
-    {"locality": "Porur", "lat": 13.0382, "lng": 80.1565, "type": "DLF Cybercity Hub", "price_multiplier": 0.95},
-    {"locality": "Guindy", "lat": 13.0067, "lng": 80.2025, "type": "Industrial/Tech", "price_multiplier": 1.4},
-    {"locality": "Medavakkam", "lat": 12.9171, "lng": 80.1923, "type": "Residential South", "price_multiplier": 0.8},
-    {"locality": "Kilpauk", "lat": 13.0784, "lng": 80.2412, "type": "Central Residential", "price_multiplier": 1.7},
+    {
+        "locality": "Sholinganallur",
+        "lat": 12.8988,
+        "lng": 80.2281,
+        "type": "IT Hub",
+        "price_multiplier": 0.9,
+    },
+    {
+        "locality": "Thoraipakkam",
+        "lat": 12.9416,
+        "lng": 80.2362,
+        "type": "IT Corridor",
+        "price_multiplier": 1.0,
+    },
+    {
+        "locality": "Perungudi",
+        "lat": 12.9654,
+        "lng": 80.2461,
+        "type": "IT Corridor",
+        "price_multiplier": 1.1,
+    },
+    {
+        "locality": "Navalur",
+        "lat": 12.8458,
+        "lng": 80.2265,
+        "type": "Suburban",
+        "price_multiplier": 0.75,
+    },
+    {
+        "locality": "Siruseri",
+        "lat": 12.8256,
+        "lng": 80.2185,
+        "type": "SIPCOT IT",
+        "price_multiplier": 0.7,
+    },
+    {
+        "locality": "Karapakkam",
+        "lat": 12.9142,
+        "lng": 80.2274,
+        "type": "IT Hub",
+        "price_multiplier": 0.85,
+    },
+    {
+        "locality": "Velachery",
+        "lat": 12.9815,
+        "lng": 80.2180,
+        "type": "Urban Hub",
+        "price_multiplier": 1.25,
+    },
+    {
+        "locality": "Adyar",
+        "lat": 13.0012,
+        "lng": 80.2565,
+        "type": "Premium South",
+        "price_multiplier": 2.1,
+    },
+    {
+        "locality": "Besant Nagar",
+        "lat": 13.0003,
+        "lng": 80.2667,
+        "type": "Coastal Luxury",
+        "price_multiplier": 2.4,
+    },
+    {
+        "locality": "Thiruvanmiyur",
+        "lat": 12.9830,
+        "lng": 80.2594,
+        "type": "Coastal",
+        "price_multiplier": 1.8,
+    },
+    {
+        "locality": "East Coast Road (ECR)",
+        "lat": 12.9490,
+        "lng": 80.2550,
+        "type": "Luxury Coast",
+        "price_multiplier": 2.2,
+    },
+    {
+        "locality": "T. Nagar",
+        "lat": 13.0418,
+        "lng": 80.2341,
+        "type": "Central Commercial",
+        "price_multiplier": 1.9,
+    },
+    {
+        "locality": "Nungambakkam",
+        "lat": 13.0569,
+        "lng": 80.2425,
+        "type": "Central Premium",
+        "price_multiplier": 2.2,
+    },
+    {
+        "locality": "Alwarpet",
+        "lat": 13.0336,
+        "lng": 80.2514,
+        "type": "Historic Luxury",
+        "price_multiplier": 2.5,
+    },
+    {
+        "locality": "Mylapore",
+        "lat": 13.0368,
+        "lng": 80.2676,
+        "type": "Cultural Hub",
+        "price_multiplier": 1.8,
+    },
+    {
+        "locality": "Anna Nagar",
+        "lat": 13.0850,
+        "lng": 80.2101,
+        "type": "Planned Metro Hub",
+        "price_multiplier": 1.9,
+    },
+    {
+        "locality": "Porur",
+        "lat": 13.0382,
+        "lng": 80.1565,
+        "type": "DLF Cybercity Hub",
+        "price_multiplier": 0.95,
+    },
+    {
+        "locality": "Guindy",
+        "lat": 13.0067,
+        "lng": 80.2025,
+        "type": "Industrial/Tech",
+        "price_multiplier": 1.4,
+    },
+    {
+        "locality": "Medavakkam",
+        "lat": 12.9171,
+        "lng": 80.1923,
+        "type": "Residential South",
+        "price_multiplier": 0.8,
+    },
+    {
+        "locality": "Kilpauk",
+        "lat": 13.0784,
+        "lng": 80.2412,
+        "type": "Central Residential",
+        "price_multiplier": 1.7,
+    },
 ]
 
 PROPERTY_TEMPLATES = [
-    {"type": "apartment", "bhk": 1, "baths": 1, "area_base": 600, "price_base": 4200000, "title_fmt": "Compact 1 BHK Smart Apartment in {locality}"},
-    {"type": "apartment", "bhk": 2, "baths": 2, "area_base": 1150, "price_base": 7800000, "title_fmt": "Modern 2 BHK Gated Community Flat in {locality}"},
-    {"type": "apartment", "bhk": 2, "baths": 2, "area_base": 1250, "price_base": 8500000, "title_fmt": "Contemporary 2 BHK Apartment near Tech Park in {locality}"},
-    {"type": "apartment", "bhk": 3, "baths": 3, "area_base": 1650, "price_base": 13500000, "title_fmt": "Spacious 3 BHK Luxury Flat in {locality}"},
-    {"type": "apartment", "bhk": 3, "baths": 3, "area_base": 1850, "price_base": 16000000, "title_fmt": "Premium 3 BHK High-rise with Skyline Views in {locality}"},
-    {"type": "villa", "bhk": 4, "baths": 4, "area_base": 3200, "price_base": 29000000, "title_fmt": "Exclusive 4 BHK Gated Community Villa in {locality}"},
-    {"type": "penthouse", "bhk": 4, "baths": 4, "area_base": 3600, "price_base": 38000000, "title_fmt": "Ultra-Luxury 4 BHK Penthouse with Private Terrace in {locality}"},
-    {"type": "apartment", "bhk": 2, "baths": 2, "area_base": 1050, "price_base": 6500000, "title_fmt": "Affordable 2 BHK Starter Home in {locality}"},
-    {"type": "apartment", "bhk": 3, "baths": 2, "area_base": 1500, "price_base": 11500000, "title_fmt": "Elegant 3 BHK Family Apartment in {locality}"},
-    {"type": "villa", "bhk": 3, "baths": 3, "area_base": 2400, "price_base": 22000000, "title_fmt": "Charming 3 BHK Independent Duplex Villa in {locality}"},
+    {
+        "type": "apartment",
+        "bhk": 1,
+        "baths": 1,
+        "area_base": 600,
+        "price_base": 4200000,
+        "title_fmt": "Compact 1 BHK Smart Apartment in {locality}",
+    },
+    {
+        "type": "apartment",
+        "bhk": 2,
+        "baths": 2,
+        "area_base": 1150,
+        "price_base": 7800000,
+        "title_fmt": "Modern 2 BHK Gated Community Flat in {locality}",
+    },
+    {
+        "type": "apartment",
+        "bhk": 2,
+        "baths": 2,
+        "area_base": 1250,
+        "price_base": 8500000,
+        "title_fmt": "Contemporary 2 BHK Apartment near Tech Park in {locality}",
+    },
+    {
+        "type": "apartment",
+        "bhk": 3,
+        "baths": 3,
+        "area_base": 1650,
+        "price_base": 13500000,
+        "title_fmt": "Spacious 3 BHK Luxury Flat in {locality}",
+    },
+    {
+        "type": "apartment",
+        "bhk": 3,
+        "baths": 3,
+        "area_base": 1850,
+        "price_base": 16000000,
+        "title_fmt": "Premium 3 BHK High-rise with Skyline Views in {locality}",
+    },
+    {
+        "type": "villa",
+        "bhk": 4,
+        "baths": 4,
+        "area_base": 3200,
+        "price_base": 29000000,
+        "title_fmt": "Exclusive 4 BHK Gated Community Villa in {locality}",
+    },
+    {
+        "type": "penthouse",
+        "bhk": 4,
+        "baths": 4,
+        "area_base": 3600,
+        "price_base": 38000000,
+        "title_fmt": "Ultra-Luxury 4 BHK Penthouse with Private Terrace in {locality}",
+    },
+    {
+        "type": "apartment",
+        "bhk": 2,
+        "baths": 2,
+        "area_base": 1050,
+        "price_base": 6500000,
+        "title_fmt": "Affordable 2 BHK Starter Home in {locality}",
+    },
+    {
+        "type": "apartment",
+        "bhk": 3,
+        "baths": 2,
+        "area_base": 1500,
+        "price_base": 11500000,
+        "title_fmt": "Elegant 3 BHK Family Apartment in {locality}",
+    },
+    {
+        "type": "villa",
+        "bhk": 3,
+        "baths": 3,
+        "area_base": 2400,
+        "price_base": 22000000,
+        "title_fmt": "Charming 3 BHK Independent Duplex Villa in {locality}",
+    },
 ]
 
 IMAGE_URLS = [
@@ -140,35 +331,238 @@ AMENITIES_LIST = [
 ]
 
 CHENNAI_POIS = [
-    {"name": "Guindy Metro Station", "cat": POICategory.TRANSIT, "sub": "metro", "lat": 13.0076, "lng": 80.2032, "loc": "Guindy"},
-    {"name": "Anna Nagar Tower Metro", "cat": POICategory.TRANSIT, "sub": "metro", "lat": 13.0845, "lng": 80.2130, "loc": "Anna Nagar"},
-    {"name": "Tidel Park MRTS Station", "cat": POICategory.TRANSIT, "sub": "train", "lat": 12.9870, "lng": 80.2482, "loc": "Taramani"},
-    {"name": "Velachery MRTS Station", "cat": POICategory.TRANSIT, "sub": "train", "lat": 12.9772, "lng": 80.2198, "loc": "Velachery"},
-    {"name": "Thiruvanmiyur Bus Terminus", "cat": POICategory.TRANSIT, "sub": "bus", "lat": 12.9840, "lng": 80.2580, "loc": "Thiruvanmiyur"},
-    {"name": "Chennai Airport Metro Station", "cat": POICategory.TRANSIT, "sub": "metro", "lat": 12.9798, "lng": 80.1650, "loc": "Meenambakkam"},
-    {"name": "Apollo Hospitals Greams Road", "cat": POICategory.HOSPITAL, "sub": "multispeciality", "lat": 13.0601, "lng": 80.2520, "loc": "Thousand Lights"},
-    {"name": "Fortis Malar Hospital Adyar", "cat": POICategory.HOSPITAL, "sub": "multispeciality", "lat": 13.0070, "lng": 80.2570, "loc": "Adyar"},
-    {"name": "MIOT International Hospital", "cat": POICategory.HOSPITAL, "sub": "multispeciality", "lat": 13.0245, "lng": 80.1830, "loc": "Manapakkam"},
-    {"name": "Gleneagles Global Health City", "cat": POICategory.HOSPITAL, "sub": "super_speciality", "lat": 12.8980, "lng": 80.1980, "loc": "Perumbakkam"},
-    {"name": "Kauvery Hospital Alwarpet", "cat": POICategory.HOSPITAL, "sub": "hospital", "lat": 13.0350, "lng": 80.2530, "loc": "Alwarpet"},
-    {"name": "SBOA School & Junior College", "cat": POICategory.SCHOOL, "sub": "cbse", "lat": 13.0880, "lng": 80.1990, "loc": "Anna Nagar West"},
-    {"name": "Chettinad Vidyashram", "cat": POICategory.SCHOOL, "sub": "cbse", "lat": 13.0180, "lng": 80.2650, "loc": "R.A. Puram"},
-    {"name": "DAV Boys Senior Secondary School", "cat": POICategory.SCHOOL, "sub": "cbse", "lat": 13.0530, "lng": 80.2570, "loc": "Gopalapuram"},
-    {"name": "Bala Vidya Mandir", "cat": POICategory.SCHOOL, "sub": "cbse", "lat": 13.0030, "lng": 80.2520, "loc": "Adyar"},
-    {"name": "The PSBB Millennium School", "cat": POICategory.SCHOOL, "sub": "cbse", "lat": 13.0110, "lng": 80.1480, "loc": "Gerugambakkam"},
-    {"name": "Semmozhi Poonga Botanical Garden", "cat": POICategory.PARK, "sub": "botanical_garden", "lat": 13.0520, "lng": 80.2505, "loc": "Cathedral Road"},
-    {"name": "Guindy National Park", "cat": POICategory.PARK, "sub": "national_park", "lat": 13.0040, "lng": 80.2220, "loc": "Guindy"},
-    {"name": "Anna Nagar Tower Park", "cat": POICategory.PARK, "sub": "urban_park", "lat": 13.0860, "lng": 80.2140, "loc": "Anna Nagar"},
-    {"name": "Besant Nagar Elliot's Beach", "cat": POICategory.PARK, "sub": "beach", "lat": 12.9995, "lng": 80.2680, "loc": "Besant Nagar"},
-    {"name": "Adyar Eco Park (Tholkappiya Poonga)", "cat": POICategory.PARK, "sub": "eco_park", "lat": 13.0190, "lng": 80.2680, "loc": "R.A. Puram"},
-    {"name": "Phoenix MarketCity Velachery", "cat": POICategory.SUPERMARKET, "sub": "mall", "lat": 12.9915, "lng": 80.2165, "loc": "Velachery"},
-    {"name": "VR Chennai Mall", "cat": POICategory.SUPERMARKET, "sub": "mall", "lat": 13.0840, "lng": 80.1980, "loc": "Anna Nagar"},
-    {"name": "Express Avenue Mall", "cat": POICategory.SUPERMARKET, "sub": "mall", "lat": 13.0585, "lng": 80.2640, "loc": "Royapettah"},
-    {"name": "Nilgiris Supermarket Adyar", "cat": POICategory.SUPERMARKET, "sub": "grocery", "lat": 13.0035, "lng": 80.2540, "loc": "Adyar"},
-    {"name": "TIDEL Park", "cat": POICategory.BANK, "sub": "tech_park", "lat": 12.9890, "lng": 80.2475, "loc": "Taramani"},
-    {"name": "DLF Cybercity Chennai", "cat": POICategory.BANK, "sub": "tech_park", "lat": 13.0360, "lng": 80.1600, "loc": "Porur"},
-    {"name": "Olympia Tech Park", "cat": POICategory.BANK, "sub": "tech_park", "lat": 13.0100, "lng": 80.2080, "loc": "Guindy"},
-    {"name": "ELCOT SEZ Sholinganallur", "cat": POICategory.BANK, "sub": "tech_park", "lat": 12.8950, "lng": 80.2310, "loc": "Sholinganallur"},
+    {
+        "name": "Guindy Metro Station",
+        "cat": POICategory.TRANSIT,
+        "sub": "metro",
+        "lat": 13.0076,
+        "lng": 80.2032,
+        "loc": "Guindy",
+    },
+    {
+        "name": "Anna Nagar Tower Metro",
+        "cat": POICategory.TRANSIT,
+        "sub": "metro",
+        "lat": 13.0845,
+        "lng": 80.2130,
+        "loc": "Anna Nagar",
+    },
+    {
+        "name": "Tidel Park MRTS Station",
+        "cat": POICategory.TRANSIT,
+        "sub": "train",
+        "lat": 12.9870,
+        "lng": 80.2482,
+        "loc": "Taramani",
+    },
+    {
+        "name": "Velachery MRTS Station",
+        "cat": POICategory.TRANSIT,
+        "sub": "train",
+        "lat": 12.9772,
+        "lng": 80.2198,
+        "loc": "Velachery",
+    },
+    {
+        "name": "Thiruvanmiyur Bus Terminus",
+        "cat": POICategory.TRANSIT,
+        "sub": "bus",
+        "lat": 12.9840,
+        "lng": 80.2580,
+        "loc": "Thiruvanmiyur",
+    },
+    {
+        "name": "Chennai Airport Metro Station",
+        "cat": POICategory.TRANSIT,
+        "sub": "metro",
+        "lat": 12.9798,
+        "lng": 80.1650,
+        "loc": "Meenambakkam",
+    },
+    {
+        "name": "Apollo Hospitals Greams Road",
+        "cat": POICategory.HOSPITAL,
+        "sub": "multispeciality",
+        "lat": 13.0601,
+        "lng": 80.2520,
+        "loc": "Thousand Lights",
+    },
+    {
+        "name": "Fortis Malar Hospital Adyar",
+        "cat": POICategory.HOSPITAL,
+        "sub": "multispeciality",
+        "lat": 13.0070,
+        "lng": 80.2570,
+        "loc": "Adyar",
+    },
+    {
+        "name": "MIOT International Hospital",
+        "cat": POICategory.HOSPITAL,
+        "sub": "multispeciality",
+        "lat": 13.0245,
+        "lng": 80.1830,
+        "loc": "Manapakkam",
+    },
+    {
+        "name": "Gleneagles Global Health City",
+        "cat": POICategory.HOSPITAL,
+        "sub": "super_speciality",
+        "lat": 12.8980,
+        "lng": 80.1980,
+        "loc": "Perumbakkam",
+    },
+    {
+        "name": "Kauvery Hospital Alwarpet",
+        "cat": POICategory.HOSPITAL,
+        "sub": "hospital",
+        "lat": 13.0350,
+        "lng": 80.2530,
+        "loc": "Alwarpet",
+    },
+    {
+        "name": "SBOA School & Junior College",
+        "cat": POICategory.SCHOOL,
+        "sub": "cbse",
+        "lat": 13.0880,
+        "lng": 80.1990,
+        "loc": "Anna Nagar West",
+    },
+    {
+        "name": "Chettinad Vidyashram",
+        "cat": POICategory.SCHOOL,
+        "sub": "cbse",
+        "lat": 13.0180,
+        "lng": 80.2650,
+        "loc": "R.A. Puram",
+    },
+    {
+        "name": "DAV Boys Senior Secondary School",
+        "cat": POICategory.SCHOOL,
+        "sub": "cbse",
+        "lat": 13.0530,
+        "lng": 80.2570,
+        "loc": "Gopalapuram",
+    },
+    {
+        "name": "Bala Vidya Mandir",
+        "cat": POICategory.SCHOOL,
+        "sub": "cbse",
+        "lat": 13.0030,
+        "lng": 80.2520,
+        "loc": "Adyar",
+    },
+    {
+        "name": "The PSBB Millennium School",
+        "cat": POICategory.SCHOOL,
+        "sub": "cbse",
+        "lat": 13.0110,
+        "lng": 80.1480,
+        "loc": "Gerugambakkam",
+    },
+    {
+        "name": "Semmozhi Poonga Botanical Garden",
+        "cat": POICategory.PARK,
+        "sub": "botanical_garden",
+        "lat": 13.0520,
+        "lng": 80.2505,
+        "loc": "Cathedral Road",
+    },
+    {
+        "name": "Guindy National Park",
+        "cat": POICategory.PARK,
+        "sub": "national_park",
+        "lat": 13.0040,
+        "lng": 80.2220,
+        "loc": "Guindy",
+    },
+    {
+        "name": "Anna Nagar Tower Park",
+        "cat": POICategory.PARK,
+        "sub": "urban_park",
+        "lat": 13.0860,
+        "lng": 80.2140,
+        "loc": "Anna Nagar",
+    },
+    {
+        "name": "Besant Nagar Elliot's Beach",
+        "cat": POICategory.PARK,
+        "sub": "beach",
+        "lat": 12.9995,
+        "lng": 80.2680,
+        "loc": "Besant Nagar",
+    },
+    {
+        "name": "Adyar Eco Park (Tholkappiya Poonga)",
+        "cat": POICategory.PARK,
+        "sub": "eco_park",
+        "lat": 13.0190,
+        "lng": 80.2680,
+        "loc": "R.A. Puram",
+    },
+    {
+        "name": "Phoenix MarketCity Velachery",
+        "cat": POICategory.SUPERMARKET,
+        "sub": "mall",
+        "lat": 12.9915,
+        "lng": 80.2165,
+        "loc": "Velachery",
+    },
+    {
+        "name": "VR Chennai Mall",
+        "cat": POICategory.SUPERMARKET,
+        "sub": "mall",
+        "lat": 13.0840,
+        "lng": 80.1980,
+        "loc": "Anna Nagar",
+    },
+    {
+        "name": "Express Avenue Mall",
+        "cat": POICategory.SUPERMARKET,
+        "sub": "mall",
+        "lat": 13.0585,
+        "lng": 80.2640,
+        "loc": "Royapettah",
+    },
+    {
+        "name": "Nilgiris Supermarket Adyar",
+        "cat": POICategory.SUPERMARKET,
+        "sub": "grocery",
+        "lat": 13.0035,
+        "lng": 80.2540,
+        "loc": "Adyar",
+    },
+    {
+        "name": "TIDEL Park",
+        "cat": POICategory.BANK,
+        "sub": "tech_park",
+        "lat": 12.9890,
+        "lng": 80.2475,
+        "loc": "Taramani",
+    },
+    {
+        "name": "DLF Cybercity Chennai",
+        "cat": POICategory.BANK,
+        "sub": "tech_park",
+        "lat": 13.0360,
+        "lng": 80.1600,
+        "loc": "Porur",
+    },
+    {
+        "name": "Olympia Tech Park",
+        "cat": POICategory.BANK,
+        "sub": "tech_park",
+        "lat": 13.0100,
+        "lng": 80.2080,
+        "loc": "Guindy",
+    },
+    {
+        "name": "ELCOT SEZ Sholinganallur",
+        "cat": POICategory.BANK,
+        "sub": "tech_park",
+        "lat": 12.8950,
+        "lng": 80.2310,
+        "loc": "Sholinganallur",
+    },
 ]
 
 
@@ -195,7 +589,9 @@ async def seed_all():
             stmt = select(Amenity).where(Amenity.name == am_data["name"])
             existing = (await session.execute(stmt)).scalar_one_or_none()
             if not existing:
-                am = Amenity(name=am_data["name"], category=am_data["category"], icon=am_data["icon"])
+                am = Amenity(
+                    name=am_data["name"], category=am_data["category"], icon=am_data["icon"]
+                )
                 session.add(am)
                 await session.flush()
                 amenity_ids.append(am.id)
@@ -260,9 +656,11 @@ async def seed_all():
 
         # 5. Seed 100 Chennai properties
         random.seed(42)
-        chennai_count = (await session.execute(
-            select(func.count()).select_from(Property).where(Property.city == "Chennai")
-        )).scalar() or 0
+        chennai_count = (
+            await session.execute(
+                select(func.count()).select_from(Property).where(Property.city == "Chennai")
+            )
+        ).scalar() or 0
 
         if chennai_count < 100:
             for i in range(100):
@@ -282,9 +680,16 @@ async def seed_all():
                 area_var = random.uniform(0.95, 1.10)
                 calculated_area = round(tmpl["area_base"] * area_var, 1)
 
-                is_omr = locality_name in ["Sholinganallur", "Thoraipakkam", "Perungudi", "Navalur", "Siruseri", "Karapakkam"]
+                is_omr = locality_name in [
+                    "Sholinganallur",
+                    "Thoraipakkam",
+                    "Perungudi",
+                    "Navalur",
+                    "Siruseri",
+                    "Karapakkam",
+                ]
                 omr_tag = ", OMR IT Corridor" if is_omr else ""
-                
+
                 title = tmpl["title_fmt"].format(locality=locality_name)
                 desc = f"Well-ventilated {tmpl['bhk']} BHK {tmpl['type']} located in {locality_name}{omr_tag}, Chennai. Offers excellent connectivity to IT corridors, schools, and transit."
 
@@ -325,7 +730,9 @@ async def seed_all():
 
         await session.commit()
         total_p = (await session.execute(select(func.count()).select_from(Property))).scalar()
-        total_poi = (await session.execute(select(func.count()).select_from(PointOfInterest))).scalar()
+        total_poi = (
+            await session.execute(select(func.count()).select_from(PointOfInterest))
+        ).scalar()
         print(f"Seed complete! Database has {total_p} properties and {total_poi} POIs.")
 
 

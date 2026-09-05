@@ -91,7 +91,9 @@ def restore_seed_data_after_tests():
     yield
     try:
         import asyncio
+
         from app.db.seed_all import seed_all
+
         asyncio.run(seed_all())
     except Exception:
         pass

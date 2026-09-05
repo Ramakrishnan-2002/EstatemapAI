@@ -20,7 +20,9 @@ def test_registry_coordinate_bounds():
             lat_r[0] <= lat <= lat_r[1] and lng_r[0] <= lng <= lng_r[1]
             for _, lat_r, lng_r in METRO_BOUNDS
         )
-        assert in_any_metro, f"Coordinates out of supported metro bounds for {key} ({label}): ({lat}, {lng})"
+        assert (
+            in_any_metro
+        ), f"Coordinates out of supported metro bounds for {key} ({label}): ({lat}, {lng})"
 
 
 @pytest.mark.parametrize(

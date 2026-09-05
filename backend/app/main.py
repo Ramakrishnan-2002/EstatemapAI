@@ -33,6 +33,7 @@ async def lifespan(app: FastAPI):
     if settings.ENVIRONMENT != "test":
         try:
             from app.db.seed_all import seed_all
+
             await seed_all()
         except Exception as e:
             logger.warning("Auto-seed during startup encountered error (skipping): %s", e)
