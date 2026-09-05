@@ -1,6 +1,6 @@
 # EstateMap AI — Python Backend & System Design Mastery Curriculum
 > **Curriculum Status: FROZEN & TAILORED STRICTLY FOR PYTHON BACKEND & SYSTEM DESIGN**
-> **Canonical Document Library: 7 Focused Documents | 0 Hallucinations | 100% Executable Code Truth**
+> **Canonical Document Library: 9 Focused Documents | 100% Code Truth**
 
 Welcome to the EstateMap AI Backend Engineering Curriculum. This curriculum is designed to help you become strong in **Python backend development, database engineering (PostgreSQL + PostGIS), distributed caching & rate limiting (Redis), and system design** by deeply understanding, building, and explaining the EstateMap backend.
 
@@ -79,12 +79,12 @@ System Design (Tradeoffs, Bottlenecks, Scaling 10k → 1M users)
 | :--- | :--- | :--- |
 | **Backend & Spatial** | FastAPI, Pydantic v2, SQLAlchemy 2.0, Asyncpg, PostGIS `Geometry(Point, 4326)`, GiST indexes, `ST_DWithin`, `ST_MakeEnvelope`, GeoJSON serializers. | Next.js internals, React components, Tailwind CSS, MapLibre rendering. |
 | **Caching & Limiting** | Redis Cache-Aside, SHA-256 key hashing, SCAN invalidation, Redis ZSET sliding-window rate limiter, Fail-open policy. | Redis Cluster sharding, Raft consensus, complex multi-region replication. |
-| **AI Orchestration** | Provider Protocol, Ollama (local) + Gemini (cloud), Pydantic validation firewall, SearchOrchestrator stateless state reducer. | Token streaming, LLM fine-tuning, autonomous agent frameworks. |
+| **AI Orchestration** | Provider Abstract Interface, Ollama (local) + Gemini (cloud), Pydantic validation firewall, SearchOrchestrator stateless state reducer. | Token streaming, LLM fine-tuning, autonomous agent frameworks. |
 | **DevOps & Testing** | Dockerfile, Docker Compose local orchestration, Pytest async fixtures, dependency overrides, integration test suites. | Kubernetes, Helm, CI/CD GitHub Actions matrices, Playwright browser tests, Testcontainers, Prometheus/OpenTelemetry agents. |
 
 ---
 
-## 4. The 7 Canonical Documents Library
+## 4. The 9 Canonical Documents Library
 
 | # | Document | Role & Purpose | Recommended Focus |
 | :-: | :--- | :--- | :--- |
@@ -95,11 +95,13 @@ System Design (Tradeoffs, Bottlenecks, Scaling 10k → 1M users)
 | 5 | [`SYSTEM_DESIGN.md`](SYSTEM_DESIGN.md) | Requirement-driven system design case study, 15 core architectural tradeoffs, technology necessity, failure modes, scaling evolution. | System Design Prep |
 | 6 | [`INTERVIEW_PREP.md`](INTERVIEW_PREP.md) | Senior Backend & System Design interview guide (Pitches, Top 25 STAR Q&As, 10 Whiteboard challenge blueprints, Mock interview). | Interview Practice |
 | 7 | [`ACTIVE_RECALL.md`](ACTIVE_RECALL.md) | 50 Backend active recall drills with hidden answer keys, 8 topic-specific live debugging labs, and 5 rebuild challenges. | Self-Assessment |
+| 8 | [`BACKEND_ROADMAP.md`](BACKEND_ROADMAP.md) | 15-module progression path, 10 Cumulative Mastery Demonstrations (CMDs), and 4-week study plan. | Study Planning |
+| 9 | [`BACKEND_DEPENDENCY_GRAPH.md`](BACKEND_DEPENDENCY_GRAPH.md) | Visual Mermaid DAG of prerequisite dependencies across all 48 backend stories. | Prerequisites Mapping |
 
 ---
 
 ## 5. Implementation & Verification Status
 - **Total Backend Stories:** 48
-- **Essential Backend Stories:** 32
-- **Important Backend Stories:** 16
+- **Essential Backend Stories:** 37
+- **Important Backend Stories:** 11
 - **Automated Regression Status:** 288/288 Backend Pytest Passed | 100% Executable Code Truth

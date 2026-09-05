@@ -10,12 +10,12 @@
 2. **Deterministic Multi-Criteria Ranking:** Rank properties across price, space, locality, proximity, and commute duration.
 3. **Conversational Natural Language Search:** Parse unstructured search intents, maintain multi-turn filter state, and resolve landmarks.
 4. **Side-by-Side Property Comparison:** Calculate quantitative metric differences and determine dimensional winners.
-5. **Multi-Provider AI Resilience:** Dynamic LLM routing with sub-5s timeouts and deterministic fallback generation.
+5. **Multi-Provider AI Resilience:** Dynamic LLM routing with configurable timeouts and deterministic fallback generation.
 
-### Non-Functional Requirements & Latency SLOs
-* **p50 Latency:** < 20ms for cached viewport queries; < 50ms for PostGIS spatial searches.
-* **p95 Latency:** < 100ms for full 6-factor ranking pipeline.
-* **Availability:** 99.9% uptime (guaranteed by graceful Redis fail-open and AI algorithmic fallbacks).
+### Non-Functional Requirements & Engineering Goals
+* **Geospatial Efficiency:** Fast bounding-box filtering and radius searches via GiST indexing.
+* **Deterministic Ranking:** In-memory 6-factor MCDA vector calculations without external runtime dependencies.
+* **Resilience & Availability:** Graceful Redis fail-open and algorithmic fallback for AI services.
 * **Data Integrity:** Strict ACID transactional consistency for property records and user ownership.
 
 ---
@@ -32,10 +32,10 @@
 | **6** | Cache Invalidation | **Non-Blocking SCAN** | Blocking KEYS * | KEYS * blocks the single-threaded Redis event loop for seconds; SCAN iterates cursor-by-cursor safely. |
 | **7** | Rate Limiting | **Sliding Window Log (ZSET)** | Fixed Window Counter | ZSET sliding window eliminates the 2x traffic burst vulnerability across window boundaries. |
 | **8** | Rate Limit Resilience | **Fail-Open Policy** | Fail-Closed Policy | Prioritizes application availability over strict rate enforcement if Redis experiences downtime. |
-| **9** | Ranking Architecture | **Deterministic MCDA Engine** | LLM Neural Ranking | Deterministic ranking is sub-5ms, 100% reproducible, cost-free, and mathematically immune to hallucinations. |
+| **9** | Ranking Architecture | **Deterministic MCDA Engine** | LLM Neural Ranking | Deterministic ranking is reproducible, fast, cost-free, and mathematically immune to hallucinations. |
 | **10** | Missing-Factor Math | **Dynamic Weight Renormalization** | Fixed Zero Penalty | Dividing active weights by active_weight_sum preserves relative priority ratios when optional criteria are omitted. |
-| **11** | AI Integration | **Abstract Provider Protocol** | Vendor SDK Direct Calls | Protocol abstraction enables swappable local Ollama and cloud Gemini execution without vendor lock-in. |
-| **12** | AI Resilience | **Multi-Tier Circuit Failover** | Single Provider | Primary provider timeouts (5s) automatically failover to backup provider and algorithmic fallback. |
+| **11** | AI Integration | **Abstract Provider Base Class** | Vendor SDK Direct Calls | Base class abstraction enables swappable local Ollama and cloud Gemini execution without vendor lock-in. |
+| **12** | AI Resilience | **Multi-Tier Circuit Failover** | Single Provider | Primary provider timeouts automatically failover to backup provider and algorithmic fallback. |
 | **13** | Conversational State | **Stateless State Reducer** | Server-Side Redis Sessions | Client-held state allows any backend worker replica to handle any turn without sticky sessions. |
 | **14** | Password Hashing | **Argon2id Memory-Hard** | SHA-256 / MD5 | Argon2id is memory-hard and computationally expensive, defeating GPU/ASIC rainbow table attacks. |
 | **15** | Token Architecture | **Stateless JWT (HS256)** | State Session IDs | Stateless tokens allow backend API instances to verify signatures locally without database lookups. |
@@ -48,7 +48,7 @@
 | :--- | :--- | :--- | :--- |
 | **Web Gateway** | FastAPI (Python 3.12) | High-throughput ASGI event loop with native Pydantic v2 validation. | Flask/Django WSGI would block event loops during async I/O. |
 | **Database** | PostgreSQL 16 + PostGIS | Enterprise spatial indexing (GiST) and geodesic distance math. | MySQL spatial lacks advanced geodesic functions; Mongo lacks strict relational constraints. |
-| **Cache & Limiter** | Redis 7 | Sub-millisecond in-memory data structures (ZSET, string key-value). | In-process cache cannot share state across horizontal backend workers. |
+| **Cache & Limiter** | Redis 7 | High-performance in-memory data structures (ZSET, string key-value). | In-process cache cannot share state across horizontal backend workers. |
 | **Routing** | OSRM Engine | Real road-network driving distance and duration calculations. | Straight-line distance ignores physical road geometry and water bodies. |
 | **AI LLM** | Ollama (Local) + Gemini (Cloud) | Flexible, cost-optimized conversational intent parsing and grounded summaries. | Single-provider architecture creates total dependency on external API availability. |
 

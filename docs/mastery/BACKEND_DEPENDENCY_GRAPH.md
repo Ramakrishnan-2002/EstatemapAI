@@ -65,16 +65,16 @@ flowchart TD
     end
 
     subgraph M10["Module 10: Multi-Provider AI (35-38)"]
-        S05 --> S35["Story 35: AI Protocol"]
+        S05 --> S35["Story 35: AI Provider ABC"]
         S35 --> S36["Story 36: Schema Validation"]
         S36 --> S37["Story 37: Provider Routing"]
         S37 --> S38["Story 38: Grounded Fallbacks"]
     end
 
     subgraph M11["Module 11: Conversational Search (39-41)"]
-        S37 --> S39["Story 39: Intent Parsing"]
+        S37 --> S39["Story 39: Intent Extraction"]
         S39 --> S40["Story 40: State Reducer"]
-        S40 --> S41["Story 41: Multi-Turn Search"]
+        S40 --> S41["Story 41: Orchestrated Search"]
     end
 
     subgraph M12["Module 12: API Integration (42)"]

@@ -10,7 +10,7 @@ This document provides four structured verbal pitch templates for presenting Est
 ---
 
 ## 1. 30-Second Elevator Pitch
-> "EstateMap AI is a location-first real estate discovery platform that replaces traditional keyword filters with true geospatial intelligence. Built as a FastAPI modular monolith with PostgreSQL and PostGIS, it combines sub-50ms R-Tree bounding-box search, OSRM road-network commute calculations, and a deterministic 6-factor ranking engine. We also built 'Ask the Map', a multi-turn conversational search orchestrator that uses local and cloud LLMs to parse natural language updates into a verified state machine with offline fallback."
+> "EstateMap AI is a location-first real estate discovery platform that replaces traditional keyword filters with true geospatial intelligence. Built as a FastAPI modular monolith with PostgreSQL and PostGIS, it combines GiST spatial bounding-box search, OSRM road-network commute calculations, and a deterministic 6-factor ranking engine. We also built 'Ask the Map', a multi-turn conversational search orchestrator that uses local and cloud LLMs to parse natural language updates into a verified state machine with offline fallback."
 
 ---
 
@@ -28,12 +28,6 @@ This document provides four structured verbal pitch templates for presenting Est
 ---
 
 ## 3. 5-Minute Architectural Pitch
-> "When designing EstateMap AI, our goal was to build a production-grade, highly performant real estate platform while maintaining a strict modular monolithic architecture.
->
-> **1. Geospatial Persistence Layer**:
-> We store coordinates using PostGIS `geometry(Point, 4326)`. Spatial queries leverage 2D R-Tree GiST indexes. When a user pans the map, the frontend extracts the bounding box, and PostGIS evaluates `ST_MakeEnvelope` in under 20ms. Surrounding amenities use `ST_DWithin` with geography casting for meter-accurate spherical distance.
->
-> **2. In-Memory Performance & Protection**:
 > We use Redis 7 for two distinct purposes:
 > * *Cache-Aside*: Caches OSRM route calculations and location intelligence aggregations with deterministic SHA-256 and canonical coordinate keys.
 > * *Sliding-Window Rate Limiting*: Implements a sliding-window log using Redis Sorted Sets (`ZSET`). By recording request timestamps as scores and pruning expired records atomically via `ZREMRANGEBYSCORE`, we eliminate the 2x burst boundary vulnerabilities of fixed-window counters.
@@ -90,7 +84,7 @@ This question bank contains over 200 real-world senior backend, system design, a
 21. How does FastAPI's dependency injection system manage database connection lifecycles?
 22. What is the purpose of using `yield` inside dependency functions like `get_db()`?
 23. How do you implement request-scoped correlation IDs across async task chains?
-24. How does Pydantic v2 achieve sub-millisecond data validation?
+24. How does Pydantic v2 achieve high-throughput data validation with its Rust core (`pydantic-core`)?
 25. Explain the RFC 7807 problem details specification and how you implemented centralized error handling.
 26. What is the difference between `asyncio.gather()` and `asyncio.create_task()`?
 27. How do you prevent connection pool exhaustion in async SQLAlchemy?
@@ -287,7 +281,7 @@ This document provides structured, interview-ready answers for the critical ques
 ## 1. System Design: "Why Modular Monolith Over Microservices?"
 
 ### 30-Second Elevator Answer
-> "We chose a modular monolith because EstateMap is a synchronized real estate discovery platform with a single development team. A modular monolith gives us ACID relational transactions across properties, amenities, and users with zero inter-service network latency, sub-millisecond in-memory communication, and simple single-container deployments. Microservices would have introduced distributed transaction complexity, network overhead, and heavy DevOps friction without any business justification."
+> "We chose a modular monolith because EstateMap is a synchronized real estate discovery platform with a single development team. A modular monolith gives us ACID relational transactions across properties, amenities, and users with zero inter-service network latency, fast in-memory function calls, and simple single-container deployments. Microservices would have introduced distributed transaction complexity, network overhead, and heavy DevOps friction without any business justification."
 
 ### 2-Minute Standard Answer
 > "In evaluating the architecture for EstateMap, we followed Conway's Law and Martin Fowler's MonolithFirst principle.
@@ -296,7 +290,7 @@ This document provides structured, interview-ready answers for the critical ques
 >
 > This design provides three major engineering advantages:
 > 1. **Data Consistency**: PostgreSQL executes atomic transactions across listings, images, and user roles without requiring distributed 2-Phase Commit (2PC) or Saga orchestrators.
-> 2. **Performance**: An interactive map query can join properties with spatial bounding boxes and location intelligence in memory in $<20\text{ms}$, avoiding multi-hop network serialization delays.
+> 2. **Performance**: An interactive map query can join properties with spatial bounding boxes and location intelligence in memory with low latency, avoiding multi-hop network serialization delays.
 > 3. **Operational Simplicity**: The entire application runs as a single FastAPI container next to PostgreSQL and Redis.
 >
 > If a specific module—such as high-volume listing ingestion or background AI batching—develops distinct scaling or independent deployment needs in the future, our strict repository and service boundaries allow clean service extraction."
@@ -310,18 +304,18 @@ This document provides structured, interview-ready answers for the critical ques
 ## 2. Geospatial: "How Does PostGIS GiST Indexing Work & Why Do B-Trees Fail?"
 
 ### 30-Second Elevator Answer
-> "Standard B-Tree indexes only work for 1-dimensional scalar values that can be sorted linearly. Geographic coordinates are 2-dimensional. PostGIS uses Generalized Search Trees (GiST) implementing an R-Tree structure. The GiST index organizes points into a hierarchy of Minimum Bounding Rectangles (MBRs). When a bounding-box query runs, PostGIS evaluates bounding box overlaps and prunes non-intersecting branches in $\mathcal{O}(\log N)$ time, avoiding full table scans."
+> "Standard B-Tree indexes only work for 1-dimensional scalar values that can be sorted linearly. Geographic coordinates are 2-dimensional. PostGIS uses Generalized Search Trees (GiST) implementing an R-Tree structure. The GiST index organizes points into a hierarchy of Minimum Bounding Rectangles (MBRs). When a bounding-box query runs, PostGIS evaluates bounding box overlaps and prunes non-intersecting branches efficiently, avoiding full table scans."
 
 ### 2-Minute Standard Answer
 > "In PostgreSQL, storing latitude and longitude as two separate float columns indexed with standard B-Trees is ineffective for spatial queries because a B-Tree can only filter one dimension at a time (e.g. filtering latitude first, which still leaves thousands of rows to scan across longitude).
 >
-> EstateMap stores coordinates as a single PostGIS `geometry(Point, 4326)` column with a GiST spatial index (`idx_properties_location_gist` in `backend/alembic/versions/001_initial_schema.py`).
+> EstateMap stores coordinates as a single PostGIS `geometry(Point, 4326)` column with a GiST spatial index (`idx_properties_location` in `backend/alembic/versions/2026_09_04_0003-0003_create_properties_amenities_images.py`).
 >
 > Internally, the GiST index builds an R-Tree:
 > * Leaf nodes contain actual property points grouped into small bounding boxes.
 > * Parent nodes aggregate child boxes into progressively larger bounding boxes up to the root.
 >
-> When the frontend map executes a viewport search using `location && ST_MakeEnvelope(min_lng, min_lat, max_lng, max_lat, 4326)`, PostGIS evaluates the `&&` intersection operator against the R-Tree root. If a bounding box does not overlap the query envelope, the entire subtree is discarded. This reduces query execution time from $\mathcal{O}(N)$ sequential scans to $\mathcal{O}(\log N)$ index scans, executing in $<15\text{ms}$ over thousands of listings."
+> When the frontend map executes a viewport search using `location && ST_MakeEnvelope(min_lng, min_lat, max_lng, max_lat, 4326)`, PostGIS evaluates the `&&` intersection operator against the R-Tree root. If a bounding box does not overlap the query envelope, the entire subtree is discarded. This prunes non-overlapping subtrees early, reducing candidate rows before evaluating exact geometry predicates."
 
 ### Deep-Dive Follow-Up
 * **Coordinate Ordering**: PostGIS adheres strictly to the OGC and GeoJSON standard: `POINT(longitude latitude)` where Longitude = X and Latitude = Y. Inverting to `POINT(lat lng)` causes points to project to Antarctica.
@@ -332,22 +326,22 @@ This document provides structured, interview-ready answers for the critical ques
 ## 3. Redis & Concurrency: "How Did You Implement Sliding-Window Rate Limiting?"
 
 ### 30-Second Elevator Answer
-> "We implemented a sliding-window log rate limiter using Redis Sorted Sets (`ZSET`). Every request adds a unique member with the current Unix epoch timestamp as its score. We atomically prune timestamps older than `now - 60s` using `ZREMRANGEBYSCORE`, count the remaining entries with `ZCARD`, and reject the request with HTTP 429 if the count exceeds our threshold. This eliminates the 2x burst vulnerability inherent in fixed-window counters."
+> "We implemented a sliding-window log rate limiter using Redis Sorted Sets (`ZSET`). Every request adds a unique member with the current Unix epoch timestamp as its score. We prune timestamps older than `now - 60s` using `ZREMRANGEBYSCORE`, count the remaining entries with `ZCARD`, and reject the request with HTTP 429 if the count exceeds our threshold. This eliminates the 2x burst vulnerability inherent in fixed-window counters."
 
 ### 2-Minute Standard Answer
 > "Fixed-window rate limiters count requests within static clock boundaries (e.g. 00:00–00:59). An attacker can send 5 requests at 00:59 and 5 requests at 01:00, effectively pushing 10 requests in 2 seconds while adhering to a '5 req/min' fixed limit.
 >
-> In `backend/app/core/rate_limit.py`, EstateMap implements a true sliding-window log:
+> In `backend/app/core/rate_limit.py`, EstateMap implements a sliding-window log:
 > 1. **Key Structure**: `estatemap:ratelimit:{client_ip_or_user_id}:{endpoint_scope}`.
-> 2. **Prune Expired Entries**: `ZREMRANGEBYSCORE key 0 (now - window_seconds)`. This atomically deletes all request timestamps outside the rolling 60-second window.
+> 2. **Prune Expired Entries**: `ZREMRANGEBYSCORE key 0 (now - window_seconds)`. This deletes request timestamps outside the rolling 60-second window.
 > 3. **Count Active Requests**: `count = ZCARD key`.
 > 4. **Threshold Evaluation**: If `count >= limit`, we return `HTTP 429 Too Many Requests` with header `Retry-After: 60`.
 > 5. **Record Current Request**: If within limits, we add the current request: `ZADD key now request_uuid` and set key expiration `EXPIRE key window_seconds`.
 >
-> This guarantees 100% boundary accuracy at sub-millisecond Redis RAM speed."
+> This guarantees sliding-window accuracy at Redis in-memory speed."
 
 ### Deep-Dive Follow-Up
-* **Fail-Open Policy**: If Redis crashes or disconnects, `rate_limit.py` catches `aioredis.ConnectionError`, logs a warning with the request ID, and fails open for general search traffic to maintain platform availability, while failing closed on auth endpoints.
+* **Fail-Open Policy**: If Redis is unreachable, `rate_limit.py` catches `RedisError`, logs a warning with the request ID, and fails open for general search traffic to maintain platform availability, while failing closed on auth endpoints when configured.
 * **Time Complexity**: $\mathcal{O}(\log M + K)$ where $M$ is the number of requests in the window (typically $\le 60$) and $K$ is the number of pruned expired entries.
 
 ---

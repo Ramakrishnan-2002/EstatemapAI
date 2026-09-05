@@ -140,9 +140,9 @@
 115. Why should `KEYS` never be run in production Redis, and what command should be used instead?
 116. What is the memory footprint of storing 1,000 sliding-window rate limit entries in Redis?
 117. What is the difference between Redis `EXPIRE` and `PEXPIRE`?
-118. How does `aioredis` manage connection pooling in async Python?
+118. How does `redis.asyncio` manage connection pooling in async Python?
 119. What is the difference between `UNLINK` and `DEL` in Redis?
-120. How does Redis achieve sub-millisecond read and write latency?
+120. How does Redis achieve low-latency read and write throughput in memory?
 
 ---
 
@@ -328,17 +328,17 @@ This document provides the complete, authoritative answers for all 260 questions
 6. **Backend Port**: Port `8000`.
 7. **Frontend Port**: Port `3000`.
 8. **Database & Extension**: PostgreSQL 16 with PostGIS 3.4 (`geometry(Point, 4326)`).
-9. **Why Redis**: Provides sub-millisecond in-memory cache-aside storage for expensive OSRM road routes and atomic sliding-window rate limiting via Sorted Sets (`ZSET`).
+9. **Why Redis**: Provides in-memory cache-aside storage for expensive OSRM road routes and sliding-window rate limiting via Sorted Sets (`ZSET`).
 10. **Frontend-Backend Communication**: Asynchronous HTTPS REST API calls returning RFC 7807 JSON and RFC 7946 GeoJSON.
 11. **Coordinate Convention**: `POINT(longitude latitude)` -> `[x, y] = [lng, lat]`.
 12. **Inverted Coordinates**: Inverting coordinates causes points to map to Antarctica or the Indian Ocean, returning empty search results.
 13. **Why No Vector DB**: EstateMap's primary search paradigm is structured relational filtering and PostGIS 2D spatial indexing, not unstructured document text retrieval.
-14. **Why No Elasticsearch**: PostGIS GiST spatial indexing already executes bounding-box and radius queries in $<20\text{ms}$ without the dual-write sync complexity of Elasticsearch.
+14. **Why No Elasticsearch**: PostGIS GiST spatial indexing already executes bounding-box and radius queries with low latency without the dual-write sync complexity of Elasticsearch.
 15. **When Kafka is Justified**: High-throughput property listing ingestion feeds, high-volume clickstream analytics pipelines, or asynchronous notification queues.
 16. **Database Migrations**: Alembic tracks chronological revision scripts in `backend/alembic/versions/`.
 17. **Routing Provider**: Open Source Routing Machine (OSRM) HTTP engine.
 18. **Local LLM Runner**: Ollama running `llama3.2:latest` or `qwen2.5:latest`.
-19. **AI Protocol**: Python `Protocol` `AIProvider` in `backend/app/ai/base.py`.
+19. **AI Base Class**: Python Abstract Base Class (ABC) `AIProvider` in `backend/app/ai/base.py`.
 20. **X-Request-ID**: Distributed correlation identifier attached in middleware to trace a single request across logs, database queries, and response headers.
 21. **Error RFC**: RFC 7807 (Problem Details for HTTP APIs).
 22. **GeoJSON RFC**: RFC 7946.
@@ -422,11 +422,11 @@ This document provides the complete, authoritative answers for all 260 questions
 ---
 
 ## Category 4: Redis Caching & Rate Limiting (Q91–Q120)
-91. **What is Redis**: Remote Dictionary Server, an open-source in-memory key-value data structure store delivering sub-millisecond read/write latency.
+91. **What is Redis**: Remote Dictionary Server, an open-source in-memory key-value data structure store delivering high-throughput in-memory read/write performance.
 92. **Cache-Aside**: Application checks cache; on miss, loads from DB/OSRM, writes result to cache with TTL, and returns response.
-93. **Commute Route TTL**: 86,400 seconds (24 hours).
-94. **POI Intelligence TTL**: 3,600 seconds (1 hour).
-95. **Ranked Search TTL**: 300 seconds (5 minutes).
+93. **Commute Route TTL**: 600 seconds (10 minutes).
+94. **POI Intelligence TTL**: 1,800 seconds (30 minutes).
+95. **Ranked Search TTL**: 300 seconds (5 minutes). Map Viewport TTL: 120 seconds (2 minutes).
 96. **Commute Cache Key**: `estatemap:commute:v1:p{prop_id}:d{dest_lat:.4f}_{dest_lng:.4f}:m{mode}`.
 97. **Coordinate Rounding**: Rounding to 4 decimal places (~11 meters) avoids cache fragmentation caused by micro-precision coordinate differences.
 98. **Cache Stampede**: Thousands of concurrent requests hit the DB when a hot key expires; mitigated via TTL jitter and distributed locking.

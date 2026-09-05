@@ -48,7 +48,7 @@ EstateMap System Design & Architectural Defense (Stories 46-48)
 | **CMD 06** | 6-Factor Deterministic Ranking | MCDA, Weight Redistribution | `docker compose exec backend pytest tests/integration/test_ranking.py` |
 | **CMD 07** | Redis Caching & Invalidation | Cache-Aside, SHA-256 Key Hashing | `docker compose exec backend pytest tests/unit/test_cache_service.py` |
 | **CMD 08** | Pipelined Sliding Window Rate Limiter | Redis ZSET, Pipelined Eval | `docker compose exec backend pytest tests/integration/test_rate_limiting.py` |
-| **CMD 09** | Multi-Provider AI & Orchestration | Ollama + Gemini, State Reducer | `docker compose exec backend pytest tests/integration/test_ai_search.py` |
+| **CMD 09** | Multi-Provider AI & Orchestration | Ollama + Gemini, State Reducer | `docker compose exec backend pytest tests/integration/test_ai_endpoints.py` |
 | **CMD 10** | End-to-End Backend Verification | Complete 288-Test Regression Suite | `docker compose exec backend pytest` |
 
 ---

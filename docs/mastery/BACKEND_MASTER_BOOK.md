@@ -69,7 +69,7 @@ A standard B-Tree index cannot index 2D coordinates because points cannot be sor
 ## Chapter 3: Deterministic 6-Factor Ranking & MCDA Scoring Engine
 
 ### 3.1 Why Deterministic Ranking over Black-Box ML
-Real estate discovery requires explainability, reproducibility, and sub-10ms latency. EstateMap implements a Multi-Criteria Decision Analysis (MCDA) mathematical scoring engine that evaluates 6 heterogeneous dimensions:
+Real estate discovery requires explainability, reproducibility, and fast deterministic scoring. EstateMap implements a Multi-Criteria Decision Analysis (MCDA) mathematical scoring engine that evaluates 6 heterogeneous dimensions:
 1. **Price Score ($S_p$):** Min-max linear inverse normalization.
 2. **Bedroom Score ($S_b$):** Step-function match penalty based on user requirement.
 3. **Area Score ($S_a$):** Linear normalization within budget range.
@@ -87,18 +87,18 @@ This ensures the final composite score $\sum (W_i' \cdot S_i)$ always sums to ex
 ## Chapter 4: Location Intelligence, Routing & Commute Matrices
 
 ### 4.1 In-Memory Landmark Resolution
-Natural language queries often mention tech parks or localities ('near Manyata Tech Park'). EstateMap uses an in-memory `LocationResolver` dictionary of 50+ curated landmarks in Bengaluru and Chennai to resolve exact coordinates in sub-millisecond time with zero external API calls.
+Natural language queries often mention tech parks or localities ('near Manyata Tech Park'). EstateMap uses an in-memory `LocationResolver` dictionary of 50+ curated landmarks in Bengaluru and Chennai to resolve exact coordinates with fast in-memory dictionary lookups and zero external API calls.
 
 ### 4.2 OSRM Engine Integration & Haversine Fallback
 * **OSRM Integration:** Async HTTP calls query OpenStreetMap Routing Machine (OSRM) for road-network driving durations and polyline geometries.
-* **Haversine Fallback:** If OSRM is unreachable or times out (5s deadline), the backend automatically degrades to in-memory spherical Haversine distance with calibrated speed profiles (25 km/h driving, 4 km/h walking), ensuring 100% endpoint availability.
+* **Haversine Fallback:** If OSRM is unreachable or times out (5s deadline), the backend automatically degrades to in-memory spherical Haversine distance with calibrated speed profiles (25 km/h driving, 4 km/h walking), ensuring endpoint resilience.
 
 ---
 
 ## Chapter 5: Multi-Provider AI Architecture & Failover Resilience
 
-### 5.1 Provider Protocol & Dual Adapters
-EstateMap defines an abstract `AIProvider` Protocol implemented by two distinct adapters:
+### 5.1 Provider Base Class & Dual Adapters
+EstateMap defines an abstract `AIProvider` base class implemented by two distinct adapters:
 1. **Local Ollama Adapter:** Cost-free, local LLM execution for development and privacy-sensitive workloads.
 2. **Cloud Gemini Adapter:** Low-latency, scalable managed LLM execution for production workloads.
 
