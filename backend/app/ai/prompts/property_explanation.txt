@@ -1,0 +1,8 @@
+Explain concisely why this property matches the user search criteria.
+Rely strictly on the provided factual property attributes and scoring. Do not invent facts.
+
+Property Attributes:
+{property_data}
+
+User Requirements:
+{user_context}

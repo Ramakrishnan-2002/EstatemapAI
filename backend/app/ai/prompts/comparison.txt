@@ -1,0 +1,5 @@
+Compare the following properties concisely based on price, area, location, commute, and amenities.
+Highlight the best option for overall value, best commute, and best location based strictly on the structured data provided.
+
+Properties:
+{properties_data}
