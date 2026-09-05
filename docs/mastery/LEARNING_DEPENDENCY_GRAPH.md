@@ -57,10 +57,10 @@ graph TD
 ## 2. 100-Story Complete Dependency Table
 
 ### Legend:
-- 🟢 `[CURRENT]` — Directly implemented in repository
-- 🟡 `[PARTIAL]` — Core mechanism implemented
-- 🔵 `[THEORY]` — Foundational theory / algorithm
-- 🟣 `[FUTURE]` — Production scaling evolution
+- 🟢 `[CURRENT]` — Directly implemented in repository (68 stories)
+- 🟡 `[PARTIAL]` — Core mechanism implemented (12 stories)
+- 🔵 `[THEORY]` — Foundational theory / algorithm (7 stories)
+- 🟣 `[FUTURE]` — Production scaling evolution (13 stories)
 
 | Story # | Title | Points | Status | Depends On | Unlocks | Primary File Evidence |
 |---|---|---|---|---|---|---|

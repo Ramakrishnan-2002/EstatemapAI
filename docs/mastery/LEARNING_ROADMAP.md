@@ -1,83 +1,86 @@
 # EstateMap AI — Milestone-Based Learning Roadmap
-> **Structured Study Progression: Core Mastery Path, Production Extensions & Whiteboard System Design**
+> **Structured Study Progression: Core Mastery Path, Supporting Theory & Production System Design**
 
 This roadmap guides a backend / full-stack engineer through the personal technical mastery of EstateMap AI.
 
 ---
 ## 1. Curriculum Learning Tracks
 
-### Track A: EstateMap Core Mastery Path (57 Stories)
-Covers the directly implemented codebase: FastAPI, PostgreSQL, PostGIS, GiST indexing, Redis caching, sliding-window rate limiting, OSRM routing, 6-factor deterministic ranking, multi-provider AI, Ask the Map conversational search, Next.js 14 MapLibre GL frontend, and automated testing.
-- **Stories**: 1–20, 22–27, 32–33, 35–38, 40–41, 46–49, 52–55, 57–58, 61–68, 70, 72–82, 86, 91, 99, 100.
+### Track A: EstateMap Core Mastery Path (68 Stories)
+Covers the directly implemented codebase: FastAPI lifespan, async PostgreSQL / PostGIS 3.4 spatial indexing, Redis caching, sliding-window rate limiting, OSRM road-network routing, 6-factor deterministic ranking, multi-provider AI orchestration, Ask the Map conversational state machine, Next.js 14 MapLibre GL frontend, and automated testing.
+- **Stories**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 22, 23, 24, 25, 26, 27, 14, 15, 16, 17, 32, 33, 35, 36, 37, 38, 62, 63, 64, 40, 41, 46, 47, 48, 49, 52, 53, 54, 55, 57, 58, 61, 65, 66, 67, 68, 70, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 86, 91, 99, 100
 
-### Track B: Supporting Engineering Theory Path (10 Stories)
+### Track B: Supporting Engineering Theory Path (7 Stories)
 Teaches general CS, spatial mathematics, and distributed systems algorithms that justify EstateMap design decisions.
-- **Stories**: 21 (CRS/WGS84), 29 (Haversine math), 31 (Road graph theory), 34 (MCDA scoring theory), 39 (Redis memory internals), 45 (Rate limiting algorithms), 51 (LLM integration patterns).
+- **Stories**: 21, 29, 31, 34, 39, 45, 51 (CRS/WGS84, Haversine math, Road graph theory, MCDA scoring, Redis internals, Rate limiting algorithms, LLM integration patterns).
 
-### Track C: Production Engineering & System Design Extensions (33 Stories)
+### Track C: Production Engineering & System Design Extensions (25 Stories)
 Explores how EstateMap scales under high throughput and enterprise availability mandates.
-- **Stories**: 28, 30, 42–44, 50, 56, 59–60, 69, 71, 83–85, 87–90, 92–98.
+- **Stories**: 28, 30, 42, 43, 44, 50, 56, 59, 60, 69, 71, 83, 84, 85, 87, 88, 89, 90, 92, 93, 94, 95, 96, 97, 98
 
 ---
-## 2. 10-Milestone Study Sequence
+## 2. Cumulative Mastery Demonstrations
 
-### Milestone 1: Phase 1: Foundation (Stories 1-6)
-- **Core Stories**: Story 01, Story 02, Story 03, Story 04, Story 05, Story 06
-- **Study Goal**: Master independent implementation, break-it experiments, and whiteboard interview defense.
-- **Verification**: Run corresponding test suite and explain data flow without AI assistance.
+### Milestone 1: Foundations & API Lifecycle
+- 1. Explain ASGI vs WSGI and why async coroutines prevent thread blocking on I/O.
+- 2. Trace request lifecycle through `backend/app/main.py` and `middleware.py`.
+- 3. Implement a basic CRUD endpoint using Pydantic request/response models.
+- 4. Demonstrate exception handling via RFC 7807 problem details.
+- **Pass Condition**: Complete implementation and explanation independently without notes.
 
-### Milestone 2: Phase 2: Database Modeling & Geospatial Engineering (Stories 7-13 & 18-28)
-- **Core Stories**: Story 07, Story 08, Story 09, Story 10, Story 11, Story 12, Story 13, Story 18, Story 19, Story 20, Story 22, Story 23, Story 24, Story 25, Story 26, Story 27
-- **Theory Stories**: Story 21
-- **Production Extensions**: Story 28
-- **Study Goal**: Master independent implementation, break-it experiments, and whiteboard interview defense.
-- **Verification**: Run corresponding test suite and explain data flow without AI assistance.
+### Milestone 2: Database & PostGIS Spatial Indexing
+- 1. Explain the difference between `geometry(Point, 4326)` and `geography` on a sphere.
+- 2. Write a PostGIS bounding-box (`ST_MakeEnvelope`) and radius (`ST_DWithin`) query from memory.
+- 3. Explain how GiST R-Tree indexes prune candidate searches during spatial filtering.
+- 4. Run EXPLAIN ANALYZE on a spatial query to prove index scan execution.
+- **Pass Condition**: Complete implementation and explanation independently without notes.
 
-### Milestone 3: Phase 3: Security, Identity & Authentication (Stories 14-17)
-- **Core Stories**: Story 14, Story 15, Story 16, Story 17
-- **Study Goal**: Master independent implementation, break-it experiments, and whiteboard interview defense.
-- **Verification**: Run corresponding test suite and explain data flow without AI assistance.
+### Milestone 3: Security & Identity
+- 1. Explain Argon2id hashing parameters (memory, iterations, parallelism).
+- 2. Generate and verify a stateless JWT access token.
+- 3. Implement dependency-injected ownership checks preventing IDOR vulnerabilities.
+- **Pass Condition**: Complete implementation and explanation independently without notes.
 
-### Milestone 4: Phase 4: Location, Routing & Commute Intelligence (Stories 29-33)
-- **Core Stories**: Story 32, Story 33
-- **Theory Stories**: Story 29, Story 31
-- **Production Extensions**: Story 30
-- **Study Goal**: Master independent implementation, break-it experiments, and whiteboard interview defense.
-- **Verification**: Run corresponding test suite and explain data flow without AI assistance.
+### Milestone 4: Redis Caching & Rate Limiting
+- 1. Implement a cache-aside pattern with TTL and SHA-256 canonical keys.
+- 2. Implement a sliding-window rate limiter using Redis Sorted Sets (`ZSET`).
+- 3. Explain concurrency and atomicity tradeoffs of pipelines versus server-side Lua scripts.
+- 4. Demonstrate fail-open versus fail-closed behavior during Redis downtime.
+- **Pass Condition**: Complete implementation and explanation independently without notes.
 
-### Milestone 5: Phase 5: Deterministic Scoring & Ranking Engine (Stories 34-38 & 62-64)
-- **Core Stories**: Story 35, Story 36, Story 37, Story 38, Story 62, Story 63, Story 64
-- **Theory Stories**: Story 34
-- **Study Goal**: Master independent implementation, break-it experiments, and whiteboard interview defense.
-- **Verification**: Run corresponding test suite and explain data flow without AI assistance.
+### Milestone 5: Routing & Deterministic Ranking
+- 1. Explain why PostGIS cannot compute road-network travel times and why OSRM is used.
+- 2. Walk through the 6 mathematical factor scoring equations.
+- 3. Manually compute missing-factor weight redistribution on a whiteboard.
+- 4. Defend why EstateMap uses explainable product heuristics rather than black-box ML models.
+- **Pass Condition**: Complete implementation and explanation independently without notes.
 
-### Milestone 6: Phase 6: In-Memory Acceleration & Rate Limiting (Stories 39-50)
-- **Core Stories**: Story 40, Story 41, Story 46, Story 47, Story 48, Story 49
-- **Theory Stories**: Story 39, Story 45
-- **Production Extensions**: Story 42, Story 43, Story 44, Story 50
-- **Study Goal**: Master independent implementation, break-it experiments, and whiteboard interview defense.
-- **Verification**: Run corresponding test suite and explain data flow without AI assistance.
+### Milestone 6: Multi-Provider AI Orchestration
+- 1. Explain the abstract AIProvider protocol separating Ollama and Gemini.
+- 2. Trace query complexity routing heuristics and global request deadline failover.
+- 3. Defend the trust boundary: why AI never owns property facts, SQL generation, or ranking.
+- **Pass Condition**: Complete implementation and explanation independently without notes.
 
-### Milestone 7: Phase 7: Multi-Provider AI Architecture & Conversational State Machine (Stories 51-61 & 65-72)
-- **Core Stories**: Story 52, Story 53, Story 54, Story 55, Story 57, Story 58, Story 61, Story 65, Story 66, Story 67, Story 68, Story 70, Story 72
-- **Theory Stories**: Story 51
-- **Production Extensions**: Story 56, Story 59, Story 60, Story 69, Story 71
-- **Study Goal**: Master independent implementation, break-it experiments, and whiteboard interview defense.
-- **Verification**: Run corresponding test suite and explain data flow without AI assistance.
+### Milestone 7: Conversational Search State Machine
+- 1. Trace multi-turn conversational state patches (`SET`, `CLEAR`, `RESET`).
+- 2. Explain destination disambiguation and compare-top-two delegation.
+- 3. Demonstrate grounded response generation with factual score injection.
+- **Pass Condition**: Complete implementation and explanation independently without notes.
 
-### Milestone 8: Phase 8: Frontend Engineering & Map Visualization (Stories 73-80)
-- **Core Stories**: Story 73, Story 74, Story 75, Story 76, Story 77, Story 78, Story 79, Story 80
-- **Study Goal**: Master independent implementation, break-it experiments, and whiteboard interview defense.
-- **Verification**: Run corresponding test suite and explain data flow without AI assistance.
+### Milestone 8: Frontend Map & State Sync
+- 1. Explain MapLibre GL WebGL vector rendering and GeoJSON conversion.
+- 2. Implement bidirectional marker/card hover and selection synchronization.
+- 3. Trace dynamic bounding-box calculation and debounced Search This Area workflows.
+- **Pass Condition**: Complete implementation and explanation independently without notes.
 
-### Milestone 9: Phase 9: Reliability, Performance & DevOps Engineering (Stories 81-90)
-- **Core Stories**: Story 81, Story 82, Story 86
-- **Production Extensions**: Story 83, Story 84, Story 85, Story 87, Story 88, Story 89, Story 90
-- **Study Goal**: Master independent implementation, break-it experiments, and whiteboard interview defense.
-- **Verification**: Run corresponding test suite and explain data flow without AI assistance.
+### Milestone 9: DevOps & Automated Testing
+- 1. Trace multi-container Docker Compose bridge networking.
+- 2. Write an asynchronous pytest integration test using httpx `AsyncClient`.
+- 3. Verify test regressions across backend (288 tests) and frontend (33 tests).
+- **Pass Condition**: Complete implementation and explanation independently without notes.
 
-### Milestone 10: Phase 10: Architecture Defense & System Design (Stories 91-100)
-- **Core Stories**: Story 91, Story 99, Story 100
-- **Production Extensions**: Story 92, Story 93, Story 94, Story 95, Story 96, Story 97, Story 98
-- **Study Goal**: Master independent implementation, break-it experiments, and whiteboard interview defense.
-- **Verification**: Run corresponding test suite and explain data flow without AI assistance.
+### Milestone 10: Whiteboard System Design Defense
+- 1. Draw the complete EstateMap architecture on a whiteboard from memory.
+- 2. Defend the modular monolith architecture against premature microservices.
+- 3. Formulate a requirement-driven scaling roadmap (read replicas, Sentinel, CDC ingestion) with explicit trigger metrics.
+- **Pass Condition**: Complete implementation and explanation independently without notes.

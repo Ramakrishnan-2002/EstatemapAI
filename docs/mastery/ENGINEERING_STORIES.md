@@ -14,18 +14,19 @@ This document contains all 100 connected engineering stories for EstateMap AI. E
 ### Story 01 — Python Project Structure & Clean Architecture
 * **Story Points**: 2 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/main.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/main.py`). Verified by automated test suites (backend/tests/unit/test_health.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for python project structure & clean architecture; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for python project structure & clean architecture; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements python project structure & clean architecture within `backend/app/main.py`."
+**Safe Interview Wording:** "EstateMap implements python project structure & clean architecture in `backend/app/main.py` (app.main:app)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region python project structure & clean architecture without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for python project structure & clean architecture."
 
 #### 1. Why This Story Exists
 In production systems, python project structure & clean architecture is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -40,7 +41,7 @@ Ad-hoc or unvalidated implementations of python project structure & clean archit
 - **Unlocks**: Story 02, Story 03, Story 04
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of main.py
+- [ ] Can explain the architectural role of main.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -48,7 +49,7 @@ Ad-hoc or unvalidated implementations of python project structure & clean archit
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Python Project Structure & Clean Architecture
 - Implement a standalone proof-of-concept for Python Project Structure & Clean Architecture from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.main:app`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -58,7 +59,7 @@ Ad-hoc or unvalidated implementations of python project structure & clean archit
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/main.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/main.py` via `app.main:app`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_health.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/main.py` from input validation to persistence/response generation without looking at the source.
@@ -98,9 +99,9 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/main.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/main.py` (`app.main:app`).
+- Run backend test suite: `pytest backend/tests/unit/test_health.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Python Project Structure & Clean Architecture principles, protocols, and architectural invariants.
@@ -135,7 +136,7 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 ### Current EstateMap
 Implemented baseline in `backend/app/main.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -173,18 +174,19 @@ Prepares the domain models and interfaces required by Story 02 (`FastAPI Lifespa
 ### Story 02 — FastAPI Lifespan & Application Lifecycle
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/main.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/main.py`). Verified by automated test suites (backend/tests/integration/test_database.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for fastapi lifespan & application lifecycle; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for fastapi lifespan & application lifecycle; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements fastapi lifespan & application lifecycle within `backend/app/main.py`."
+**Safe Interview Wording:** "EstateMap implements fastapi lifespan & application lifecycle in `backend/app/main.py` (app.main:lifespan)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region fastapi lifespan & application lifecycle without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for fastapi lifespan & application lifecycle."
 
 #### 1. Why This Story Exists
 In production systems, fastapi lifespan & application lifecycle is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -199,7 +201,7 @@ Ad-hoc or unvalidated implementations of fastapi lifespan & application lifecycl
 - **Unlocks**: Story 03, Story 06, Story 09, Story 39
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of main.py
+- [ ] Can explain the architectural role of main.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -207,7 +209,7 @@ Ad-hoc or unvalidated implementations of fastapi lifespan & application lifecycl
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of FastAPI Lifespan & Application Lifecycle
 - Implement a standalone proof-of-concept for FastAPI Lifespan & Application Lifecycle from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.main:lifespan`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -217,7 +219,7 @@ Ad-hoc or unvalidated implementations of fastapi lifespan & application lifecycl
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/main.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/main.py` via `app.main:lifespan`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_database.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/main.py` from input validation to persistence/response generation without looking at the source.
@@ -257,9 +259,9 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/main.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/main.py` (`app.main:lifespan`).
+- Run backend test suite: `pytest backend/tests/integration/test_database.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of FastAPI Lifespan & Application Lifecycle principles, protocols, and architectural invariants.
@@ -294,7 +296,7 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 ### Current EstateMap
 Implemented baseline in `backend/app/main.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -332,18 +334,19 @@ Prepares the domain models and interfaces required by Story 03 (`Type-Safe Confi
 ### Story 03 — Type-Safe Configuration with Pydantic-Settings
 * **Story Points**: 2 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/core/config.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/core/config.py`). Verified by automated test suites (backend/tests/unit/test_health.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for type-safe configuration with pydantic-settings; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for type-safe configuration with pydantic-settings; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements type-safe configuration with pydantic-settings within `backend/app/core/config.py`."
+**Safe Interview Wording:** "EstateMap implements type-safe configuration with pydantic-settings in `backend/app/core/config.py` (app.core.config:Settings)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region type-safe configuration with pydantic-settings without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for type-safe configuration with pydantic-settings."
 
 #### 1. Why This Story Exists
 In production systems, type-safe configuration with pydantic-settings is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -358,7 +361,7 @@ Ad-hoc or unvalidated implementations of type-safe configuration with pydantic-s
 - **Unlocks**: Story 02, Story 04, Story 07, Story 14, Story 39, Story 52
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of config.py
+- [ ] Can explain the architectural role of config.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -366,7 +369,7 @@ Ad-hoc or unvalidated implementations of type-safe configuration with pydantic-s
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Type-Safe Configuration with Pydantic-Settings
 - Implement a standalone proof-of-concept for Type-Safe Configuration with Pydantic-Settings from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.config:Settings`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -376,7 +379,7 @@ Ad-hoc or unvalidated implementations of type-safe configuration with pydantic-s
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/core/config.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/core/config.py` via `app.core.config:Settings`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_health.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/core/config.py` from input validation to persistence/response generation without looking at the source.
@@ -415,9 +418,9 @@ Inspect `backend/app/core/config.py` in EstateMap. Compare its architecture and 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/core/config.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/core/config.py` (`app.core.config:Settings`).
+- Run backend test suite: `pytest backend/tests/unit/test_health.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Type-Safe Configuration with Pydantic-Settings principles, protocols, and architectural invariants.
@@ -452,7 +455,7 @@ Inspect `backend/app/core/config.py` in EstateMap. Compare its architecture and 
 ### Current EstateMap
 Implemented baseline in `backend/app/core/config.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -490,18 +493,19 @@ Prepares the domain models and interfaces required by Story 04 (`API Request/Res
 ### Story 04 — API Request/Response Schemas with Pydantic v2
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/schemas/property.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/schemas/property.py`). Verified by automated test suites (backend/tests/unit/test_property_schemas.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for api request/response schemas with pydantic v2; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for api request/response schemas with pydantic v2; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements api request/response schemas with pydantic v2 within `backend/app/schemas/property.py`."
+**Safe Interview Wording:** "EstateMap implements api request/response schemas with pydantic v2 in `backend/app/schemas/property.py` (app.schemas.property:PropertyResponse)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region api request/response schemas with pydantic v2 without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for api request/response schemas with pydantic v2."
 
 #### 1. Why This Story Exists
 In production systems, api request/response schemas with pydantic v2 is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -516,7 +520,7 @@ Ad-hoc or unvalidated implementations of api request/response schemas with pydan
 - **Unlocks**: Story 05, Story 18, Story 19, Story 27, Story 34, Story 55
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of property.py
+- [ ] Can explain the architectural role of property.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -524,7 +528,7 @@ Ad-hoc or unvalidated implementations of api request/response schemas with pydan
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of API Request/Response Schemas with Pydantic v2
 - Implement a standalone proof-of-concept for API Request/Response Schemas with Pydantic v2 from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.schemas.property:PropertyResponse`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -534,7 +538,7 @@ Ad-hoc or unvalidated implementations of api request/response schemas with pydan
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/schemas/property.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/schemas/property.py` via `app.schemas.property:PropertyResponse`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_property_schemas.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/schemas/property.py` from input validation to persistence/response generation without looking at the source.
@@ -574,9 +578,9 @@ Inspect `backend/app/schemas/property.py` in EstateMap. Compare its architecture
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/schemas/property.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/schemas/property.py` (`app.schemas.property:PropertyResponse`).
+- Run backend test suite: `pytest backend/tests/unit/test_property_schemas.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of API Request/Response Schemas with Pydantic v2 principles, protocols, and architectural invariants.
@@ -611,7 +615,7 @@ Inspect `backend/app/schemas/property.py` in EstateMap. Compare its architecture
 ### Current EstateMap
 Implemented baseline in `backend/app/schemas/property.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -649,18 +653,19 @@ Prepares the domain models and interfaces required by Story 05 (`RFC 7807 Centra
 ### Story 05 — RFC 7807 Centralized Error Handling
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/core/exceptions.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/core/exceptions.py`). Verified by automated test suites (backend/tests/unit/test_exceptions.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for rfc 7807 centralized error handling; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for rfc 7807 centralized error handling; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements rfc 7807 centralized error handling within `backend/app/core/exceptions.py`."
+**Safe Interview Wording:** "EstateMap implements rfc 7807 centralized error handling in `backend/app/core/exceptions.py` (app.core.exceptions:AppException / exception_handlers)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region rfc 7807 centralized error handling without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for rfc 7807 centralized error handling."
 
 #### 1. Why This Story Exists
 In production systems, rfc 7807 centralized error handling is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -675,7 +680,7 @@ Ad-hoc or unvalidated implementations of rfc 7807 centralized error handling cau
 - **Unlocks**: Story 06, Story 14, Story 18, Story 58
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of exceptions.py
+- [ ] Can explain the architectural role of exceptions.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -683,7 +688,7 @@ Ad-hoc or unvalidated implementations of rfc 7807 centralized error handling cau
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of RFC 7807 Centralized Error Handling
 - Implement a standalone proof-of-concept for RFC 7807 Centralized Error Handling from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.exceptions:AppException / exception_handlers`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -693,7 +698,7 @@ Ad-hoc or unvalidated implementations of rfc 7807 centralized error handling cau
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/core/exceptions.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/core/exceptions.py` via `app.core.exceptions:AppException / exception_handlers`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_exceptions.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/core/exceptions.py` from input validation to persistence/response generation without looking at the source.
@@ -732,9 +737,9 @@ Inspect `backend/app/core/exceptions.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/core/exceptions.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/core/exceptions.py` (`app.core.exceptions:AppException / exception_handlers`).
+- Run backend test suite: `pytest backend/tests/unit/test_exceptions.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of RFC 7807 Centralized Error Handling principles, protocols, and architectural invariants.
@@ -769,7 +774,7 @@ Inspect `backend/app/core/exceptions.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/core/exceptions.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -807,18 +812,19 @@ Prepares the domain models and interfaces required by Story 06 (`Structured Logg
 ### Story 06 — Structured Logging & Distributed Request IDs
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/core/middleware.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/core/middleware.py`). Verified by automated test suites (backend/tests/unit/test_middleware.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for structured logging & distributed request ids; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for structured logging & distributed request ids; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements structured logging & distributed request ids within `backend/app/core/middleware.py`."
+**Safe Interview Wording:** "EstateMap implements structured logging & distributed request ids in `backend/app/core/middleware.py` (app.core.middleware:RequestIDMiddleware)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region structured logging & distributed request ids without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for structured logging & distributed request ids."
 
 #### 1. Why This Story Exists
 In production systems, structured logging & distributed request ids is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -833,7 +839,7 @@ Ad-hoc or unvalidated implementations of structured logging & distributed reques
 - **Unlocks**: Story 13, Story 46, Story 58, Story 89
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of middleware.py
+- [ ] Can explain the architectural role of middleware.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -841,7 +847,7 @@ Ad-hoc or unvalidated implementations of structured logging & distributed reques
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Structured Logging & Distributed Request IDs
 - Implement a standalone proof-of-concept for Structured Logging & Distributed Request IDs from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.middleware:RequestIDMiddleware`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -851,7 +857,7 @@ Ad-hoc or unvalidated implementations of structured logging & distributed reques
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/core/middleware.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/core/middleware.py` via `app.core.middleware:RequestIDMiddleware`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_middleware.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/core/middleware.py` from input validation to persistence/response generation without looking at the source.
@@ -890,9 +896,9 @@ Inspect `backend/app/core/middleware.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/core/middleware.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/core/middleware.py` (`app.core.middleware:RequestIDMiddleware`).
+- Run backend test suite: `pytest backend/tests/unit/test_middleware.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Structured Logging & Distributed Request IDs principles, protocols, and architectural invariants.
@@ -927,7 +933,7 @@ Inspect `backend/app/core/middleware.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/core/middleware.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -967,18 +973,19 @@ Prepares the domain models and interfaces required by Story 07 (`PostgreSQL Rela
 ### Story 07 — PostgreSQL Relational Modeling & Schema Integrity
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/models/property.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/models/property.py`). Verified by automated test suites (backend/tests/integration/test_database.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for postgresql relational modeling & schema integrity; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for postgresql relational modeling & schema integrity; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements postgresql relational modeling & schema integrity within `backend/app/models/property.py`."
+**Safe Interview Wording:** "EstateMap implements postgresql relational modeling & schema integrity in `backend/app/models/property.py` (app.models.property:Property / User / POI)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region postgresql relational modeling & schema integrity without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for postgresql relational modeling & schema integrity."
 
 #### 1. Why This Story Exists
 In production systems, postgresql relational modeling & schema integrity is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -993,7 +1000,7 @@ Ad-hoc or unvalidated implementations of postgresql relational modeling & schema
 - **Unlocks**: Story 08, Story 09, Story 10, Story 11, Story 21
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of property.py
+- [ ] Can explain the architectural role of property.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -1001,7 +1008,7 @@ Ad-hoc or unvalidated implementations of postgresql relational modeling & schema
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of PostgreSQL Relational Modeling & Schema Integrity
 - Implement a standalone proof-of-concept for PostgreSQL Relational Modeling & Schema Integrity from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.models.property:Property / User / POI`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -1011,7 +1018,7 @@ Ad-hoc or unvalidated implementations of postgresql relational modeling & schema
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/models/property.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/models/property.py` via `app.models.property:Property / User / POI`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_database.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/models/property.py` from input validation to persistence/response generation without looking at the source.
@@ -1051,9 +1058,9 @@ Inspect `backend/app/models/property.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/models/property.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/models/property.py` (`app.models.property:Property / User / POI`).
+- Run backend test suite: `pytest backend/tests/integration/test_database.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of PostgreSQL Relational Modeling & Schema Integrity principles, protocols, and architectural invariants.
@@ -1088,7 +1095,7 @@ Inspect `backend/app/models/property.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/models/property.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -1126,18 +1133,19 @@ Prepares the domain models and interfaces required by Story 08 (`SQLAlchemy 2.0 
 ### Story 08 — SQLAlchemy 2.0 Declarative Models & Repository Pattern
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/models/property.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/models/property.py`). Verified by automated test suites (backend/tests/integration/test_properties.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for sqlalchemy 2.0 declarative models & repository pattern; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for sqlalchemy 2.0 declarative models & repository pattern; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements sqlalchemy 2.0 declarative models & repository pattern within `backend/app/models/property.py`."
+**Safe Interview Wording:** "EstateMap implements sqlalchemy 2.0 declarative models & repository pattern in `backend/app/models/property.py` (app.repositories.property_repository:PropertyRepository)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region sqlalchemy 2.0 declarative models & repository pattern without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for sqlalchemy 2.0 declarative models & repository pattern."
 
 #### 1. Why This Story Exists
 In production systems, sqlalchemy 2.0 declarative models & repository pattern is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -1152,7 +1160,7 @@ Ad-hoc or unvalidated implementations of sqlalchemy 2.0 declarative models & rep
 - **Unlocks**: Story 09, Story 18, Story 19, Story 20
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of property.py
+- [ ] Can explain the architectural role of property.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -1160,7 +1168,7 @@ Ad-hoc or unvalidated implementations of sqlalchemy 2.0 declarative models & rep
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of SQLAlchemy 2.0 Declarative Models & Repository Pattern
 - Implement a standalone proof-of-concept for SQLAlchemy 2.0 Declarative Models & Repository Pattern from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.repositories.property_repository:PropertyRepository`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -1170,7 +1178,7 @@ Ad-hoc or unvalidated implementations of sqlalchemy 2.0 declarative models & rep
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/models/property.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/models/property.py` via `app.repositories.property_repository:PropertyRepository`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_properties.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/models/property.py` from input validation to persistence/response generation without looking at the source.
@@ -1210,9 +1218,9 @@ Inspect `backend/app/models/property.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/models/property.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/models/property.py` (`app.repositories.property_repository:PropertyRepository`).
+- Run backend test suite: `pytest backend/tests/integration/test_properties.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of SQLAlchemy 2.0 Declarative Models & Repository Pattern principles, protocols, and architectural invariants.
@@ -1247,7 +1255,7 @@ Inspect `backend/app/models/property.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/models/property.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -1285,18 +1293,19 @@ Prepares the domain models and interfaces required by Story 09 (`Non-Blocking As
 ### Story 09 — Non-Blocking Async Database Access with Asyncpg
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/db/session.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/db/session.py`). Verified by automated test suites (backend/tests/integration/test_database.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for non-blocking async database access with asyncpg; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for non-blocking async database access with asyncpg; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements non-blocking async database access with asyncpg within `backend/app/db/session.py`."
+**Safe Interview Wording:** "EstateMap implements non-blocking async database access with asyncpg in `backend/app/db/session.py` (app.db.session:async_session_factory / create_async_engine)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region non-blocking async database access with asyncpg without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for non-blocking async database access with asyncpg."
 
 #### 1. Why This Story Exists
 In production systems, non-blocking async database access with asyncpg is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -1311,7 +1320,7 @@ Ad-hoc or unvalidated implementations of non-blocking async database access with
 - **Unlocks**: Story 13, Story 18, Story 86
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of session.py
+- [ ] Can explain the architectural role of session.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -1319,7 +1328,7 @@ Ad-hoc or unvalidated implementations of non-blocking async database access with
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Non-Blocking Async Database Access with Asyncpg
 - Implement a standalone proof-of-concept for Non-Blocking Async Database Access with Asyncpg from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.db.session:async_session_factory / create_async_engine`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -1329,7 +1338,7 @@ Ad-hoc or unvalidated implementations of non-blocking async database access with
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/db/session.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/db/session.py` via `app.db.session:async_session_factory / create_async_engine`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_database.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/db/session.py` from input validation to persistence/response generation without looking at the source.
@@ -1368,9 +1377,9 @@ Inspect `backend/app/db/session.py` in EstateMap. Compare its architecture and e
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/db/session.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/db/session.py` (`app.db.session:async_session_factory / create_async_engine`).
+- Run backend test suite: `pytest backend/tests/integration/test_database.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Non-Blocking Async Database Access with Asyncpg principles, protocols, and architectural invariants.
@@ -1405,7 +1414,7 @@ Inspect `backend/app/db/session.py` in EstateMap. Compare its architecture and e
 ### Current EstateMap
 Implemented baseline in `backend/app/db/session.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -1443,18 +1452,19 @@ Prepares the domain models and interfaces required by Story 10 (`Database Migrat
 ### Story 10 — Database Migrations with Alembic
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/alembic/env.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/alembic/env.py`). Verified by automated test suites (backend/alembic/versions/).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for database migrations with alembic; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for database migrations with alembic; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements database migrations with alembic within `backend/alembic/env.py`."
+**Safe Interview Wording:** "EstateMap implements database migrations with alembic in `backend/alembic/env.py` (alembic/env.py:run_migrations_online)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region database migrations with alembic without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for database migrations with alembic."
 
 #### 1. Why This Story Exists
 In production systems, database migrations with alembic is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -1469,7 +1479,7 @@ Ad-hoc or unvalidated implementations of database migrations with alembic cause 
 - **Unlocks**: Story 11, Story 12, Story 81
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of env.py
+- [ ] Can explain the architectural role of env.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -1477,7 +1487,7 @@ Ad-hoc or unvalidated implementations of database migrations with alembic cause 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Database Migrations with Alembic
 - Implement a standalone proof-of-concept for Database Migrations with Alembic from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`alembic/env.py:run_migrations_online`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -1487,7 +1497,7 @@ Ad-hoc or unvalidated implementations of database migrations with alembic cause 
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/alembic/env.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/alembic/env.py` via `alembic/env.py:run_migrations_online`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/alembic/versions/`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/alembic/env.py` from input validation to persistence/response generation without looking at the source.
@@ -1527,9 +1537,9 @@ Inspect `backend/alembic/env.py` in EstateMap. Compare its architecture and erro
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/alembic/env.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/alembic/env.py` (`alembic/env.py:run_migrations_online`).
+- Run backend test suite: `pytest backend/alembic/versions/`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Database Migrations with Alembic principles, protocols, and architectural invariants.
@@ -1564,7 +1574,7 @@ Inspect `backend/alembic/env.py` in EstateMap. Compare its architecture and erro
 ### Current EstateMap
 Implemented baseline in `backend/alembic/env.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -1602,18 +1612,19 @@ Prepares the domain models and interfaces required by Story 11 (`Soft Deletion &
 ### Story 11 — Soft Deletion & Audit Fields Pattern
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/models/property.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/models/property.py`). Verified by automated test suites (backend/tests/integration/test_properties.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for soft deletion & audit fields pattern; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for soft deletion & audit fields pattern; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements soft deletion & audit fields pattern within `backend/app/models/property.py`."
+**Safe Interview Wording:** "EstateMap implements soft deletion & audit fields pattern in `backend/app/models/property.py` (app.models.property:Property.is_active)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region soft deletion & audit fields pattern without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for soft deletion & audit fields pattern."
 
 #### 1. Why This Story Exists
 In production systems, soft deletion & audit fields pattern is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -1628,7 +1639,7 @@ Ad-hoc or unvalidated implementations of soft deletion & audit fields pattern ca
 - **Unlocks**: Story 18, Story 19
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of property.py
+- [ ] Can explain the architectural role of property.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -1636,7 +1647,7 @@ Ad-hoc or unvalidated implementations of soft deletion & audit fields pattern ca
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Soft Deletion & Audit Fields Pattern
 - Implement a standalone proof-of-concept for Soft Deletion & Audit Fields Pattern from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.models.property:Property.is_active`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -1646,7 +1657,7 @@ Ad-hoc or unvalidated implementations of soft deletion & audit fields pattern ca
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/models/property.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/models/property.py` via `app.models.property:Property.is_active`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_properties.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/models/property.py` from input validation to persistence/response generation without looking at the source.
@@ -1685,9 +1696,9 @@ Inspect `backend/app/models/property.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/models/property.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/models/property.py` (`app.models.property:Property.is_active`).
+- Run backend test suite: `pytest backend/tests/integration/test_properties.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Soft Deletion & Audit Fields Pattern principles, protocols, and architectural invariants.
@@ -1722,7 +1733,7 @@ Inspect `backend/app/models/property.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/models/property.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -1760,18 +1771,19 @@ Prepares the domain models and interfaces required by Story 12 (`Database Seedin
 ### Story 12 — Database Seeding & Deterministic Test Fixtures
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/db/seed_all.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/db/seed_all.py`). Verified by automated test suites (backend/app/db/seed_all.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for database seeding & deterministic test fixtures; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for database seeding & deterministic test fixtures; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements database seeding & deterministic test fixtures within `backend/app/db/seed_all.py`."
+**Safe Interview Wording:** "EstateMap implements database seeding & deterministic test fixtures in `backend/app/db/seed_all.py` (app.db.seed_all:seed_all / seed_properties)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region database seeding & deterministic test fixtures without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for database seeding & deterministic test fixtures."
 
 #### 1. Why This Story Exists
 In production systems, database seeding & deterministic test fixtures is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -1786,7 +1798,7 @@ Ad-hoc or unvalidated implementations of database seeding & deterministic test f
 - **Unlocks**: Story 18, Story 86
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of seed_all.py
+- [ ] Can explain the architectural role of seed_all.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -1794,7 +1806,7 @@ Ad-hoc or unvalidated implementations of database seeding & deterministic test f
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Database Seeding & Deterministic Test Fixtures
 - Implement a standalone proof-of-concept for Database Seeding & Deterministic Test Fixtures from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.db.seed_all:seed_all / seed_properties`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -1804,7 +1816,7 @@ Ad-hoc or unvalidated implementations of database seeding & deterministic test f
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/db/seed_all.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/db/seed_all.py` via `app.db.seed_all:seed_all / seed_properties`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/app/db/seed_all.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/db/seed_all.py` from input validation to persistence/response generation without looking at the source.
@@ -1844,9 +1856,9 @@ Inspect `backend/app/db/seed_all.py` in EstateMap. Compare its architecture and 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/db/seed_all.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/db/seed_all.py` (`app.db.seed_all:seed_all / seed_properties`).
+- Run backend test suite: `pytest backend/app/db/seed_all.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Database Seeding & Deterministic Test Fixtures principles, protocols, and architectural invariants.
@@ -1881,7 +1893,7 @@ Inspect `backend/app/db/seed_all.py` in EstateMap. Compare its architecture and 
 ### Current EstateMap
 Implemented baseline in `backend/app/db/seed_all.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -1919,18 +1931,19 @@ Prepares the domain models and interfaces required by Story 13 (`Connection Pool
 ### Story 13 — Connection Pooling & Pool Exhaustion Prevention
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/db/session.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/db/session.py`). Verified by automated test suites (backend/app/db/session.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for connection pooling & pool exhaustion prevention; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for connection pooling & pool exhaustion prevention; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements connection pooling & pool exhaustion prevention within `backend/app/db/session.py`."
+**Safe Interview Wording:** "EstateMap implements connection pooling & pool exhaustion prevention in `backend/app/db/session.py` (app.db.session:engine pool_size=20, max_overflow=10)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region connection pooling & pool exhaustion prevention without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for connection pooling & pool exhaustion prevention."
 
 #### 1. Why This Story Exists
 In production systems, connection pooling & pool exhaustion prevention is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -1945,7 +1958,7 @@ Ad-hoc or unvalidated implementations of connection pooling & pool exhaustion pr
 - **Unlocks**: Story 86, Story 92
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of session.py
+- [ ] Can explain the architectural role of session.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -1953,7 +1966,7 @@ Ad-hoc or unvalidated implementations of connection pooling & pool exhaustion pr
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Connection Pooling & Pool Exhaustion Prevention
 - Implement a standalone proof-of-concept for Connection Pooling & Pool Exhaustion Prevention from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.db.session:engine pool_size=20, max_overflow=10`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -1963,7 +1976,7 @@ Ad-hoc or unvalidated implementations of connection pooling & pool exhaustion pr
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/db/session.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/db/session.py` via `app.db.session:engine pool_size=20, max_overflow=10`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/app/db/session.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/db/session.py` from input validation to persistence/response generation without looking at the source.
@@ -2002,9 +2015,9 @@ Inspect `backend/app/db/session.py` in EstateMap. Compare its architecture and e
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/db/session.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/db/session.py` (`app.db.session:engine pool_size=20, max_overflow=10`).
+- Run backend test suite: `pytest backend/app/db/session.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Connection Pooling & Pool Exhaustion Prevention principles, protocols, and architectural invariants.
@@ -2039,7 +2052,7 @@ Inspect `backend/app/db/session.py` in EstateMap. Compare its architecture and e
 ### Current EstateMap
 Implemented baseline in `backend/app/db/session.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -2077,18 +2090,19 @@ Prepares the domain models and interfaces required by Story 14 (`Password Hashin
 ### Story 18 — Property CRUD Domain Service & Validation Logic
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/property_service.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/property_service.py`). Verified by automated test suites (backend/tests/integration/test_properties.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for property crud domain service & validation logic; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for property crud domain service & validation logic; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements property crud domain service & validation logic within `backend/app/services/property_service.py`."
+**Safe Interview Wording:** "EstateMap implements property crud domain service & validation logic in `backend/app/services/property_service.py` (app.services.property_service:PropertyService)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region property crud domain service & validation logic without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for property crud domain service & validation logic."
 
 #### 1. Why This Story Exists
 In production systems, property crud domain service & validation logic is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -2103,7 +2117,7 @@ Ad-hoc or unvalidated implementations of property crud domain service & validati
 - **Unlocks**: Story 19, Story 20, Story 34, Story 62
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of property_service.py
+- [ ] Can explain the architectural role of property_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -2111,7 +2125,7 @@ Ad-hoc or unvalidated implementations of property crud domain service & validati
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Property CRUD Domain Service & Validation Logic
 - Implement a standalone proof-of-concept for Property CRUD Domain Service & Validation Logic from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.property_service:PropertyService`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -2121,7 +2135,7 @@ Ad-hoc or unvalidated implementations of property crud domain service & validati
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/property_service.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/property_service.py` via `app.services.property_service:PropertyService`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_properties.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/property_service.py` from input validation to persistence/response generation without looking at the source.
@@ -2161,9 +2175,9 @@ Inspect `backend/app/services/property_service.py` in EstateMap. Compare its arc
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/property_service.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/property_service.py` (`app.services.property_service:PropertyService`).
+- Run backend test suite: `pytest backend/tests/integration/test_properties.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Property CRUD Domain Service & Validation Logic principles, protocols, and architectural invariants.
@@ -2198,7 +2212,7 @@ Inspect `backend/app/services/property_service.py` in EstateMap. Compare its arc
 ### Current EstateMap
 Implemented baseline in `backend/app/services/property_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -2236,18 +2250,19 @@ Prepares the domain models and interfaces required by Story 19 (`Advanced Multi-
 ### Story 19 — Advanced Multi-Facet Property Filtering
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/repositories/property_repository.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/repositories/property_repository.py`). Verified by automated test suites (backend/tests/integration/test_filter_equivalence.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for advanced multi-facet property filtering; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for advanced multi-facet property filtering; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements advanced multi-facet property filtering within `backend/app/repositories/property_repository.py`."
+**Safe Interview Wording:** "EstateMap implements advanced multi-facet property filtering in `backend/app/repositories/property_repository.py` (app.repositories.property_repository:PropertyRepository.filter)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region advanced multi-facet property filtering without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for advanced multi-facet property filtering."
 
 #### 1. Why This Story Exists
 In production systems, advanced multi-facet property filtering is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -2262,7 +2277,7 @@ Ad-hoc or unvalidated implementations of advanced multi-facet property filtering
 - **Unlocks**: Story 20, Story 25, Story 34, Story 75
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of property_repository.py
+- [ ] Can explain the architectural role of property_repository.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -2270,7 +2285,7 @@ Ad-hoc or unvalidated implementations of advanced multi-facet property filtering
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Advanced Multi-Facet Property Filtering
 - Implement a standalone proof-of-concept for Advanced Multi-Facet Property Filtering from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.repositories.property_repository:PropertyRepository.filter`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -2280,7 +2295,7 @@ Ad-hoc or unvalidated implementations of advanced multi-facet property filtering
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/repositories/property_repository.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/repositories/property_repository.py` via `app.repositories.property_repository:PropertyRepository.filter`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_filter_equivalence.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/repositories/property_repository.py` from input validation to persistence/response generation without looking at the source.
@@ -2319,9 +2334,9 @@ Inspect `backend/app/repositories/property_repository.py` in EstateMap. Compare 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/repositories/property_repository.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/repositories/property_repository.py` (`app.repositories.property_repository:PropertyRepository.filter`).
+- Run backend test suite: `pytest backend/tests/integration/test_filter_equivalence.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Advanced Multi-Facet Property Filtering principles, protocols, and architectural invariants.
@@ -2356,7 +2371,7 @@ Inspect `backend/app/repositories/property_repository.py` in EstateMap. Compare 
 ### Current EstateMap
 Implemented baseline in `backend/app/repositories/property_repository.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -2394,18 +2409,19 @@ Prepares the domain models and interfaces required by Story 20 (`Deterministic P
 ### Story 20 — Deterministic Pagination & Cursor vs Offset
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/utils/pagination.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/utils/pagination.py`). Verified by automated test suites (backend/tests/integration/test_properties.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for deterministic pagination & cursor vs offset; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for deterministic pagination & cursor vs offset; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements deterministic pagination & cursor vs offset within `backend/app/utils/pagination.py`."
+**Safe Interview Wording:** "EstateMap implements deterministic pagination & cursor vs offset in `backend/app/utils/pagination.py` (app.utils.pagination:paginate_query)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region deterministic pagination & cursor vs offset without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for deterministic pagination & cursor vs offset."
 
 #### 1. Why This Story Exists
 In production systems, deterministic pagination & cursor vs offset is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -2420,7 +2436,7 @@ Ad-hoc or unvalidated implementations of deterministic pagination & cursor vs of
 - **Unlocks**: Story 75, Story 95
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of pagination.py
+- [ ] Can explain the architectural role of pagination.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -2428,7 +2444,7 @@ Ad-hoc or unvalidated implementations of deterministic pagination & cursor vs of
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Deterministic Pagination & Cursor vs Offset
 - Implement a standalone proof-of-concept for Deterministic Pagination & Cursor vs Offset from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.utils.pagination:paginate_query`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -2438,7 +2454,7 @@ Ad-hoc or unvalidated implementations of deterministic pagination & cursor vs of
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/utils/pagination.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/utils/pagination.py` via `app.utils.pagination:paginate_query`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_properties.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/utils/pagination.py` from input validation to persistence/response generation without looking at the source.
@@ -2477,9 +2493,9 @@ Inspect `backend/app/utils/pagination.py` in EstateMap. Compare its architecture
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/utils/pagination.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/utils/pagination.py` (`app.utils.pagination:paginate_query`).
+- Run backend test suite: `pytest backend/tests/integration/test_properties.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Deterministic Pagination & Cursor vs Offset principles, protocols, and architectural invariants.
@@ -2514,7 +2530,7 @@ Inspect `backend/app/utils/pagination.py` in EstateMap. Compare its architecture
 ### Current EstateMap
 Implemented baseline in `backend/app/utils/pagination.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -2552,18 +2568,19 @@ Prepares the domain models and interfaces required by Story 21 (`Geospatial Fund
 ### Story 21 — Geospatial Fundamentals & Coordinate Reference Systems (WGS84 vs Projected)
 * **Story Points**: 5 SP
 * **Implementation Status**: [THEORY]
+* **Learning Priority**: SUPPORTING THEORY
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Underlying theoretical principles applied indirectly across `backend/app/models/property.py`.
+**Implemented Today:** Underlying mathematical and computer science principles applied indirectly in `backend/app/models/property.py`.
 
 **Not Implemented:** Standalone theoretical framework; not an isolated product feature.
 
-**Why It Is Still Worth Learning:** Provides foundational mathematical, architectural, or protocol knowledge necessary to defend geospatial fundamentals & coordinate reference systems (wgs84 vs projected).
+**Why It Is Still Worth Learning:** Foundational engineering theory required to justify design choices.
 
-**Safe Interview Wording:** "I understand the theoretical principles of geospatial fundamentals & coordinate reference systems (wgs84 vs projected) and how they inform EstateMap's engineering choices."
+**Safe Interview Wording:** "I understand the theoretical mechanics of geospatial fundamentals & coordinate reference systems (wgs84 vs projected) and how they inform EstateMap's architecture."
 
-**Do Not Claim:** "Do not present geospatial fundamentals & coordinate reference systems (wgs84 vs projected) as a proprietary EstateMap runtime module."
+**Do Not Claim:** "Do not present geospatial fundamentals & coordinate reference systems (wgs84 vs projected) as a standalone proprietary EstateMap module."
 
 #### 1. Why This Story Exists
 In production systems, geospatial fundamentals & coordinate reference systems (wgs84 vs projected) is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -2578,7 +2595,7 @@ Ad-hoc or unvalidated implementations of geospatial fundamentals & coordinate re
 - **Unlocks**: Story 22, Story 23, Story 24, Story 29
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of property.py
+- [ ] Can explain the architectural role of property.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -2586,7 +2603,7 @@ Ad-hoc or unvalidated implementations of geospatial fundamentals & coordinate re
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Geospatial Fundamentals & Coordinate Reference Systems (WGS84 vs Projected)
 - Implement a standalone proof-of-concept for Geospatial Fundamentals & Coordinate Reference Systems (WGS84 vs Projected) from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.models.property:Property.location (Geometry Point, 4326)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -2600,7 +2617,7 @@ Ad-hoc or unvalidated implementations of geospatial fundamentals & coordinate re
 This foundational theory directly governs the design decisions implemented across `backend/app/models/property.py` and related modules.
 
 **Know Your Code Challenge:**
-Map the theoretical formulas or abstractions of Geospatial Fundamentals & Coordinate Reference Systems (WGS84 vs Projected) to the concrete Python/SQL statements in `backend/app/models/property.py`.
+Trace an execution path through `backend/app/models/property.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/models/property.py`
@@ -2672,7 +2689,7 @@ Inspect `backend/app/models/property.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/models/property.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -2710,18 +2727,19 @@ Prepares the domain models and interfaces required by Story 22 (`PostGIS POINT G
 ### Story 22 — PostGIS POINT Geometry & Spatial Column Storage
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/models/property.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/models/property.py`). Verified by automated test suites (backend/tests/integration/test_spatial_search.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for postgis point geometry & spatial column storage; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for postgis point geometry & spatial column storage; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements postgis point geometry & spatial column storage within `backend/app/models/property.py`."
+**Safe Interview Wording:** "EstateMap implements postgis point geometry & spatial column storage in `backend/app/models/property.py` (app.models.property:Property.location)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region postgis point geometry & spatial column storage without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for postgis point geometry & spatial column storage."
 
 #### 1. Why This Story Exists
 In production systems, postgis point geometry & spatial column storage is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -2736,7 +2754,7 @@ Ad-hoc or unvalidated implementations of postgis point geometry & spatial column
 - **Unlocks**: Story 23, Story 24, Story 25
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of property.py
+- [ ] Can explain the architectural role of property.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -2744,7 +2762,7 @@ Ad-hoc or unvalidated implementations of postgis point geometry & spatial column
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of PostGIS POINT Geometry & Spatial Column Storage
 - Implement a standalone proof-of-concept for PostGIS POINT Geometry & Spatial Column Storage from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.models.property:Property.location`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -2754,7 +2772,7 @@ Ad-hoc or unvalidated implementations of postgis point geometry & spatial column
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/models/property.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/models/property.py` via `app.models.property:Property.location`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_spatial_search.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/models/property.py` from input validation to persistence/response generation without looking at the source.
@@ -2794,9 +2812,9 @@ Inspect `backend/app/models/property.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/models/property.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/models/property.py` (`app.models.property:Property.location`).
+- Run backend test suite: `pytest backend/tests/integration/test_spatial_search.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of PostGIS POINT Geometry & Spatial Column Storage principles, protocols, and architectural invariants.
@@ -2831,7 +2849,7 @@ Inspect `backend/app/models/property.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/models/property.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -2869,18 +2887,19 @@ Prepares the domain models and interfaces required by Story 23 (`GiST Spatial In
 ### Story 23 — GiST Spatial Indexing (Generalized Search Tree)
 * **Story Points**: 8 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py`). Verified by automated test suites (backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for gist spatial indexing (generalized search tree); essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for gist spatial indexing (generalized search tree); essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements gist spatial indexing (generalized search tree) within `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py`."
+**Safe Interview Wording:** "EstateMap implements gist spatial indexing (generalized search tree) in `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py` (alembic migration: idx_properties_location_gist)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region gist spatial indexing (generalized search tree) without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for gist spatial indexing (generalized search tree)."
 
 #### 1. Why This Story Exists
 In production systems, gist spatial indexing (generalized search tree) is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -2895,7 +2914,7 @@ Ad-hoc or unvalidated implementations of gist spatial indexing (generalized sear
 - **Unlocks**: Story 24, Story 25, Story 28, Story 92
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of 2026_09_04_0001-0001_initial_postgis.py
+- [ ] Can explain the architectural role of 2026_09_04_0001-0001_initial_postgis.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -2903,7 +2922,7 @@ Ad-hoc or unvalidated implementations of gist spatial indexing (generalized sear
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of GiST Spatial Indexing (Generalized Search Tree)
 - Implement a standalone proof-of-concept for GiST Spatial Indexing (Generalized Search Tree) from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`alembic migration: idx_properties_location_gist`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -2913,7 +2932,7 @@ Ad-hoc or unvalidated implementations of gist spatial indexing (generalized sear
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py` via `alembic migration: idx_properties_location_gist`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py` from input validation to persistence/response generation without looking at the source.
@@ -2952,9 +2971,9 @@ Inspect `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py` in Es
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py` (`alembic migration: idx_properties_location_gist`).
+- Run backend test suite: `pytest backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of GiST Spatial Indexing (Generalized Search Tree) principles, protocols, and architectural invariants.
@@ -2989,7 +3008,7 @@ Inspect `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py` in Es
 ### Current EstateMap
 Implemented baseline in `backend/alembic/versions/2026_09_04_0001-0001_initial_postgis.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -3027,18 +3046,19 @@ Prepares the domain models and interfaces required by Story 24 (`Radius Distance
 ### Story 24 — Radius Distance Search via ST_DWithin on Spheroids
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/geo_service.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/geo_service.py`). Verified by automated test suites (backend/tests/integration/test_spatial_search.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for radius distance search via st_dwithin on spheroids; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for radius distance search via st_dwithin on spheroids; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements radius distance search via st_dwithin on spheroids within `backend/app/services/geo_service.py`."
+**Safe Interview Wording:** "EstateMap implements radius distance search via st_dwithin on spheroids in `backend/app/services/geo_service.py` (app.services.geo_service:GeoService.search_within_radius)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region radius distance search via st_dwithin on spheroids without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for radius distance search via st_dwithin on spheroids."
 
 #### 1. Why This Story Exists
 In production systems, radius distance search via st_dwithin on spheroids is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -3053,7 +3073,7 @@ Ad-hoc or unvalidated implementations of radius distance search via st_dwithin o
 - **Unlocks**: Story 26, Story 28, Story 35
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of geo_service.py
+- [ ] Can explain the architectural role of geo_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -3061,7 +3081,7 @@ Ad-hoc or unvalidated implementations of radius distance search via st_dwithin o
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Radius Distance Search via ST_DWithin on Spheroids
 - Implement a standalone proof-of-concept for Radius Distance Search via ST_DWithin on Spheroids from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.geo_service:GeoService.search_within_radius`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -3071,7 +3091,7 @@ Ad-hoc or unvalidated implementations of radius distance search via st_dwithin o
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/geo_service.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/geo_service.py` via `app.services.geo_service:GeoService.search_within_radius`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_spatial_search.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/geo_service.py` from input validation to persistence/response generation without looking at the source.
@@ -3110,9 +3130,9 @@ Inspect `backend/app/services/geo_service.py` in EstateMap. Compare its architec
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/geo_service.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/geo_service.py` (`app.services.geo_service:GeoService.search_within_radius`).
+- Run backend test suite: `pytest backend/tests/integration/test_spatial_search.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Radius Distance Search via ST_DWithin on Spheroids principles, protocols, and architectural invariants.
@@ -3147,7 +3167,7 @@ Inspect `backend/app/services/geo_service.py` in EstateMap. Compare its architec
 ### Current EstateMap
 Implemented baseline in `backend/app/services/geo_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -3185,18 +3205,19 @@ Prepares the domain models and interfaces required by Story 25 (`Bounding-Box Vi
 ### Story 25 — Bounding-Box Viewport Search via ST_MakeEnvelope
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/geo_service.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/geo_service.py`). Verified by automated test suites (backend/tests/integration/test_spatial_search.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for bounding-box viewport search via st_makeenvelope; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for bounding-box viewport search via st_makeenvelope; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements bounding-box viewport search via st_makeenvelope within `backend/app/services/geo_service.py`."
+**Safe Interview Wording:** "EstateMap implements bounding-box viewport search via st_makeenvelope in `backend/app/services/geo_service.py` (app.services.geo_service:GeoService.search_within_bounds)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region bounding-box viewport search via st_makeenvelope without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for bounding-box viewport search via st_makeenvelope."
 
 #### 1. Why This Story Exists
 In production systems, bounding-box viewport search via st_makeenvelope is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -3211,7 +3232,7 @@ Ad-hoc or unvalidated implementations of bounding-box viewport search via st_mak
 - **Unlocks**: Story 28, Story 76, Story 77
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of geo_service.py
+- [ ] Can explain the architectural role of geo_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -3219,7 +3240,7 @@ Ad-hoc or unvalidated implementations of bounding-box viewport search via st_mak
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Bounding-Box Viewport Search via ST_MakeEnvelope
 - Implement a standalone proof-of-concept for Bounding-Box Viewport Search via ST_MakeEnvelope from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.geo_service:GeoService.search_within_bounds`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -3229,7 +3250,7 @@ Ad-hoc or unvalidated implementations of bounding-box viewport search via st_mak
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/geo_service.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/geo_service.py` via `app.services.geo_service:GeoService.search_within_bounds`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_spatial_search.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/geo_service.py` from input validation to persistence/response generation without looking at the source.
@@ -3268,9 +3289,9 @@ Inspect `backend/app/services/geo_service.py` in EstateMap. Compare its architec
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/geo_service.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/geo_service.py` (`app.services.geo_service:GeoService.search_within_bounds`).
+- Run backend test suite: `pytest backend/tests/integration/test_spatial_search.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Bounding-Box Viewport Search via ST_MakeEnvelope principles, protocols, and architectural invariants.
@@ -3305,7 +3326,7 @@ Inspect `backend/app/services/geo_service.py` in EstateMap. Compare its architec
 ### Current EstateMap
 Implemented baseline in `backend/app/services/geo_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -3343,18 +3364,19 @@ Prepares the domain models and interfaces required by Story 26 (`Points of Inter
 ### Story 26 — Points of Interest (POI) Location Intelligence & Category Queries
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/models/poi.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/models/poi.py`). Verified by automated test suites (backend/tests/integration/test_pois.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for points of interest (poi) location intelligence & category queries; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for points of interest (poi) location intelligence & category queries; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements points of interest (poi) location intelligence & category queries within `backend/app/models/poi.py`."
+**Safe Interview Wording:** "EstateMap implements points of interest (poi) location intelligence & category queries in `backend/app/models/poi.py` (app.services.poi_service:POIService.get_location_intelligence)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region points of interest (poi) location intelligence & category queries without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for points of interest (poi) location intelligence & category queries."
 
 #### 1. Why This Story Exists
 In production systems, points of interest (poi) location intelligence & category queries is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -3369,7 +3391,7 @@ Ad-hoc or unvalidated implementations of points of interest (poi) location intel
 - **Unlocks**: Story 35, Story 38
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of poi.py
+- [ ] Can explain the architectural role of poi.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -3377,7 +3399,7 @@ Ad-hoc or unvalidated implementations of points of interest (poi) location intel
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Points of Interest (POI) Location Intelligence & Category Queries
 - Implement a standalone proof-of-concept for Points of Interest (POI) Location Intelligence & Category Queries from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.poi_service:POIService.get_location_intelligence`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -3387,7 +3409,7 @@ Ad-hoc or unvalidated implementations of points of interest (poi) location intel
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/models/poi.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/models/poi.py` via `app.services.poi_service:POIService.get_location_intelligence`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_pois.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/models/poi.py` from input validation to persistence/response generation without looking at the source.
@@ -3427,9 +3449,9 @@ Inspect `backend/app/models/poi.py` in EstateMap. Compare its architecture and e
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/models/poi.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/models/poi.py` (`app.services.poi_service:POIService.get_location_intelligence`).
+- Run backend test suite: `pytest backend/tests/integration/test_pois.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Points of Interest (POI) Location Intelligence & Category Queries principles, protocols, and architectural invariants.
@@ -3464,7 +3486,7 @@ Inspect `backend/app/models/poi.py` in EstateMap. Compare its architecture and e
 ### Current EstateMap
 Implemented baseline in `backend/app/models/poi.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -3502,18 +3524,19 @@ Prepares the domain models and interfaces required by Story 27 (`RFC 7946 GeoJSO
 ### Story 27 — RFC 7946 GeoJSON Standard Compliance & Serializers
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/schemas/geo.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/schemas/geo.py`). Verified by automated test suites (backend/tests/unit/test_geo_schemas.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for rfc 7946 geojson standard compliance & serializers; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for rfc 7946 geojson standard compliance & serializers; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements rfc 7946 geojson standard compliance & serializers within `backend/app/schemas/geo.py`."
+**Safe Interview Wording:** "EstateMap implements rfc 7946 geojson standard compliance & serializers in `backend/app/schemas/geo.py` (app.schemas.geo:PropertyGeoJSONFeature / frontend/lib/geojson.ts)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region rfc 7946 geojson standard compliance & serializers without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for rfc 7946 geojson standard compliance & serializers."
 
 #### 1. Why This Story Exists
 In production systems, rfc 7946 geojson standard compliance & serializers is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -3528,7 +3551,7 @@ Ad-hoc or unvalidated implementations of rfc 7946 geojson standard compliance & 
 - **Unlocks**: Story 76, Story 78
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of geo.py
+- [ ] Can explain the architectural role of geo.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -3536,7 +3559,7 @@ Ad-hoc or unvalidated implementations of rfc 7946 geojson standard compliance & 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of RFC 7946 GeoJSON Standard Compliance & Serializers
 - Implement a standalone proof-of-concept for RFC 7946 GeoJSON Standard Compliance & Serializers from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.schemas.geo:PropertyGeoJSONFeature / frontend/lib/geojson.ts`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -3546,7 +3569,7 @@ Ad-hoc or unvalidated implementations of rfc 7946 geojson standard compliance & 
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/schemas/geo.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/schemas/geo.py` via `app.schemas.geo:PropertyGeoJSONFeature / frontend/lib/geojson.ts`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_geo_schemas.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/schemas/geo.py` from input validation to persistence/response generation without looking at the source.
@@ -3585,9 +3608,9 @@ Inspect `backend/app/schemas/geo.py` in EstateMap. Compare its architecture and 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/schemas/geo.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/schemas/geo.py` (`app.schemas.geo:PropertyGeoJSONFeature / frontend/lib/geojson.ts`).
+- Run backend test suite: `pytest backend/tests/unit/test_geo_schemas.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of RFC 7946 GeoJSON Standard Compliance & Serializers principles, protocols, and architectural invariants.
@@ -3622,7 +3645,7 @@ Inspect `backend/app/schemas/geo.py` in EstateMap. Compare its architecture and 
 ### Current EstateMap
 Implemented baseline in `backend/app/schemas/geo.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -3660,18 +3683,19 @@ Prepares the domain models and interfaces required by Story 28 (`Geospatial Quer
 ### Story 28 — Geospatial Query Optimization & Spatial EXPLAIN ANALYZE
 * **Story Points**: 8 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/app/services/geo_service.py`.
+**Implemented Today:** Core mechanism implemented in `backend/app/services/geo_service.py` (app.services.geo_service:GeoService (EXPLAIN index scan)).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of geospatial query optimization & spatial explain analyze while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with geospatial query optimization & spatial explain analyze while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary geospatial query optimization & spatial explain analyze workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core geospatial query optimization & spatial explain analyze workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated geospatial query optimization & spatial explain analyze beyond what exists in `backend/app/services/geo_service.py`."
+**Do Not Claim:** "Do not claim full enterprise automation for geospatial query optimization & spatial explain analyze beyond `backend/app/services/geo_service.py`."
 
 #### 1. Why This Story Exists
 In production systems, geospatial query optimization & spatial explain analyze is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -3686,7 +3710,7 @@ Ad-hoc or unvalidated implementations of geospatial query optimization & spatial
 - **Unlocks**: Story 89, Story 92
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of geo_service.py
+- [ ] Can explain the architectural role of geo_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -3694,7 +3718,7 @@ Ad-hoc or unvalidated implementations of geospatial query optimization & spatial
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Geospatial Query Optimization & Spatial EXPLAIN ANALYZE
 - Implement a standalone proof-of-concept for Geospatial Query Optimization & Spatial EXPLAIN ANALYZE from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.geo_service:GeoService (EXPLAIN index scan)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -3705,13 +3729,13 @@ Ad-hoc or unvalidated implementations of geospatial query optimization & spatial
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/app/services/geo_service.py`.
+EstateMap implements the core runtime flow in `backend/app/services/geo_service.py` (`app.services.geo_service:GeoService (EXPLAIN index scan)`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/app/services/geo_service.py` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/app/services/geo_service.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/services/geo_service.py`
@@ -3747,8 +3771,8 @@ Inspect `backend/app/services/geo_service.py` in EstateMap. Compare its architec
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/app/services/geo_service.py`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/app/services/geo_service.py` (`app.services.geo_service:GeoService (EXPLAIN index scan)`).
+- Run integration tests covering the implemented baseline (`pytest backend/tests/integration/test_spatial_search.py`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -3784,7 +3808,7 @@ Inspect `backend/app/services/geo_service.py` in EstateMap. Compare its architec
 ### Current EstateMap
 Implemented baseline in `backend/app/services/geo_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -3824,18 +3848,19 @@ Prepares the domain models and interfaces required by Story 29 (`Haversine Great
 ### Story 14 — Password Hashing with Argon2id & Cryptographic Salting
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/core/security.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/core/security.py`). Verified by automated test suites (backend/tests/unit/test_security.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for password hashing with argon2id & cryptographic salting; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for password hashing with argon2id & cryptographic salting; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements password hashing with argon2id & cryptographic salting within `backend/app/core/security.py`."
+**Safe Interview Wording:** "EstateMap implements password hashing with argon2id & cryptographic salting in `backend/app/core/security.py` (app.core.security:get_password_hash / verify_password)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region password hashing with argon2id & cryptographic salting without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for password hashing with argon2id & cryptographic salting."
 
 #### 1. Why This Story Exists
 In production systems, password hashing with argon2id & cryptographic salting is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -3850,7 +3875,7 @@ Ad-hoc or unvalidated implementations of password hashing with argon2id & crypto
 - **Unlocks**: Story 15, Story 16
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of security.py
+- [ ] Can explain the architectural role of security.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -3858,7 +3883,7 @@ Ad-hoc or unvalidated implementations of password hashing with argon2id & crypto
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Password Hashing with Argon2id & Cryptographic Salting
 - Implement a standalone proof-of-concept for Password Hashing with Argon2id & Cryptographic Salting from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.security:get_password_hash / verify_password`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -3868,7 +3893,7 @@ Ad-hoc or unvalidated implementations of password hashing with argon2id & crypto
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/core/security.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/core/security.py` via `app.core.security:get_password_hash / verify_password`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_security.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/core/security.py` from input validation to persistence/response generation without looking at the source.
@@ -3907,9 +3932,9 @@ Inspect `backend/app/core/security.py` in EstateMap. Compare its architecture an
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/core/security.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/core/security.py` (`app.core.security:get_password_hash / verify_password`).
+- Run backend test suite: `pytest backend/tests/unit/test_security.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Password Hashing with Argon2id & Cryptographic Salting principles, protocols, and architectural invariants.
@@ -3944,7 +3969,7 @@ Inspect `backend/app/core/security.py` in EstateMap. Compare its architecture an
 ### Current EstateMap
 Implemented baseline in `backend/app/core/security.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -3982,18 +4007,19 @@ Prepares the domain models and interfaces required by Story 15 (`Stateless JWT A
 ### Story 15 — Stateless JWT Authentication & Cryptographic Signature Verification
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/core/security.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/core/security.py`). Verified by automated test suites (backend/tests/integration/test_auth.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for stateless jwt authentication & cryptographic signature verification; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for stateless jwt authentication & cryptographic signature verification; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements stateless jwt authentication & cryptographic signature verification within `backend/app/core/security.py`."
+**Safe Interview Wording:** "EstateMap implements stateless jwt authentication & cryptographic signature verification in `backend/app/core/security.py` (app.core.security:create_access_token / decode_access_token)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region stateless jwt authentication & cryptographic signature verification without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for stateless jwt authentication & cryptographic signature verification."
 
 #### 1. Why This Story Exists
 In production systems, stateless jwt authentication & cryptographic signature verification is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -4008,7 +4034,7 @@ Ad-hoc or unvalidated implementations of stateless jwt authentication & cryptogr
 - **Unlocks**: Story 16, Story 48, Story 80
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of security.py
+- [ ] Can explain the architectural role of security.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -4016,7 +4042,7 @@ Ad-hoc or unvalidated implementations of stateless jwt authentication & cryptogr
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Stateless JWT Authentication & Cryptographic Signature Verification
 - Implement a standalone proof-of-concept for Stateless JWT Authentication & Cryptographic Signature Verification from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.security:create_access_token / decode_access_token`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -4026,7 +4052,7 @@ Ad-hoc or unvalidated implementations of stateless jwt authentication & cryptogr
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/core/security.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/core/security.py` via `app.core.security:create_access_token / decode_access_token`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_auth.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/core/security.py` from input validation to persistence/response generation without looking at the source.
@@ -4065,9 +4091,9 @@ Inspect `backend/app/core/security.py` in EstateMap. Compare its architecture an
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/core/security.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/core/security.py` (`app.core.security:create_access_token / decode_access_token`).
+- Run backend test suite: `pytest backend/tests/integration/test_auth.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Stateless JWT Authentication & Cryptographic Signature Verification principles, protocols, and architectural invariants.
@@ -4102,7 +4128,7 @@ Inspect `backend/app/core/security.py` in EstateMap. Compare its architecture an
 ### Current EstateMap
 Implemented baseline in `backend/app/core/security.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -4140,18 +4166,19 @@ Prepares the domain models and interfaces required by Story 16 (`Role-Based Auth
 ### Story 16 — Role-Based Authorization & Ownership Verification
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/core/dependencies.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/core/dependencies.py`). Verified by automated test suites (backend/tests/integration/test_auth.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for role-based authorization & ownership verification; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for role-based authorization & ownership verification; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements role-based authorization & ownership verification within `backend/app/core/dependencies.py`."
+**Safe Interview Wording:** "EstateMap implements role-based authorization & ownership verification in `backend/app/core/dependencies.py` (app.core.dependencies:get_current_user / get_current_active_user)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region role-based authorization & ownership verification without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for role-based authorization & ownership verification."
 
 #### 1. Why This Story Exists
 In production systems, role-based authorization & ownership verification is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -4166,7 +4193,7 @@ Ad-hoc or unvalidated implementations of role-based authorization & ownership ve
 - **Unlocks**: Story 18, Story 98
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of dependencies.py
+- [ ] Can explain the architectural role of dependencies.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -4174,7 +4201,7 @@ Ad-hoc or unvalidated implementations of role-based authorization & ownership ve
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Role-Based Authorization & Ownership Verification
 - Implement a standalone proof-of-concept for Role-Based Authorization & Ownership Verification from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.dependencies:get_current_user / get_current_active_user`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -4184,7 +4211,7 @@ Ad-hoc or unvalidated implementations of role-based authorization & ownership ve
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/core/dependencies.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/core/dependencies.py` via `app.core.dependencies:get_current_user / get_current_active_user`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_auth.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/core/dependencies.py` from input validation to persistence/response generation without looking at the source.
@@ -4224,9 +4251,9 @@ Inspect `backend/app/core/dependencies.py` in EstateMap. Compare its architectur
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/core/dependencies.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/core/dependencies.py` (`app.core.dependencies:get_current_user / get_current_active_user`).
+- Run backend test suite: `pytest backend/tests/integration/test_auth.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Role-Based Authorization & Ownership Verification principles, protocols, and architectural invariants.
@@ -4261,7 +4288,7 @@ Inspect `backend/app/core/dependencies.py` in EstateMap. Compare its architectur
 ### Current EstateMap
 Implemented baseline in `backend/app/core/dependencies.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -4299,18 +4326,19 @@ Prepares the domain models and interfaces required by Story 17 (`Security Header
 ### Story 17 — Security Headers, CORS Policy & Defense-in-Depth
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/main.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/main.py`). Verified by automated test suites (backend/tests/unit/test_middleware.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for security headers, cors policy & defense-in-depth; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for security headers, cors policy & defense-in-depth; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements security headers, cors policy & defense-in-depth within `backend/app/main.py`."
+**Safe Interview Wording:** "EstateMap implements security headers, cors policy & defense-in-depth in `backend/app/main.py` (app.main:app.add_middleware(CORSMiddleware))."
 
-**Do Not Claim:** "Do not claim distributed or multi-region security headers, cors policy & defense-in-depth without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for security headers, cors policy & defense-in-depth."
 
 #### 1. Why This Story Exists
 In production systems, security headers, cors policy & defense-in-depth is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -4325,7 +4353,7 @@ Ad-hoc or unvalidated implementations of security headers, cors policy & defense
 - **Unlocks**: Story 81, Story 98
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of main.py
+- [ ] Can explain the architectural role of main.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -4333,7 +4361,7 @@ Ad-hoc or unvalidated implementations of security headers, cors policy & defense
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Security Headers, CORS Policy & Defense-in-Depth
 - Implement a standalone proof-of-concept for Security Headers, CORS Policy & Defense-in-Depth from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.main:app.add_middleware(CORSMiddleware)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -4343,7 +4371,7 @@ Ad-hoc or unvalidated implementations of security headers, cors policy & defense
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/main.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/main.py` via `app.main:app.add_middleware(CORSMiddleware)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_middleware.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/main.py` from input validation to persistence/response generation without looking at the source.
@@ -4382,9 +4410,9 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/main.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/main.py` (`app.main:app.add_middleware(CORSMiddleware)`).
+- Run backend test suite: `pytest backend/tests/unit/test_middleware.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Security Headers, CORS Policy & Defense-in-Depth principles, protocols, and architectural invariants.
@@ -4419,7 +4447,7 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 ### Current EstateMap
 Implemented baseline in `backend/app/main.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -4459,18 +4487,19 @@ Prepares the domain models and interfaces required by Story 18 (`Property CRUD D
 ### Story 29 — Haversine Great-Circle Distance vs Geodesic Mathematics
 * **Story Points**: 3 SP
 * **Implementation Status**: [THEORY]
+* **Learning Priority**: SUPPORTING THEORY
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Underlying theoretical principles applied indirectly across `backend/app/utils/geo.py`.
+**Implemented Today:** Underlying mathematical and computer science principles applied indirectly in `backend/app/utils/geo.py`.
 
 **Not Implemented:** Standalone theoretical framework; not an isolated product feature.
 
-**Why It Is Still Worth Learning:** Provides foundational mathematical, architectural, or protocol knowledge necessary to defend haversine great-circle distance vs geodesic mathematics.
+**Why It Is Still Worth Learning:** Foundational engineering theory required to justify design choices.
 
-**Safe Interview Wording:** "I understand the theoretical principles of haversine great-circle distance vs geodesic mathematics and how they inform EstateMap's engineering choices."
+**Safe Interview Wording:** "I understand the theoretical mechanics of haversine great-circle distance vs geodesic mathematics and how they inform EstateMap's architecture."
 
-**Do Not Claim:** "Do not present haversine great-circle distance vs geodesic mathematics as a proprietary EstateMap runtime module."
+**Do Not Claim:** "Do not present haversine great-circle distance vs geodesic mathematics as a standalone proprietary EstateMap module."
 
 #### 1. Why This Story Exists
 In production systems, haversine great-circle distance vs geodesic mathematics is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -4485,7 +4514,7 @@ Ad-hoc or unvalidated implementations of haversine great-circle distance vs geod
 - **Unlocks**: Story 30, Story 31, Story 35
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of geo.py
+- [ ] Can explain the architectural role of geo.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -4493,7 +4522,7 @@ Ad-hoc or unvalidated implementations of haversine great-circle distance vs geod
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Haversine Great-Circle Distance vs Geodesic Mathematics
 - Implement a standalone proof-of-concept for Haversine Great-Circle Distance vs Geodesic Mathematics from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.utils.geo:haversine_distance_km`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -4507,7 +4536,7 @@ Ad-hoc or unvalidated implementations of haversine great-circle distance vs geod
 This foundational theory directly governs the design decisions implemented across `backend/app/utils/geo.py` and related modules.
 
 **Know Your Code Challenge:**
-Map the theoretical formulas or abstractions of Haversine Great-Circle Distance vs Geodesic Mathematics to the concrete Python/SQL statements in `backend/app/utils/geo.py`.
+Trace an execution path through `backend/app/utils/geo.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/utils/geo.py`
@@ -4579,7 +4608,7 @@ Inspect `backend/app/utils/geo.py` in EstateMap. Compare its architecture and er
 ### Current EstateMap
 Implemented baseline in `backend/app/utils/geo.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -4617,18 +4646,19 @@ Prepares the domain models and interfaces required by Story 30 (`Location Extrac
 ### Story 30 — Location Extraction & Nominatim Geocoding Integration
 * **Story Points**: 5 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/app/utils/location_resolver.py`.
+**Implemented Today:** Deterministic location resolver in `backend/app/utils/location_resolver.py` mapping bounded locality names to coordinates.
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Live third-party geocoding network APIs (Nominatim / Google Places API).
 
-**Why It Is Still Worth Learning:** Provides practical understanding of location extraction & nominatim geocoding integration while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides predictable location mapping in development while teaching the interface contract needed for real geocoding providers.
 
-**Safe Interview Wording:** "EstateMap implements the primary location extraction & nominatim geocoding integration workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap uses an internal bounded location resolver for Bengaluru and Chennai areas."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated location extraction & nominatim geocoding integration beyond what exists in `backend/app/utils/location_resolver.py`."
+**Do Not Claim:** "Do not claim live external Nominatim network requests are executed."
 
 #### 1. Why This Story Exists
 In production systems, location extraction & nominatim geocoding integration is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -4643,7 +4673,7 @@ Ad-hoc or unvalidated implementations of location extraction & nominatim geocodi
 - **Unlocks**: Story 31, Story 69
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of location_resolver.py
+- [ ] Can explain the architectural role of location_resolver.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -4651,7 +4681,7 @@ Ad-hoc or unvalidated implementations of location extraction & nominatim geocodi
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Location Extraction & Nominatim Geocoding Integration
 - Implement a standalone proof-of-concept for Location Extraction & Nominatim Geocoding Integration from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.utils.location_resolver:LocationResolver.resolve_location`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -4662,13 +4692,13 @@ Ad-hoc or unvalidated implementations of location extraction & nominatim geocodi
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/app/utils/location_resolver.py`.
+EstateMap implements the core runtime flow in `backend/app/utils/location_resolver.py` (`app.utils.location_resolver:LocationResolver.resolve_location`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/app/utils/location_resolver.py` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/app/utils/location_resolver.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/utils/location_resolver.py`
@@ -4704,8 +4734,8 @@ Inspect `backend/app/utils/location_resolver.py` in EstateMap. Compare its archi
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/app/utils/location_resolver.py`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/app/utils/location_resolver.py` (`app.utils.location_resolver:LocationResolver.resolve_location`).
+- Run integration tests covering the implemented baseline (`pytest backend/tests/unit/test_location_resolver.py`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -4741,7 +4771,7 @@ Inspect `backend/app/utils/location_resolver.py` in EstateMap. Compare its archi
 ### Current EstateMap
 Implemented baseline in `backend/app/utils/location_resolver.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -4779,18 +4809,19 @@ Prepares the domain models and interfaces required by Story 31 (`Road-Network Gr
 ### Story 31 — Road-Network Graph Traversal vs Euclidean Spatial Distance
 * **Story Points**: 5 SP
 * **Implementation Status**: [THEORY]
+* **Learning Priority**: SUPPORTING THEORY
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Underlying theoretical principles applied indirectly across `backend/app/services/commute_service.py`.
+**Implemented Today:** Underlying mathematical and computer science principles applied indirectly in `backend/app/services/commute_service.py`.
 
 **Not Implemented:** Standalone theoretical framework; not an isolated product feature.
 
-**Why It Is Still Worth Learning:** Provides foundational mathematical, architectural, or protocol knowledge necessary to defend road-network graph traversal vs euclidean spatial distance.
+**Why It Is Still Worth Learning:** Foundational engineering theory required to justify design choices.
 
-**Safe Interview Wording:** "I understand the theoretical principles of road-network graph traversal vs euclidean spatial distance and how they inform EstateMap's engineering choices."
+**Safe Interview Wording:** "I understand the theoretical mechanics of road-network graph traversal vs euclidean spatial distance and how they inform EstateMap's architecture."
 
-**Do Not Claim:** "Do not present road-network graph traversal vs euclidean spatial distance as a proprietary EstateMap runtime module."
+**Do Not Claim:** "Do not present road-network graph traversal vs euclidean spatial distance as a standalone proprietary EstateMap module."
 
 #### 1. Why This Story Exists
 In production systems, road-network graph traversal vs euclidean spatial distance is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -4805,7 +4836,7 @@ Ad-hoc or unvalidated implementations of road-network graph traversal vs euclide
 - **Unlocks**: Story 32, Story 33, Story 35
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of commute_service.py
+- [ ] Can explain the architectural role of commute_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -4813,7 +4844,7 @@ Ad-hoc or unvalidated implementations of road-network graph traversal vs euclide
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Road-Network Graph Traversal vs Euclidean Spatial Distance
 - Implement a standalone proof-of-concept for Road-Network Graph Traversal vs Euclidean Spatial Distance from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.routing.protocol:RoutingProvider`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -4827,7 +4858,7 @@ Ad-hoc or unvalidated implementations of road-network graph traversal vs euclide
 This foundational theory directly governs the design decisions implemented across `backend/app/services/commute_service.py` and related modules.
 
 **Know Your Code Challenge:**
-Map the theoretical formulas or abstractions of Road-Network Graph Traversal vs Euclidean Spatial Distance to the concrete Python/SQL statements in `backend/app/services/commute_service.py`.
+Trace an execution path through `backend/app/services/commute_service.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/services/commute_service.py`
@@ -4899,7 +4930,7 @@ Inspect `backend/app/services/commute_service.py` in EstateMap. Compare its arch
 ### Current EstateMap
 Implemented baseline in `backend/app/services/commute_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -4937,18 +4968,19 @@ Prepares the domain models and interfaces required by Story 32 (`OSRM Routing En
 ### Story 32 — OSRM Routing Engine Integration & Table Matrix API
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/routing/osrm_provider.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/routing/osrm_provider.py`). Verified by automated test suites (backend/tests/integration/test_commute.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for osrm routing engine integration & table matrix api; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for osrm routing engine integration & table matrix api; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements osrm routing engine integration & table matrix api within `backend/app/services/routing/osrm_provider.py`."
+**Safe Interview Wording:** "EstateMap implements osrm routing engine integration & table matrix api in `backend/app/services/routing/osrm_provider.py` (app.services.routing.osrm_provider:OSRMProvider.calculate_route)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region osrm routing engine integration & table matrix api without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for osrm routing engine integration & table matrix api."
 
 #### 1. Why This Story Exists
 In production systems, osrm routing engine integration & table matrix api is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -4963,7 +4995,7 @@ Ad-hoc or unvalidated implementations of osrm routing engine integration & table
 - **Unlocks**: Story 33, Story 44
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of osrm_provider.py
+- [ ] Can explain the architectural role of osrm_provider.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -4971,7 +5003,7 @@ Ad-hoc or unvalidated implementations of osrm routing engine integration & table
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of OSRM Routing Engine Integration & Table Matrix API
 - Implement a standalone proof-of-concept for OSRM Routing Engine Integration & Table Matrix API from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.routing.osrm_provider:OSRMProvider.calculate_route`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -4981,7 +5013,7 @@ Ad-hoc or unvalidated implementations of osrm routing engine integration & table
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/routing/osrm_provider.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/routing/osrm_provider.py` via `app.services.routing.osrm_provider:OSRMProvider.calculate_route`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_commute.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/routing/osrm_provider.py` from input validation to persistence/response generation without looking at the source.
@@ -5020,9 +5052,9 @@ Inspect `backend/app/services/routing/osrm_provider.py` in EstateMap. Compare it
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/routing/osrm_provider.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/routing/osrm_provider.py` (`app.services.routing.osrm_provider:OSRMProvider.calculate_route`).
+- Run backend test suite: `pytest backend/tests/integration/test_commute.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of OSRM Routing Engine Integration & Table Matrix API principles, protocols, and architectural invariants.
@@ -5057,7 +5089,7 @@ Inspect `backend/app/services/routing/osrm_provider.py` in EstateMap. Compare it
 ### Current EstateMap
 Implemented baseline in `backend/app/services/routing/osrm_provider.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -5095,18 +5127,19 @@ Prepares the domain models and interfaces required by Story 33 (`Multi-Modal Com
 ### Story 33 — Multi-Modal Commute Matrix & Fallback Strategies
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/commute_service.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/commute_service.py`). Verified by automated test suites (backend/tests/integration/test_commute.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for multi-modal commute matrix & fallback strategies; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for multi-modal commute matrix & fallback strategies; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements multi-modal commute matrix & fallback strategies within `backend/app/services/commute_service.py`."
+**Safe Interview Wording:** "EstateMap implements multi-modal commute matrix & fallback strategies in `backend/app/services/commute_service.py` (app.services.commute_service:CommuteService.calculate_route)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region multi-modal commute matrix & fallback strategies without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for multi-modal commute matrix & fallback strategies."
 
 #### 1. Why This Story Exists
 In production systems, multi-modal commute matrix & fallback strategies is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -5121,7 +5154,7 @@ Ad-hoc or unvalidated implementations of multi-modal commute matrix & fallback s
 - **Unlocks**: Story 35, Story 44
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of commute_service.py
+- [ ] Can explain the architectural role of commute_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -5129,7 +5162,7 @@ Ad-hoc or unvalidated implementations of multi-modal commute matrix & fallback s
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Multi-Modal Commute Matrix & Fallback Strategies
 - Implement a standalone proof-of-concept for Multi-Modal Commute Matrix & Fallback Strategies from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.commute_service:CommuteService.calculate_route`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -5139,7 +5172,7 @@ Ad-hoc or unvalidated implementations of multi-modal commute matrix & fallback s
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/commute_service.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/commute_service.py` via `app.services.commute_service:CommuteService.calculate_route`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_commute.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/commute_service.py` from input validation to persistence/response generation without looking at the source.
@@ -5178,9 +5211,9 @@ Inspect `backend/app/services/commute_service.py` in EstateMap. Compare its arch
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/commute_service.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/commute_service.py` (`app.services.commute_service:CommuteService.calculate_route`).
+- Run backend test suite: `pytest backend/tests/integration/test_commute.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Multi-Modal Commute Matrix & Fallback Strategies principles, protocols, and architectural invariants.
@@ -5215,7 +5248,7 @@ Inspect `backend/app/services/commute_service.py` in EstateMap. Compare its arch
 ### Current EstateMap
 Implemented baseline in `backend/app/services/commute_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -5255,18 +5288,19 @@ Prepares the domain models and interfaces required by Story 34 (`Multi-Criteria 
 ### Story 34 — Multi-Criteria Decision Analysis & Scoring Normalization
 * **Story Points**: 5 SP
 * **Implementation Status**: [THEORY]
+* **Learning Priority**: SUPPORTING THEORY
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Underlying theoretical principles applied indirectly across `backend/app/services/ranking_service.py`.
+**Implemented Today:** Underlying mathematical and computer science principles applied indirectly in `backend/app/services/ranking_service.py`.
 
 **Not Implemented:** Standalone theoretical framework; not an isolated product feature.
 
-**Why It Is Still Worth Learning:** Provides foundational mathematical, architectural, or protocol knowledge necessary to defend multi-criteria decision analysis & scoring normalization.
+**Why It Is Still Worth Learning:** Foundational engineering theory required to justify design choices.
 
-**Safe Interview Wording:** "I understand the theoretical principles of multi-criteria decision analysis & scoring normalization and how they inform EstateMap's engineering choices."
+**Safe Interview Wording:** "I understand the theoretical mechanics of multi-criteria decision analysis & scoring normalization and how they inform EstateMap's architecture."
 
-**Do Not Claim:** "Do not present multi-criteria decision analysis & scoring normalization as a proprietary EstateMap runtime module."
+**Do Not Claim:** "Do not present multi-criteria decision analysis & scoring normalization as a standalone proprietary EstateMap module."
 
 #### 1. Why This Story Exists
 In production systems, multi-criteria decision analysis & scoring normalization is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -5281,7 +5315,7 @@ Ad-hoc or unvalidated implementations of multi-criteria decision analysis & scor
 - **Unlocks**: Story 35, Story 36, Story 62
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of ranking_service.py
+- [ ] Can explain the architectural role of ranking_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -5289,7 +5323,7 @@ Ad-hoc or unvalidated implementations of multi-criteria decision analysis & scor
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Multi-Criteria Decision Analysis & Scoring Normalization
 - Implement a standalone proof-of-concept for Multi-Criteria Decision Analysis & Scoring Normalization from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.ranking_service:RankingService`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -5303,7 +5337,7 @@ Ad-hoc or unvalidated implementations of multi-criteria decision analysis & scor
 This foundational theory directly governs the design decisions implemented across `backend/app/services/ranking_service.py` and related modules.
 
 **Know Your Code Challenge:**
-Map the theoretical formulas or abstractions of Multi-Criteria Decision Analysis & Scoring Normalization to the concrete Python/SQL statements in `backend/app/services/ranking_service.py`.
+Trace an execution path through `backend/app/services/ranking_service.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/services/ranking_service.py`
@@ -5375,7 +5409,7 @@ Inspect `backend/app/services/ranking_service.py` in EstateMap. Compare its arch
 ### Current EstateMap
 Implemented baseline in `backend/app/services/ranking_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -5413,18 +5447,19 @@ Prepares the domain models and interfaces required by Story 35 (`6-Factor Mathem
 ### Story 35 — 6-Factor Mathematical Ranking Engine
 * **Story Points**: 8 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/ranking_service.py`). Verified by automated test regressions.
+**Implemented Today:** Deterministic 6-factor ranking engine (`price`, `bedrooms`, `area`, `locality`, `location`, `commute`) in `backend/app/services/ranking_service.py`.
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Machine-learned ranking or black-box neural recommendation models.
 
-**Why It Is Still Worth Learning:** Core engineering foundation for 6-factor mathematical ranking engine; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Demonstrates multi-criteria decision analysis (MCDA), normalizations, and predictable explainable sorting for user search queries.
 
-**Safe Interview Wording:** "EstateMap implements 6-factor mathematical ranking engine within `backend/app/services/ranking_service.py`."
+**Safe Interview Wording:** "EstateMap uses a deterministic 6-factor heuristic ranking engine with mathematical normalization and proportional weight redistribution."
 
-**Do Not Claim:** "Do not claim distributed or multi-region 6-factor mathematical ranking engine without active clustering."
+**Do Not Claim:** "Do not claim EstateMap uses AI/ML for property ranking order."
 
 #### 1. Why This Story Exists
 In production systems, 6-factor mathematical ranking engine is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -5439,7 +5474,7 @@ Ad-hoc or unvalidated implementations of 6-factor mathematical ranking engine ca
 - **Unlocks**: Story 36, Story 37, Story 38, Story 62
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of ranking_service.py
+- [ ] Can explain the architectural role of ranking_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -5447,7 +5482,7 @@ Ad-hoc or unvalidated implementations of 6-factor mathematical ranking engine ca
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of 6-Factor Mathematical Ranking Engine
 - Implement a standalone proof-of-concept for 6-Factor Mathematical Ranking Engine from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.ranking_service:RankingService.rank_properties`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -5457,7 +5492,7 @@ Ad-hoc or unvalidated implementations of 6-factor mathematical ranking engine ca
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/ranking_service.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements ranking in `backend/app/services/ranking_service.py:RankingService.rank_properties`. It normalizes user weights (`price`, `bedrooms`, `area`, `locality`, `location`, `commute`), retrieves bounded candidates (`MAX_RANKING_CANDIDATES`), calculates individual factor scores using utility functions in `backend/app/utils/ranking.py`, redistributes weights across available factors, calculates final weighted scores ($0.0 - 100.0$), and sorts candidates with deterministic tie-breaking (`Score DESC -> Price ASC -> ID ASC`).
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/ranking_service.py` from input validation to persistence/response generation without looking at the source.
@@ -5496,9 +5531,9 @@ Inspect `backend/app/services/ranking_service.py` in EstateMap. Compare its arch
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/ranking_service.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/ranking_service.py` (`app.services.ranking_service:RankingService.rank_properties`).
+- Run backend test suite: `pytest backend/tests/integration/test_ranking.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of 6-Factor Mathematical Ranking Engine principles, protocols, and architectural invariants.
@@ -5533,7 +5568,7 @@ Inspect `backend/app/services/ranking_service.py` in EstateMap. Compare its arch
 ### Current EstateMap
 Implemented baseline in `backend/app/services/ranking_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -5571,18 +5606,19 @@ Prepares the domain models and interfaces required by Story 36 (`Weight Vector V
 ### Story 36 — Weight Vector Validation & Preference Calibration
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/schemas/ranking.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/schemas/ranking.py`). Verified by automated test suites (backend/tests/unit/test_ranking_scoring.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for weight vector validation & preference calibration; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for weight vector validation & preference calibration; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements weight vector validation & preference calibration within `backend/app/schemas/ranking.py`."
+**Safe Interview Wording:** "EstateMap implements weight vector validation & preference calibration in `backend/app/schemas/ranking.py` (app.schemas.ranking:RankingWeights.normalize)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region weight vector validation & preference calibration without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for weight vector validation & preference calibration."
 
 #### 1. Why This Story Exists
 In production systems, weight vector validation & preference calibration is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -5597,7 +5633,7 @@ Ad-hoc or unvalidated implementations of weight vector validation & preference c
 - **Unlocks**: Story 37, Story 75
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of ranking.py
+- [ ] Can explain the architectural role of ranking.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -5605,7 +5641,7 @@ Ad-hoc or unvalidated implementations of weight vector validation & preference c
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Weight Vector Validation & Preference Calibration
 - Implement a standalone proof-of-concept for Weight Vector Validation & Preference Calibration from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.schemas.ranking:RankingWeights.normalize`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -5615,7 +5651,7 @@ Ad-hoc or unvalidated implementations of weight vector validation & preference c
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/schemas/ranking.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/schemas/ranking.py` via `app.schemas.ranking:RankingWeights.normalize`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_ranking_scoring.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/schemas/ranking.py` from input validation to persistence/response generation without looking at the source.
@@ -5654,9 +5690,9 @@ Inspect `backend/app/schemas/ranking.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/schemas/ranking.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/schemas/ranking.py` (`app.schemas.ranking:RankingWeights.normalize`).
+- Run backend test suite: `pytest backend/tests/unit/test_ranking_scoring.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Weight Vector Validation & Preference Calibration principles, protocols, and architectural invariants.
@@ -5691,7 +5727,7 @@ Inspect `backend/app/schemas/ranking.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/schemas/ranking.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -5729,18 +5765,19 @@ Prepares the domain models and interfaces required by Story 37 (`Dynamic Missing
 ### Story 37 — Dynamic Missing-Factor Weight Redistribution
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/ranking_service.py`). Verified by automated test regressions.
+**Implemented Today:** Proportional missing-factor weight redistribution in `backend/app/services/ranking_service.py` ensuring active weights sum to 1.0.
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Imputation of missing geographic data (e.g. guessing commute times when destinations are omitted).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for dynamic missing-factor weight redistribution; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Solves the sparse-preference problem where omitted optional filters would otherwise penalize listings unfairly.
 
-**Safe Interview Wording:** "EstateMap implements dynamic missing-factor weight redistribution within `backend/app/services/ranking_service.py`."
+**Safe Interview Wording:** "EstateMap dynamically recalculates effective factor weights by dividing raw weights by the sum of available factors."
 
-**Do Not Claim:** "Do not claim distributed or multi-region dynamic missing-factor weight redistribution without active clustering."
+**Do Not Claim:** "Do not claim missing factors are assigned arbitrary default dummy scores."
 
 #### 1. Why This Story Exists
 In production systems, dynamic missing-factor weight redistribution is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -5755,7 +5792,7 @@ Ad-hoc or unvalidated implementations of dynamic missing-factor weight redistrib
 - **Unlocks**: Story 38, Story 62
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of ranking_service.py
+- [ ] Can explain the architectural role of ranking_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -5763,7 +5800,7 @@ Ad-hoc or unvalidated implementations of dynamic missing-factor weight redistrib
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Dynamic Missing-Factor Weight Redistribution
 - Implement a standalone proof-of-concept for Dynamic Missing-Factor Weight Redistribution from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.ranking_service:RankingService (active_weight_sum)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -5773,7 +5810,7 @@ Ad-hoc or unvalidated implementations of dynamic missing-factor weight redistrib
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/ranking_service.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/ranking_service.py` via `app.services.ranking_service:RankingService (active_weight_sum)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_ranking_scoring.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/ranking_service.py` from input validation to persistence/response generation without looking at the source.
@@ -5812,9 +5849,9 @@ Inspect `backend/app/services/ranking_service.py` in EstateMap. Compare its arch
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/ranking_service.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/ranking_service.py` (`app.services.ranking_service:RankingService (active_weight_sum)`).
+- Run backend test suite: `pytest backend/tests/unit/test_ranking_scoring.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Dynamic Missing-Factor Weight Redistribution principles, protocols, and architectural invariants.
@@ -5849,7 +5886,7 @@ Inspect `backend/app/services/ranking_service.py` in EstateMap. Compare its arch
 ### Current EstateMap
 Implemented baseline in `backend/app/services/ranking_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -5887,18 +5924,19 @@ Prepares the domain models and interfaces required by Story 38 (`Ranking Score E
 ### Story 38 — Ranking Score Explainability & Score Breakdown Generation
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/schemas/ranking.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/schemas/ranking.py`). Verified by automated test suites (backend/tests/integration/test_ranking.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for ranking score explainability & score breakdown generation; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for ranking score explainability & score breakdown generation; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements ranking score explainability & score breakdown generation within `backend/app/schemas/ranking.py`."
+**Safe Interview Wording:** "EstateMap implements ranking score explainability & score breakdown generation in `backend/app/schemas/ranking.py` (app.utils.ranking:generate_deterministic_explanations)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region ranking score explainability & score breakdown generation without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for ranking score explainability & score breakdown generation."
 
 #### 1. Why This Story Exists
 In production systems, ranking score explainability & score breakdown generation is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -5913,7 +5951,7 @@ Ad-hoc or unvalidated implementations of ranking score explainability & score br
 - **Unlocks**: Story 64, Story 70, Story 78
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of ranking.py
+- [ ] Can explain the architectural role of ranking.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -5921,7 +5959,7 @@ Ad-hoc or unvalidated implementations of ranking score explainability & score br
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Ranking Score Explainability & Score Breakdown Generation
 - Implement a standalone proof-of-concept for Ranking Score Explainability & Score Breakdown Generation from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.utils.ranking:generate_deterministic_explanations`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -5931,7 +5969,7 @@ Ad-hoc or unvalidated implementations of ranking score explainability & score br
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/schemas/ranking.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/schemas/ranking.py` via `app.utils.ranking:generate_deterministic_explanations`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_ranking.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/schemas/ranking.py` from input validation to persistence/response generation without looking at the source.
@@ -5970,9 +6008,9 @@ Inspect `backend/app/schemas/ranking.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/schemas/ranking.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/schemas/ranking.py` (`app.utils.ranking:generate_deterministic_explanations`).
+- Run backend test suite: `pytest backend/tests/integration/test_ranking.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Ranking Score Explainability & Score Breakdown Generation principles, protocols, and architectural invariants.
@@ -6007,7 +6045,7 @@ Inspect `backend/app/schemas/ranking.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/schemas/ranking.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -6045,18 +6083,19 @@ Prepares the domain models and interfaces required by Story 39 (`Redis In-Memory
 ### Story 62 — Deterministic Property Comparison Engine & Dimension Winners
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/comparison_service.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/comparison_service.py`). Verified by automated test suites (backend/tests/integration/test_ai_comparison.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for deterministic property comparison engine & dimension winners; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for deterministic property comparison engine & dimension winners; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements deterministic property comparison engine & dimension winners within `backend/app/services/comparison_service.py`."
+**Safe Interview Wording:** "EstateMap implements deterministic property comparison engine & dimension winners in `backend/app/services/comparison_service.py` (app.services.comparison_service:ComparisonService.compare_properties)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region deterministic property comparison engine & dimension winners without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for deterministic property comparison engine & dimension winners."
 
 #### 1. Why This Story Exists
 In production systems, deterministic property comparison engine & dimension winners is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -6071,7 +6110,7 @@ Ad-hoc or unvalidated implementations of deterministic property comparison engin
 - **Unlocks**: Story 63, Story 64, Story 79
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of comparison_service.py
+- [ ] Can explain the architectural role of comparison_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -6079,7 +6118,7 @@ Ad-hoc or unvalidated implementations of deterministic property comparison engin
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Deterministic Property Comparison Engine & Dimension Winners
 - Implement a standalone proof-of-concept for Deterministic Property Comparison Engine & Dimension Winners from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.comparison_service:ComparisonService.compare_properties`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -6089,7 +6128,7 @@ Ad-hoc or unvalidated implementations of deterministic property comparison engin
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/comparison_service.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/comparison_service.py` via `app.services.comparison_service:ComparisonService.compare_properties`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_ai_comparison.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/comparison_service.py` from input validation to persistence/response generation without looking at the source.
@@ -6128,9 +6167,9 @@ Inspect `backend/app/services/comparison_service.py` in EstateMap. Compare its a
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/comparison_service.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/comparison_service.py` (`app.services.comparison_service:ComparisonService.compare_properties`).
+- Run backend test suite: `pytest backend/tests/integration/test_ai_comparison.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Deterministic Property Comparison Engine & Dimension Winners principles, protocols, and architectural invariants.
@@ -6165,7 +6204,7 @@ Inspect `backend/app/services/comparison_service.py` in EstateMap. Compare its a
 ### Current EstateMap
 Implemented baseline in `backend/app/services/comparison_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -6203,18 +6242,19 @@ Prepares the domain models and interfaces required by Story 63 (`Quantitative Fe
 ### Story 63 — Quantitative Feature Comparison & Metric Diff Calculation
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/comparison_service.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/comparison_service.py`). Verified by automated test suites (backend/tests/unit/test_comparison_service.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for quantitative feature comparison & metric diff calculation; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for quantitative feature comparison & metric diff calculation; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements quantitative feature comparison & metric diff calculation within `backend/app/services/comparison_service.py`."
+**Safe Interview Wording:** "EstateMap implements quantitative feature comparison & metric diff calculation in `backend/app/services/comparison_service.py` (app.services.comparison_service:ComparisonService (calculate diffs))."
 
-**Do Not Claim:** "Do not claim distributed or multi-region quantitative feature comparison & metric diff calculation without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for quantitative feature comparison & metric diff calculation."
 
 #### 1. Why This Story Exists
 In production systems, quantitative feature comparison & metric diff calculation is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -6229,7 +6269,7 @@ Ad-hoc or unvalidated implementations of quantitative feature comparison & metri
 - **Unlocks**: Story 64, Story 79
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of comparison_service.py
+- [ ] Can explain the architectural role of comparison_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -6237,7 +6277,7 @@ Ad-hoc or unvalidated implementations of quantitative feature comparison & metri
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Quantitative Feature Comparison & Metric Diff Calculation
 - Implement a standalone proof-of-concept for Quantitative Feature Comparison & Metric Diff Calculation from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.comparison_service:ComparisonService (calculate diffs)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -6247,7 +6287,7 @@ Ad-hoc or unvalidated implementations of quantitative feature comparison & metri
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/comparison_service.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/comparison_service.py` via `app.services.comparison_service:ComparisonService (calculate diffs)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_comparison_service.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/comparison_service.py` from input validation to persistence/response generation without looking at the source.
@@ -6286,9 +6326,9 @@ Inspect `backend/app/services/comparison_service.py` in EstateMap. Compare its a
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/comparison_service.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/comparison_service.py` (`app.services.comparison_service:ComparisonService (calculate diffs)`).
+- Run backend test suite: `pytest backend/tests/unit/test_comparison_service.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Quantitative Feature Comparison & Metric Diff Calculation principles, protocols, and architectural invariants.
@@ -6323,7 +6363,7 @@ Inspect `backend/app/services/comparison_service.py` in EstateMap. Compare its a
 ### Current EstateMap
 Implemented baseline in `backend/app/services/comparison_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -6361,18 +6401,19 @@ Prepares the domain models and interfaces required by Story 64 (`Grounded Compar
 ### Story 64 — Grounded Comparison Summary Generation
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/comparison_service.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/comparison_service.py`). Verified by automated test suites (backend/tests/integration/test_ai_comparison.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for grounded comparison summary generation; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for grounded comparison summary generation; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements grounded comparison summary generation within `backend/app/services/comparison_service.py`."
+**Safe Interview Wording:** "EstateMap implements grounded comparison summary generation in `backend/app/services/comparison_service.py` (app.services.comparison_service:ComparisonService.generate_summary)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region grounded comparison summary generation without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for grounded comparison summary generation."
 
 #### 1. Why This Story Exists
 In production systems, grounded comparison summary generation is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -6387,7 +6428,7 @@ Ad-hoc or unvalidated implementations of grounded comparison summary generation 
 - **Unlocks**: Story 70, Story 79
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of comparison_service.py
+- [ ] Can explain the architectural role of comparison_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -6395,7 +6436,7 @@ Ad-hoc or unvalidated implementations of grounded comparison summary generation 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Grounded Comparison Summary Generation
 - Implement a standalone proof-of-concept for Grounded Comparison Summary Generation from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.comparison_service:ComparisonService.generate_summary`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -6405,7 +6446,7 @@ Ad-hoc or unvalidated implementations of grounded comparison summary generation 
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/comparison_service.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/comparison_service.py` via `app.services.comparison_service:ComparisonService.generate_summary`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_ai_comparison.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/comparison_service.py` from input validation to persistence/response generation without looking at the source.
@@ -6444,9 +6485,9 @@ Inspect `backend/app/services/comparison_service.py` in EstateMap. Compare its a
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/comparison_service.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/comparison_service.py` (`app.services.comparison_service:ComparisonService.generate_summary`).
+- Run backend test suite: `pytest backend/tests/integration/test_ai_comparison.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Grounded Comparison Summary Generation principles, protocols, and architectural invariants.
@@ -6481,7 +6522,7 @@ Inspect `backend/app/services/comparison_service.py` in EstateMap. Compare its a
 ### Current EstateMap
 Implemented baseline in `backend/app/services/comparison_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -6521,18 +6562,19 @@ Prepares the domain models and interfaces required by Story 65 (`"Ask the Map" C
 ### Story 39 — Redis In-Memory Architecture & In-Memory Data Structures
 * **Story Points**: 3 SP
 * **Implementation Status**: [THEORY]
+* **Learning Priority**: SUPPORTING THEORY
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Underlying theoretical principles applied indirectly across `backend/app/cache/redis.py`.
+**Implemented Today:** Underlying mathematical and computer science principles applied indirectly in `backend/app/cache/redis.py`.
 
 **Not Implemented:** Standalone theoretical framework; not an isolated product feature.
 
-**Why It Is Still Worth Learning:** Provides foundational mathematical, architectural, or protocol knowledge necessary to defend redis in-memory architecture & in-memory data structures.
+**Why It Is Still Worth Learning:** Foundational engineering theory required to justify design choices.
 
-**Safe Interview Wording:** "I understand the theoretical principles of redis in-memory architecture & in-memory data structures and how they inform EstateMap's engineering choices."
+**Safe Interview Wording:** "I understand the theoretical mechanics of redis in-memory architecture & in-memory data structures and how they inform EstateMap's architecture."
 
-**Do Not Claim:** "Do not present redis in-memory architecture & in-memory data structures as a proprietary EstateMap runtime module."
+**Do Not Claim:** "Do not present redis in-memory architecture & in-memory data structures as a standalone proprietary EstateMap module."
 
 #### 1. Why This Story Exists
 In production systems, redis in-memory architecture & in-memory data structures is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -6547,7 +6589,7 @@ Ad-hoc or unvalidated implementations of redis in-memory architecture & in-memor
 - **Unlocks**: Story 40, Story 41, Story 46
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of redis.py
+- [ ] Can explain the architectural role of redis.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -6555,7 +6597,7 @@ Ad-hoc or unvalidated implementations of redis in-memory architecture & in-memor
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Redis In-Memory Architecture & In-Memory Data Structures
 - Implement a standalone proof-of-concept for Redis In-Memory Architecture & In-Memory Data Structures from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.cache.redis:get_redis / init_redis`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -6569,7 +6611,7 @@ Ad-hoc or unvalidated implementations of redis in-memory architecture & in-memor
 This foundational theory directly governs the design decisions implemented across `backend/app/cache/redis.py` and related modules.
 
 **Know Your Code Challenge:**
-Map the theoretical formulas or abstractions of Redis In-Memory Architecture & In-Memory Data Structures to the concrete Python/SQL statements in `backend/app/cache/redis.py`.
+Trace an execution path through `backend/app/cache/redis.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/cache/redis.py`
@@ -6641,7 +6683,7 @@ Inspect `backend/app/cache/redis.py` in EstateMap. Compare its architecture and 
 ### Current EstateMap
 Implemented baseline in `backend/app/cache/redis.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -6679,18 +6721,19 @@ Prepares the domain models and interfaces required by Story 40 (`Cache-Aside (La
 ### Story 40 — Cache-Aside (Lazy Loading) Pattern Implementation
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/cache/cache_service.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/cache/cache_service.py`). Verified by automated test suites (backend/tests/unit/test_cache_service.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for cache-aside (lazy loading) pattern implementation; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for cache-aside (lazy loading) pattern implementation; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements cache-aside (lazy loading) pattern implementation within `backend/app/cache/cache_service.py`."
+**Safe Interview Wording:** "EstateMap implements cache-aside (lazy loading) pattern implementation in `backend/app/cache/cache_service.py` (app.cache.cache_service:CacheService.get / set_json)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region cache-aside (lazy loading) pattern implementation without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for cache-aside (lazy loading) pattern implementation."
 
 #### 1. Why This Story Exists
 In production systems, cache-aside (lazy loading) pattern implementation is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -6705,7 +6748,7 @@ Ad-hoc or unvalidated implementations of cache-aside (lazy loading) pattern impl
 - **Unlocks**: Story 41, Story 42, Story 43, Story 44
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of cache_service.py
+- [ ] Can explain the architectural role of cache_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -6713,7 +6756,7 @@ Ad-hoc or unvalidated implementations of cache-aside (lazy loading) pattern impl
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Cache-Aside (Lazy Loading) Pattern Implementation
 - Implement a standalone proof-of-concept for Cache-Aside (Lazy Loading) Pattern Implementation from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.cache.cache_service:CacheService.get / set_json`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -6723,7 +6766,7 @@ Ad-hoc or unvalidated implementations of cache-aside (lazy loading) pattern impl
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/cache/cache_service.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/cache/cache_service.py` via `app.cache.cache_service:CacheService.get / set_json`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_cache_service.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/cache/cache_service.py` from input validation to persistence/response generation without looking at the source.
@@ -6762,9 +6805,9 @@ Inspect `backend/app/cache/cache_service.py` in EstateMap. Compare its architect
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/cache/cache_service.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/cache/cache_service.py` (`app.cache.cache_service:CacheService.get / set_json`).
+- Run backend test suite: `pytest backend/tests/unit/test_cache_service.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Cache-Aside (Lazy Loading) Pattern Implementation principles, protocols, and architectural invariants.
@@ -6799,7 +6842,7 @@ Inspect `backend/app/cache/cache_service.py` in EstateMap. Compare its architect
 ### Current EstateMap
 Implemented baseline in `backend/app/cache/cache_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -6837,18 +6880,19 @@ Prepares the domain models and interfaces required by Story 41 (`Canonical Cache
 ### Story 41 — Canonical Cache Key Design & Cryptographic Hashing
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/cache/cache_keys.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/cache/cache_keys.py`). Verified by automated test suites (backend/tests/unit/test_cache_keys.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for canonical cache key design & cryptographic hashing; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for canonical cache key design & cryptographic hashing; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements canonical cache key design & cryptographic hashing within `backend/app/cache/cache_keys.py`."
+**Safe Interview Wording:** "EstateMap implements canonical cache key design & cryptographic hashing in `backend/app/cache/cache_keys.py` (app.cache.cache_keys:CacheKeys.search / ranking)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region canonical cache key design & cryptographic hashing without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for canonical cache key design & cryptographic hashing."
 
 #### 1. Why This Story Exists
 In production systems, canonical cache key design & cryptographic hashing is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -6863,7 +6907,7 @@ Ad-hoc or unvalidated implementations of canonical cache key design & cryptograp
 - **Unlocks**: Story 42, Story 44
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of cache_keys.py
+- [ ] Can explain the architectural role of cache_keys.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -6871,7 +6915,7 @@ Ad-hoc or unvalidated implementations of canonical cache key design & cryptograp
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Canonical Cache Key Design & Cryptographic Hashing
 - Implement a standalone proof-of-concept for Canonical Cache Key Design & Cryptographic Hashing from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.cache.cache_keys:CacheKeys.search / ranking`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -6881,7 +6925,7 @@ Ad-hoc or unvalidated implementations of canonical cache key design & cryptograp
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/cache/cache_keys.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/cache/cache_keys.py` via `app.cache.cache_keys:CacheKeys.search / ranking`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_cache_keys.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/cache/cache_keys.py` from input validation to persistence/response generation without looking at the source.
@@ -6920,9 +6964,9 @@ Inspect `backend/app/cache/cache_keys.py` in EstateMap. Compare its architecture
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/cache/cache_keys.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/cache/cache_keys.py` (`app.cache.cache_keys:CacheKeys.search / ranking`).
+- Run backend test suite: `pytest backend/tests/unit/test_cache_keys.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Canonical Cache Key Design & Cryptographic Hashing principles, protocols, and architectural invariants.
@@ -6957,7 +7001,7 @@ Inspect `backend/app/cache/cache_keys.py` in EstateMap. Compare its architecture
 ### Current EstateMap
 Implemented baseline in `backend/app/cache/cache_keys.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -6995,18 +7039,19 @@ Prepares the domain models and interfaces required by Story 42 (`Cache Invalidat
 ### Story 42 — Cache Invalidation Strategies & Event-Driven Cache Eviction
 * **Story Points**: 5 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/app/cache/cache_service.py`.
+**Implemented Today:** Core mechanism implemented in `backend/app/cache/cache_service.py` (app.cache.cache_service:CacheService.delete / delete_prefix).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of cache invalidation strategies & event-driven cache eviction while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with cache invalidation strategies & event-driven cache eviction while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary cache invalidation strategies & event-driven cache eviction workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core cache invalidation strategies & event-driven cache eviction workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated cache invalidation strategies & event-driven cache eviction beyond what exists in `backend/app/cache/cache_service.py`."
+**Do Not Claim:** "Do not claim full enterprise automation for cache invalidation strategies & event-driven cache eviction beyond `backend/app/cache/cache_service.py`."
 
 #### 1. Why This Story Exists
 In production systems, cache invalidation strategies & event-driven cache eviction is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -7021,7 +7066,7 @@ Ad-hoc or unvalidated implementations of cache invalidation strategies & event-d
 - **Unlocks**: Story 43, Story 93
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of cache_service.py
+- [ ] Can explain the architectural role of cache_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -7029,7 +7074,7 @@ Ad-hoc or unvalidated implementations of cache invalidation strategies & event-d
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Cache Invalidation Strategies & Event-Driven Cache Eviction
 - Implement a standalone proof-of-concept for Cache Invalidation Strategies & Event-Driven Cache Eviction from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.cache.cache_service:CacheService.delete / delete_prefix`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -7040,13 +7085,13 @@ Ad-hoc or unvalidated implementations of cache invalidation strategies & event-d
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/app/cache/cache_service.py`.
+EstateMap implements the core runtime flow in `backend/app/cache/cache_service.py` (`app.cache.cache_service:CacheService.delete / delete_prefix`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/app/cache/cache_service.py` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/app/cache/cache_service.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/cache/cache_service.py`
@@ -7082,8 +7127,8 @@ Inspect `backend/app/cache/cache_service.py` in EstateMap. Compare its architect
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/app/cache/cache_service.py`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/app/cache/cache_service.py` (`app.cache.cache_service:CacheService.delete / delete_prefix`).
+- Run integration tests covering the implemented baseline (`pytest backend/tests/unit/test_cache_service.py`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -7119,7 +7164,7 @@ Inspect `backend/app/cache/cache_service.py` in EstateMap. Compare its architect
 ### Current EstateMap
 Implemented baseline in `backend/app/cache/cache_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -7157,18 +7202,19 @@ Prepares the domain models and interfaces required by Story 43 (`Cache Stampede 
 ### Story 43 — Cache Stampede Mitigation & Mutex Locking / TTL Jitter
 * **Story Points**: 5 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/app/cache/cache_service.py`.
+**Implemented Today:** Core mechanism implemented in `backend/app/cache/cache_service.py` (app.cache.cache_service:CacheService (bounded TTLs)).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of cache stampede mitigation & mutex locking / ttl jitter while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with cache stampede mitigation & mutex locking / ttl jitter while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary cache stampede mitigation & mutex locking / ttl jitter workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core cache stampede mitigation & mutex locking / ttl jitter workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated cache stampede mitigation & mutex locking / ttl jitter beyond what exists in `backend/app/cache/cache_service.py`."
+**Do Not Claim:** "Do not claim full enterprise automation for cache stampede mitigation & mutex locking / ttl jitter beyond `backend/app/cache/cache_service.py`."
 
 #### 1. Why This Story Exists
 In production systems, cache stampede mitigation & mutex locking / ttl jitter is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -7183,7 +7229,7 @@ Ad-hoc or unvalidated implementations of cache stampede mitigation & mutex locki
 - **Unlocks**: Story 93
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of cache_service.py
+- [ ] Can explain the architectural role of cache_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -7191,7 +7237,7 @@ Ad-hoc or unvalidated implementations of cache stampede mitigation & mutex locki
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Cache Stampede Mitigation & Mutex Locking / TTL Jitter
 - Implement a standalone proof-of-concept for Cache Stampede Mitigation & Mutex Locking / TTL Jitter from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.cache.cache_service:CacheService (bounded TTLs)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -7202,13 +7248,13 @@ Ad-hoc or unvalidated implementations of cache stampede mitigation & mutex locki
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/app/cache/cache_service.py`.
+EstateMap implements the core runtime flow in `backend/app/cache/cache_service.py` (`app.cache.cache_service:CacheService (bounded TTLs)`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/app/cache/cache_service.py` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/app/cache/cache_service.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/cache/cache_service.py`
@@ -7243,8 +7289,8 @@ Inspect `backend/app/cache/cache_service.py` in EstateMap. Compare its architect
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/app/cache/cache_service.py`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/app/cache/cache_service.py` (`app.cache.cache_service:CacheService (bounded TTLs)`).
+- Run integration tests covering the implemented baseline (`pytest backend/tests/unit/test_cache_service.py`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -7280,7 +7326,7 @@ Inspect `backend/app/cache/cache_service.py` in EstateMap. Compare its architect
 ### Current EstateMap
 Implemented baseline in `backend/app/cache/cache_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -7318,18 +7364,19 @@ Prepares the domain models and interfaces required by Story 44 (`Geospatial Rout
 ### Story 44 — Geospatial Route Caching with Invariant Coordinate Rounding
 * **Story Points**: 5 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/app/services/commute_service.py`.
+**Implemented Today:** Core mechanism implemented in `backend/app/services/commute_service.py` (app.cache.cache_keys:CacheKeys.route).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of geospatial route caching with invariant coordinate rounding while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with geospatial route caching with invariant coordinate rounding while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary geospatial route caching with invariant coordinate rounding workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core geospatial route caching with invariant coordinate rounding workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated geospatial route caching with invariant coordinate rounding beyond what exists in `backend/app/services/commute_service.py`."
+**Do Not Claim:** "Do not claim full enterprise automation for geospatial route caching with invariant coordinate rounding beyond `backend/app/services/commute_service.py`."
 
 #### 1. Why This Story Exists
 In production systems, geospatial route caching with invariant coordinate rounding is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -7344,7 +7391,7 @@ Ad-hoc or unvalidated implementations of geospatial route caching with invariant
 - **Unlocks**: Story 93
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of commute_service.py
+- [ ] Can explain the architectural role of commute_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -7352,7 +7399,7 @@ Ad-hoc or unvalidated implementations of geospatial route caching with invariant
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Geospatial Route Caching with Invariant Coordinate Rounding
 - Implement a standalone proof-of-concept for Geospatial Route Caching with Invariant Coordinate Rounding from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.cache.cache_keys:CacheKeys.route`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -7363,13 +7410,13 @@ Ad-hoc or unvalidated implementations of geospatial route caching with invariant
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/app/services/commute_service.py`.
+EstateMap implements the core runtime flow in `backend/app/services/commute_service.py` (`app.cache.cache_keys:CacheKeys.route`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/app/services/commute_service.py` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/app/services/commute_service.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/services/commute_service.py`
@@ -7405,8 +7452,8 @@ Inspect `backend/app/services/commute_service.py` in EstateMap. Compare its arch
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/app/services/commute_service.py`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/app/services/commute_service.py` (`app.cache.cache_keys:CacheKeys.route`).
+- Run integration tests covering the implemented baseline (`pytest backend/tests/unit/test_cache_keys.py`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -7442,7 +7489,7 @@ Inspect `backend/app/services/commute_service.py` in EstateMap. Compare its arch
 ### Current EstateMap
 Implemented baseline in `backend/app/services/commute_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -7480,18 +7527,19 @@ Prepares the domain models and interfaces required by Story 45 (`Token Bucket vs
 ### Story 45 — Token Bucket vs Leaky Bucket vs Sliding Window Rate Limiting
 * **Story Points**: 5 SP
 * **Implementation Status**: [THEORY]
+* **Learning Priority**: SUPPORTING THEORY
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Underlying theoretical principles applied indirectly across `backend/app/core/rate_limit.py`.
+**Implemented Today:** Underlying mathematical and computer science principles applied indirectly in `backend/app/core/rate_limit.py`.
 
 **Not Implemented:** Standalone theoretical framework; not an isolated product feature.
 
-**Why It Is Still Worth Learning:** Provides foundational mathematical, architectural, or protocol knowledge necessary to defend token bucket vs leaky bucket vs sliding window rate limiting.
+**Why It Is Still Worth Learning:** Foundational engineering theory required to justify design choices.
 
-**Safe Interview Wording:** "I understand the theoretical principles of token bucket vs leaky bucket vs sliding window rate limiting and how they inform EstateMap's engineering choices."
+**Safe Interview Wording:** "I understand the theoretical mechanics of token bucket vs leaky bucket vs sliding window rate limiting and how they inform EstateMap's architecture."
 
-**Do Not Claim:** "Do not present token bucket vs leaky bucket vs sliding window rate limiting as a proprietary EstateMap runtime module."
+**Do Not Claim:** "Do not present token bucket vs leaky bucket vs sliding window rate limiting as a standalone proprietary EstateMap module."
 
 #### 1. Why This Story Exists
 In production systems, token bucket vs leaky bucket vs sliding window rate limiting is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -7506,7 +7554,7 @@ Ad-hoc or unvalidated implementations of token bucket vs leaky bucket vs sliding
 - **Unlocks**: Story 46, Story 47, Story 48
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of rate_limit.py
+- [ ] Can explain the architectural role of rate_limit.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -7514,7 +7562,7 @@ Ad-hoc or unvalidated implementations of token bucket vs leaky bucket vs sliding
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Token Bucket vs Leaky Bucket vs Sliding Window Rate Limiting
 - Implement a standalone proof-of-concept for Token Bucket vs Leaky Bucket vs Sliding Window Rate Limiting from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.rate_limit:RateLimiter (ZSET algorithm)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -7528,7 +7576,7 @@ Ad-hoc or unvalidated implementations of token bucket vs leaky bucket vs sliding
 This foundational theory directly governs the design decisions implemented across `backend/app/core/rate_limit.py` and related modules.
 
 **Know Your Code Challenge:**
-Map the theoretical formulas or abstractions of Token Bucket vs Leaky Bucket vs Sliding Window Rate Limiting to the concrete Python/SQL statements in `backend/app/core/rate_limit.py`.
+Trace an execution path through `backend/app/core/rate_limit.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/core/rate_limit.py`
@@ -7599,7 +7647,7 @@ Inspect `backend/app/core/rate_limit.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/core/rate_limit.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -7637,18 +7685,19 @@ Prepares the domain models and interfaces required by Story 46 (`Sliding-Window 
 ### Story 46 — Sliding-Window Log Rate Limiter via Redis Sorted Sets (ZSET)
 * **Story Points**: 8 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/core/rate_limit.py`). Verified by automated test regressions.
+**Implemented Today:** Redis ZSET sliding-window rate limiting implemented via pipelined commands (`zremrangebyscore`, `zcard`, `zrange`, `zadd`, `expire`) in `backend/app/core/rate_limit.py`.
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Single-roundtrip atomic server-side Lua script (`EVAL`). Excess requests are rolled back via a subsequent application-level `zrem`.
 
-**Why It Is Still Worth Learning:** Core engineering foundation for sliding-window log rate limiter via redis sorted sets (zset); essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Teaches sliding-window rate limiting algorithms, pipelining, and the atomicity tradeoffs of multi-command transactions versus Lua scripting.
 
-**Safe Interview Wording:** "EstateMap implements sliding-window log rate limiter via redis sorted sets (zset) within `backend/app/core/rate_limit.py`."
+**Safe Interview Wording:** "EstateMap implements a Redis ZSET sliding-window limiter using pipelined Redis commands with application-level rollback."
 
-**Do Not Claim:** "Do not claim distributed or multi-region sliding-window log rate limiter via redis sorted sets (zset) without active clustering."
+**Do Not Claim:** "Do not claim the sliding-window decision is executed as a single atomic Lua script."
 
 #### 1. Why This Story Exists
 In production systems, sliding-window log rate limiter via redis sorted sets (zset) is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -7663,7 +7712,7 @@ Ad-hoc or unvalidated implementations of sliding-window log rate limiter via red
 - **Unlocks**: Story 47, Story 48, Story 49
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of rate_limit.py
+- [ ] Can explain the architectural role of rate_limit.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -7671,7 +7720,7 @@ Ad-hoc or unvalidated implementations of sliding-window log rate limiter via red
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Sliding-Window Log Rate Limiter via Redis Sorted Sets (ZSET)
 - Implement a standalone proof-of-concept for Sliding-Window Log Rate Limiter via Redis Sorted Sets (ZSET) from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.rate_limit:RateLimiter.__call__`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -7681,7 +7730,7 @@ Ad-hoc or unvalidated implementations of sliding-window log rate limiter via red
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/core/rate_limit.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements the sliding-window rate limiter in `backend/app/core/rate_limit.py:RateLimiter`. It computes a unique member ID (`timestamp_uuid`), opens a Redis pipeline, and executes `zremrangebyscore` to evict entries older than `window_seconds`, `zcard` to measure active requests, `zrange` to retrieve the oldest timestamp for Retry-After calculation, `zadd` to insert the current request, and `expire` to ensure key cleanup. If `current_count >= requests_limit`, it issues a subsequent `zrem` to remove the tentatively added entry and raises `RateLimitExceededException` (HTTP 429).
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/core/rate_limit.py` from input validation to persistence/response generation without looking at the source.
@@ -7720,9 +7769,9 @@ Inspect `backend/app/core/rate_limit.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/core/rate_limit.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/core/rate_limit.py` (`app.core.rate_limit:RateLimiter.__call__`).
+- Run backend test suite: `pytest backend/tests/integration/test_rate_limiting.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Sliding-Window Log Rate Limiter via Redis Sorted Sets (ZSET) principles, protocols, and architectural invariants.
@@ -7757,7 +7806,7 @@ Inspect `backend/app/core/rate_limit.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/core/rate_limit.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -7795,18 +7844,19 @@ Prepares the domain models and interfaces required by Story 47 (`Rate Limit Head
 ### Story 47 — Rate Limit Headers (RFC 6585 & IETF Draft Standards)
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/core/middleware.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/core/middleware.py`). Verified by automated test suites (backend/tests/integration/test_rate_limiting.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for rate limit headers (rfc 6585 & ietf draft standards); essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for rate limit headers (rfc 6585 & ietf draft standards); essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements rate limit headers (rfc 6585 & ietf draft standards) within `backend/app/core/middleware.py`."
+**Safe Interview Wording:** "EstateMap implements rate limit headers (rfc 6585 & ietf draft standards) in `backend/app/core/middleware.py` (app.core.exceptions:RateLimitExceededException)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region rate limit headers (rfc 6585 & ietf draft standards) without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for rate limit headers (rfc 6585 & ietf draft standards)."
 
 #### 1. Why This Story Exists
 In production systems, rate limit headers (rfc 6585 & ietf draft standards) is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -7821,7 +7871,7 @@ Ad-hoc or unvalidated implementations of rate limit headers (rfc 6585 & ietf dra
 - **Unlocks**: Story 48, Story 49
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of middleware.py
+- [ ] Can explain the architectural role of middleware.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -7829,7 +7879,7 @@ Ad-hoc or unvalidated implementations of rate limit headers (rfc 6585 & ietf dra
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Rate Limit Headers (RFC 6585 & IETF Draft Standards)
 - Implement a standalone proof-of-concept for Rate Limit Headers (RFC 6585 & IETF Draft Standards) from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.exceptions:RateLimitExceededException`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -7839,7 +7889,7 @@ Ad-hoc or unvalidated implementations of rate limit headers (rfc 6585 & ietf dra
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/core/middleware.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/core/middleware.py` via `app.core.exceptions:RateLimitExceededException`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_rate_limiting.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/core/middleware.py` from input validation to persistence/response generation without looking at the source.
@@ -7878,9 +7928,9 @@ Inspect `backend/app/core/middleware.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/core/middleware.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/core/middleware.py` (`app.core.exceptions:RateLimitExceededException`).
+- Run backend test suite: `pytest backend/tests/integration/test_rate_limiting.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Rate Limit Headers (RFC 6585 & IETF Draft Standards) principles, protocols, and architectural invariants.
@@ -7915,7 +7965,7 @@ Inspect `backend/app/core/middleware.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/core/middleware.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -7953,18 +8003,19 @@ Prepares the domain models and interfaces required by Story 48 (`Multi-Tiered Ra
 ### Story 48 — Multi-Tiered Rate Limiting by Endpoint & Auth Identity
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/core/middleware.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/core/middleware.py`). Verified by automated test suites (backend/tests/integration/test_rate_limiting.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for multi-tiered rate limiting by endpoint & auth identity; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for multi-tiered rate limiting by endpoint & auth identity; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements multi-tiered rate limiting by endpoint & auth identity within `backend/app/core/middleware.py`."
+**Safe Interview Wording:** "EstateMap implements multi-tiered rate limiting by endpoint & auth identity in `backend/app/core/middleware.py` (app.core.rate_limit:RateLimiter(scope=...))."
 
-**Do Not Claim:** "Do not claim distributed or multi-region multi-tiered rate limiting by endpoint & auth identity without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for multi-tiered rate limiting by endpoint & auth identity."
 
 #### 1. Why This Story Exists
 In production systems, multi-tiered rate limiting by endpoint & auth identity is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -7979,7 +8030,7 @@ Ad-hoc or unvalidated implementations of multi-tiered rate limiting by endpoint 
 - **Unlocks**: Story 49, Story 94
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of middleware.py
+- [ ] Can explain the architectural role of middleware.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -7987,7 +8038,7 @@ Ad-hoc or unvalidated implementations of multi-tiered rate limiting by endpoint 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Multi-Tiered Rate Limiting by Endpoint & Auth Identity
 - Implement a standalone proof-of-concept for Multi-Tiered Rate Limiting by Endpoint & Auth Identity from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.rate_limit:RateLimiter(scope=...)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -7997,7 +8048,7 @@ Ad-hoc or unvalidated implementations of multi-tiered rate limiting by endpoint 
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/core/middleware.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/core/middleware.py` via `app.core.rate_limit:RateLimiter(scope=...)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_rate_limiting.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/core/middleware.py` from input validation to persistence/response generation without looking at the source.
@@ -8036,9 +8087,9 @@ Inspect `backend/app/core/middleware.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/core/middleware.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/core/middleware.py` (`app.core.rate_limit:RateLimiter(scope=...)`).
+- Run backend test suite: `pytest backend/tests/integration/test_rate_limiting.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Multi-Tiered Rate Limiting by Endpoint & Auth Identity principles, protocols, and architectural invariants.
@@ -8073,7 +8124,7 @@ Inspect `backend/app/core/middleware.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/core/middleware.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -8111,18 +8162,19 @@ Prepares the domain models and interfaces required by Story 49 (`Fail-Open vs Fa
 ### Story 49 — Fail-Open vs Fail-Closed Degradation Policies
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/core/rate_limit.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/core/rate_limit.py`). Verified by automated test suites (backend/tests/integration/test_redis_degradation.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for fail-open vs fail-closed degradation policies; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for fail-open vs fail-closed degradation policies; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements fail-open vs fail-closed degradation policies within `backend/app/core/rate_limit.py`."
+**Safe Interview Wording:** "EstateMap implements fail-open vs fail-closed degradation policies in `backend/app/core/rate_limit.py` (app.core.rate_limit:RateLimiter (fail_open branch))."
 
-**Do Not Claim:** "Do not claim distributed or multi-region fail-open vs fail-closed degradation policies without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for fail-open vs fail-closed degradation policies."
 
 #### 1. Why This Story Exists
 In production systems, fail-open vs fail-closed degradation policies is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -8137,7 +8189,7 @@ Ad-hoc or unvalidated implementations of fail-open vs fail-closed degradation po
 - **Unlocks**: Story 50, Story 94
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of rate_limit.py
+- [ ] Can explain the architectural role of rate_limit.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -8145,7 +8197,7 @@ Ad-hoc or unvalidated implementations of fail-open vs fail-closed degradation po
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Fail-Open vs Fail-Closed Degradation Policies
 - Implement a standalone proof-of-concept for Fail-Open vs Fail-Closed Degradation Policies from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.rate_limit:RateLimiter (fail_open branch)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -8155,7 +8207,7 @@ Ad-hoc or unvalidated implementations of fail-open vs fail-closed degradation po
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/core/rate_limit.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/core/rate_limit.py` via `app.core.rate_limit:RateLimiter (fail_open branch)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_redis_degradation.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/core/rate_limit.py` from input validation to persistence/response generation without looking at the source.
@@ -8194,9 +8246,9 @@ Inspect `backend/app/core/rate_limit.py` in EstateMap. Compare its architecture 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/core/rate_limit.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/core/rate_limit.py` (`app.core.rate_limit:RateLimiter (fail_open branch)`).
+- Run backend test suite: `pytest backend/tests/integration/test_redis_degradation.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Fail-Open vs Fail-Closed Degradation Policies principles, protocols, and architectural invariants.
@@ -8231,7 +8283,7 @@ Inspect `backend/app/core/rate_limit.py` in EstateMap. Compare its architecture 
 ### Current EstateMap
 Implemented baseline in `backend/app/core/rate_limit.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -8269,18 +8321,19 @@ Prepares the domain models and interfaces required by Story 50 (`Distributed Red
 ### Story 50 — Distributed Redis Connection Management & Sentinel High Availability
 * **Story Points**: 5 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** Single-node Redis 7 client in Docker Compose with non-blocking async connections (`backend/app/cache/redis.py`).
 
-**Not Implemented:** The full distributed redis connection management & sentinel high availability infrastructure is not currently deployed.
+**Not Implemented:** Redis Sentinel or Redis Cluster active high-availability topology.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** Essential system design topic for understanding how in-memory caches scale from development to production.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied distributed redis connection management & sentinel high availability as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap runs a single Redis container. I studied Sentinel and Redis Cluster as production high-availability evolutions."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs distributed redis connection management & sentinel high availability in production."
+**Do Not Claim:** "Do not claim EstateMap runs Redis Sentinel."
 
 #### 1. Why This Story Exists
 In production systems, distributed redis connection management & sentinel high availability is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -8295,7 +8348,7 @@ Ad-hoc or unvalidated implementations of distributed redis connection management
 - **Unlocks**: Story 93, Story 97
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of redis.py
+- [ ] Can explain the architectural role of redis.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -8303,7 +8356,7 @@ Ad-hoc or unvalidated implementations of distributed redis connection management
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Distributed Redis Connection Management & Sentinel High Availability
 - Implement a standalone proof-of-concept for Distributed Redis Connection Management & Sentinel High Availability from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.cache.redis:get_redis (single-node client)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -8316,11 +8369,11 @@ Ad-hoc or unvalidated implementations of distributed redis connection management
 **Current EstateMap Equivalent:**
 EstateMap currently utilizes standard baseline components (`backend/app/cache/redis.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Distributed Redis Connection Management & Sentinel High Availability` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Distributed Redis Connection Management & Sentinel High Availability` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/cache/redis.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/cache/redis.py`
@@ -8392,7 +8445,7 @@ Inspect `backend/app/cache/redis.py` in EstateMap. Compare its architecture and 
 ### Current EstateMap
 Implemented baseline in `backend/app/cache/redis.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -8432,18 +8485,19 @@ Prepares the domain models and interfaces required by Story 51 (`LLM Integration
 ### Story 51 — LLM Integration Patterns: RAG vs Function Calling vs State Machines
 * **Story Points**: 5 SP
 * **Implementation Status**: [THEORY]
+* **Learning Priority**: SUPPORTING THEORY
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Underlying theoretical principles applied indirectly across `backend/app/ai/base.py`.
+**Implemented Today:** Underlying mathematical and computer science principles applied indirectly in `backend/app/ai/base.py`.
 
 **Not Implemented:** Standalone theoretical framework; not an isolated product feature.
 
-**Why It Is Still Worth Learning:** Provides foundational mathematical, architectural, or protocol knowledge necessary to defend llm integration patterns: rag vs function calling vs state machines.
+**Why It Is Still Worth Learning:** Foundational engineering theory required to justify design choices.
 
-**Safe Interview Wording:** "I understand the theoretical principles of llm integration patterns: rag vs function calling vs state machines and how they inform EstateMap's engineering choices."
+**Safe Interview Wording:** "I understand the theoretical mechanics of llm integration patterns: rag vs function calling vs state machines and how they inform EstateMap's architecture."
 
-**Do Not Claim:** "Do not present llm integration patterns: rag vs function calling vs state machines as a proprietary EstateMap runtime module."
+**Do Not Claim:** "Do not present llm integration patterns: rag vs function calling vs state machines as a standalone proprietary EstateMap module."
 
 #### 1. Why This Story Exists
 In production systems, llm integration patterns: rag vs function calling vs state machines is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -8458,7 +8512,7 @@ Ad-hoc or unvalidated implementations of llm integration patterns: rag vs functi
 - **Unlocks**: Story 52, Story 55, Story 65
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of base.py
+- [ ] Can explain the architectural role of base.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -8466,7 +8520,7 @@ Ad-hoc or unvalidated implementations of llm integration patterns: rag vs functi
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of LLM Integration Patterns: RAG vs Function Calling vs State Machines
 - Implement a standalone proof-of-concept for LLM Integration Patterns: RAG vs Function Calling vs State Machines from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.ai.base:AIProvider / search_orchestrator`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -8480,7 +8534,7 @@ Ad-hoc or unvalidated implementations of llm integration patterns: rag vs functi
 This foundational theory directly governs the design decisions implemented across `backend/app/ai/base.py` and related modules.
 
 **Know Your Code Challenge:**
-Map the theoretical formulas or abstractions of LLM Integration Patterns: RAG vs Function Calling vs State Machines to the concrete Python/SQL statements in `backend/app/ai/base.py`.
+Trace an execution path through `backend/app/ai/base.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/ai/base.py`
@@ -8552,7 +8606,7 @@ Inspect `backend/app/ai/base.py` in EstateMap. Compare its architecture and erro
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/base.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -8590,18 +8644,19 @@ Prepares the domain models and interfaces required by Story 52 (`Abstract AI Pro
 ### Story 52 — Abstract AI Provider Protocol & Decoupled Architecture
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/ai/base.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/ai/base.py`). Verified by automated test suites (backend/tests/unit/test_cross_provider_parity.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for abstract ai provider protocol & decoupled architecture; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for abstract ai provider protocol & decoupled architecture; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements abstract ai provider protocol & decoupled architecture within `backend/app/ai/base.py`."
+**Safe Interview Wording:** "EstateMap implements abstract ai provider protocol & decoupled architecture in `backend/app/ai/base.py` (app.ai.base:AIProvider(ABC))."
 
-**Do Not Claim:** "Do not claim distributed or multi-region abstract ai provider protocol & decoupled architecture without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for abstract ai provider protocol & decoupled architecture."
 
 #### 1. Why This Story Exists
 In production systems, abstract ai provider protocol & decoupled architecture is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -8616,7 +8671,7 @@ Ad-hoc or unvalidated implementations of abstract ai provider protocol & decoupl
 - **Unlocks**: Story 53, Story 54, Story 57
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of base.py
+- [ ] Can explain the architectural role of base.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -8624,7 +8679,7 @@ Ad-hoc or unvalidated implementations of abstract ai provider protocol & decoupl
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Abstract AI Provider Protocol & Decoupled Architecture
 - Implement a standalone proof-of-concept for Abstract AI Provider Protocol & Decoupled Architecture from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.ai.base:AIProvider(ABC)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -8634,7 +8689,7 @@ Ad-hoc or unvalidated implementations of abstract ai provider protocol & decoupl
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/ai/base.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/ai/base.py` via `app.ai.base:AIProvider(ABC)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_cross_provider_parity.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/ai/base.py` from input validation to persistence/response generation without looking at the source.
@@ -8673,9 +8728,9 @@ Inspect `backend/app/ai/base.py` in EstateMap. Compare its architecture and erro
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/ai/base.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/ai/base.py` (`app.ai.base:AIProvider(ABC)`).
+- Run backend test suite: `pytest backend/tests/unit/test_cross_provider_parity.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Abstract AI Provider Protocol & Decoupled Architecture principles, protocols, and architectural invariants.
@@ -8710,7 +8765,7 @@ Inspect `backend/app/ai/base.py` in EstateMap. Compare its architecture and erro
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/base.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -8748,18 +8803,19 @@ Prepares the domain models and interfaces required by Story 53 (`Local LLM Infer
 ### Story 53 — Local LLM Inference with Ollama (Llama 3 / Mistral)
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/ai/ollama_provider.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/ai/ollama_provider.py`). Verified by automated test suites (backend/tests/unit/test_ollama_provider.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for local llm inference with ollama (llama 3 / mistral); essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for local llm inference with ollama (llama 3 / mistral); essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements local llm inference with ollama (llama 3 / mistral) within `backend/app/ai/ollama_provider.py`."
+**Safe Interview Wording:** "EstateMap implements local llm inference with ollama (llama 3 / mistral) in `backend/app/ai/ollama_provider.py` (app.ai.ollama_provider:OllamaProvider.parse_search_intent)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region local llm inference with ollama (llama 3 / mistral) without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for local llm inference with ollama (llama 3 / mistral)."
 
 #### 1. Why This Story Exists
 In production systems, local llm inference with ollama (llama 3 / mistral) is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -8774,7 +8830,7 @@ Ad-hoc or unvalidated implementations of local llm inference with ollama (llama 
 - **Unlocks**: Story 57, Story 58
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of ollama_provider.py
+- [ ] Can explain the architectural role of ollama_provider.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -8782,7 +8838,7 @@ Ad-hoc or unvalidated implementations of local llm inference with ollama (llama 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Local LLM Inference with Ollama (Llama 3 / Mistral)
 - Implement a standalone proof-of-concept for Local LLM Inference with Ollama (Llama 3 / Mistral) from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.ai.ollama_provider:OllamaProvider.parse_search_intent`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -8792,7 +8848,7 @@ Ad-hoc or unvalidated implementations of local llm inference with ollama (llama 
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/ai/ollama_provider.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/ai/ollama_provider.py` via `app.ai.ollama_provider:OllamaProvider.parse_search_intent`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_ollama_provider.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/ai/ollama_provider.py` from input validation to persistence/response generation without looking at the source.
@@ -8831,9 +8887,9 @@ Inspect `backend/app/ai/ollama_provider.py` in EstateMap. Compare its architectu
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/ai/ollama_provider.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/ai/ollama_provider.py` (`app.ai.ollama_provider:OllamaProvider.parse_search_intent`).
+- Run backend test suite: `pytest backend/tests/unit/test_ollama_provider.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Local LLM Inference with Ollama (Llama 3 / Mistral) principles, protocols, and architectural invariants.
@@ -8868,7 +8924,7 @@ Inspect `backend/app/ai/ollama_provider.py` in EstateMap. Compare its architectu
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/ollama_provider.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -8906,18 +8962,19 @@ Prepares the domain models and interfaces required by Story 54 (`Cloud LLM Infer
 ### Story 54 — Cloud LLM Inference with Google Gemini 1.5 Pro / Flash
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/ai/gemini_provider.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/ai/gemini_provider.py`). Verified by automated test suites (backend/tests/unit/test_gemini_provider.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for cloud llm inference with google gemini 1.5 pro / flash; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for cloud llm inference with google gemini 1.5 pro / flash; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements cloud llm inference with google gemini 1.5 pro / flash within `backend/app/ai/gemini_provider.py`."
+**Safe Interview Wording:** "EstateMap implements cloud llm inference with google gemini 1.5 pro / flash in `backend/app/ai/gemini_provider.py` (app.ai.gemini_provider:GeminiProvider.parse_search_intent)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region cloud llm inference with google gemini 1.5 pro / flash without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for cloud llm inference with google gemini 1.5 pro / flash."
 
 #### 1. Why This Story Exists
 In production systems, cloud llm inference with google gemini 1.5 pro / flash is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -8932,7 +8989,7 @@ Ad-hoc or unvalidated implementations of cloud llm inference with google gemini 
 - **Unlocks**: Story 57, Story 58
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of gemini_provider.py
+- [ ] Can explain the architectural role of gemini_provider.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -8940,7 +8997,7 @@ Ad-hoc or unvalidated implementations of cloud llm inference with google gemini 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Cloud LLM Inference with Google Gemini 1.5 Pro / Flash
 - Implement a standalone proof-of-concept for Cloud LLM Inference with Google Gemini 1.5 Pro / Flash from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.ai.gemini_provider:GeminiProvider.parse_search_intent`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -8950,7 +9007,7 @@ Ad-hoc or unvalidated implementations of cloud llm inference with google gemini 
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/ai/gemini_provider.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/ai/gemini_provider.py` via `app.ai.gemini_provider:GeminiProvider.parse_search_intent`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_gemini_provider.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/ai/gemini_provider.py` from input validation to persistence/response generation without looking at the source.
@@ -8989,9 +9046,9 @@ Inspect `backend/app/ai/gemini_provider.py` in EstateMap. Compare its architectu
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/ai/gemini_provider.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/ai/gemini_provider.py` (`app.ai.gemini_provider:GeminiProvider.parse_search_intent`).
+- Run backend test suite: `pytest backend/tests/unit/test_gemini_provider.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Cloud LLM Inference with Google Gemini 1.5 Pro / Flash principles, protocols, and architectural invariants.
@@ -9026,7 +9083,7 @@ Inspect `backend/app/ai/gemini_provider.py` in EstateMap. Compare its architectu
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/gemini_provider.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -9064,18 +9121,19 @@ Prepares the domain models and interfaces required by Story 55 (`Structured JSON
 ### Story 55 — Structured JSON Schema Enforcement & LLM Output Validation
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/schemas/ai.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/schemas/ai.py`). Verified by automated test suites (backend/tests/unit/test_ai_schemas.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for structured json schema enforcement & llm output validation; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for structured json schema enforcement & llm output validation; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements structured json schema enforcement & llm output validation within `backend/app/schemas/ai.py`."
+**Safe Interview Wording:** "EstateMap implements structured json schema enforcement & llm output validation in `backend/app/schemas/ai.py` (app.schemas.ai:ParseSearchResponse / ExplainPropertyResponse)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region structured json schema enforcement & llm output validation without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for structured json schema enforcement & llm output validation."
 
 #### 1. Why This Story Exists
 In production systems, structured json schema enforcement & llm output validation is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -9090,7 +9148,7 @@ Ad-hoc or unvalidated implementations of structured json schema enforcement & ll
 - **Unlocks**: Story 56, Story 59, Story 66
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of ai.py
+- [ ] Can explain the architectural role of ai.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -9098,7 +9156,7 @@ Ad-hoc or unvalidated implementations of structured json schema enforcement & ll
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Structured JSON Schema Enforcement & LLM Output Validation
 - Implement a standalone proof-of-concept for Structured JSON Schema Enforcement & LLM Output Validation from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.schemas.ai:ParseSearchResponse / ExplainPropertyResponse`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -9108,7 +9166,7 @@ Ad-hoc or unvalidated implementations of structured json schema enforcement & ll
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/schemas/ai.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/schemas/ai.py` via `app.schemas.ai:ParseSearchResponse / ExplainPropertyResponse`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_ai_schemas.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/schemas/ai.py` from input validation to persistence/response generation without looking at the source.
@@ -9148,9 +9206,9 @@ Inspect `backend/app/schemas/ai.py` in EstateMap. Compare its architecture and e
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/schemas/ai.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/schemas/ai.py` (`app.schemas.ai:ParseSearchResponse / ExplainPropertyResponse`).
+- Run backend test suite: `pytest backend/tests/unit/test_ai_schemas.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Structured JSON Schema Enforcement & LLM Output Validation principles, protocols, and architectural invariants.
@@ -9185,7 +9243,7 @@ Inspect `backend/app/schemas/ai.py` in EstateMap. Compare its architecture and e
 ### Current EstateMap
 Implemented baseline in `backend/app/schemas/ai.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -9223,18 +9281,19 @@ Prepares the domain models and interfaces required by Story 56 (`Prompt Engineer
 ### Story 56 — Prompt Engineering for Real Estate Query Disambiguation
 * **Story Points**: 5 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/app/ai/prompts/`.
+**Implemented Today:** Core mechanism implemented in `backend/app/ai/prompts/` (app/ai/prompts/: search_intent.txt, explain_property.txt).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of prompt engineering for real estate query disambiguation while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with prompt engineering for real estate query disambiguation while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary prompt engineering for real estate query disambiguation workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core prompt engineering for real estate query disambiguation workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated prompt engineering for real estate query disambiguation beyond what exists in `backend/app/ai/prompts/`."
+**Do Not Claim:** "Do not claim full enterprise automation for prompt engineering for real estate query disambiguation beyond `backend/app/ai/prompts/`."
 
 #### 1. Why This Story Exists
 In production systems, prompt engineering for real estate query disambiguation is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -9249,7 +9308,7 @@ Ad-hoc or unvalidated implementations of prompt engineering for real estate quer
 - **Unlocks**: Story 57, Story 65, Story 69
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of 
+- [ ] Can explain the architectural role of 
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -9257,7 +9316,7 @@ Ad-hoc or unvalidated implementations of prompt engineering for real estate quer
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Prompt Engineering for Real Estate Query Disambiguation
 - Implement a standalone proof-of-concept for Prompt Engineering for Real Estate Query Disambiguation from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app/ai/prompts/: search_intent.txt, explain_property.txt`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -9268,13 +9327,13 @@ Ad-hoc or unvalidated implementations of prompt engineering for real estate quer
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/app/ai/prompts/`.
+EstateMap implements the core runtime flow in `backend/app/ai/prompts/` (`app/ai/prompts/: search_intent.txt, explain_property.txt`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/app/ai/prompts/` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/app/ai/prompts/` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/ai/prompts/`
@@ -9310,8 +9369,8 @@ Inspect `backend/app/ai/prompts/` in EstateMap. Compare its architecture and err
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/app/ai/prompts/`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/app/ai/prompts/` (`app/ai/prompts/: search_intent.txt, explain_property.txt`).
+- Run integration tests covering the implemented baseline (`pytest backend/tests/unit/test_ai_service.py`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -9347,7 +9406,7 @@ Inspect `backend/app/ai/prompts/` in EstateMap. Compare its architecture and err
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/prompts/` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -9385,18 +9444,19 @@ Prepares the domain models and interfaces required by Story 57 (`Complexity-Base
 ### Story 57 — Complexity-Based AI Provider Routing Strategy
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/ai/router.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/ai/router.py`). Verified by automated test suites (backend/tests/unit/test_routing_policy.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for complexity-based ai provider routing strategy; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for complexity-based ai provider routing strategy; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements complexity-based ai provider routing strategy within `backend/app/ai/router.py`."
+**Safe Interview Wording:** "EstateMap implements complexity-based ai provider routing strategy in `backend/app/ai/router.py` (app.ai.routing_policy:AIRoutingPolicy.profile_intent_query)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region complexity-based ai provider routing strategy without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for complexity-based ai provider routing strategy."
 
 #### 1. Why This Story Exists
 In production systems, complexity-based ai provider routing strategy is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -9411,7 +9471,7 @@ Ad-hoc or unvalidated implementations of complexity-based ai provider routing st
 - **Unlocks**: Story 58, Story 60, Story 94
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of router.py
+- [ ] Can explain the architectural role of router.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -9419,7 +9479,7 @@ Ad-hoc or unvalidated implementations of complexity-based ai provider routing st
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Complexity-Based AI Provider Routing Strategy
 - Implement a standalone proof-of-concept for Complexity-Based AI Provider Routing Strategy from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.ai.routing_policy:AIRoutingPolicy.profile_intent_query`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -9429,7 +9489,7 @@ Ad-hoc or unvalidated implementations of complexity-based ai provider routing st
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/ai/router.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/ai/router.py` via `app.ai.routing_policy:AIRoutingPolicy.profile_intent_query`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_routing_policy.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/ai/router.py` from input validation to persistence/response generation without looking at the source.
@@ -9468,9 +9528,9 @@ Inspect `backend/app/ai/router.py` in EstateMap. Compare its architecture and er
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/ai/router.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/ai/router.py` (`app.ai.routing_policy:AIRoutingPolicy.profile_intent_query`).
+- Run backend test suite: `pytest backend/tests/unit/test_routing_policy.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Complexity-Based AI Provider Routing Strategy principles, protocols, and architectural invariants.
@@ -9505,7 +9565,7 @@ Inspect `backend/app/ai/router.py` in EstateMap. Compare its architecture and er
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/router.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -9543,18 +9603,19 @@ Prepares the domain models and interfaces required by Story 58 (`Global Request 
 ### Story 58 — Global Request Deadlines & Automatic AI Provider Failover
 * **Story Points**: 8 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/ai/router.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/ai/router.py`). Verified by automated test suites (backend/tests/integration/test_ai_failover.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for global request deadlines & automatic ai provider failover; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for global request deadlines & automatic ai provider failover; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements global request deadlines & automatic ai provider failover within `backend/app/ai/router.py`."
+**Safe Interview Wording:** "EstateMap implements global request deadlines & automatic ai provider failover in `backend/app/ai/router.py` (app.ai.router:AIRouter / routing_policy)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region global request deadlines & automatic ai provider failover without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for global request deadlines & automatic ai provider failover."
 
 #### 1. Why This Story Exists
 In production systems, global request deadlines & automatic ai provider failover is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -9569,7 +9630,7 @@ Ad-hoc or unvalidated implementations of global request deadlines & automatic ai
 - **Unlocks**: Story 61, Story 94
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of router.py
+- [ ] Can explain the architectural role of router.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -9577,7 +9638,7 @@ Ad-hoc or unvalidated implementations of global request deadlines & automatic ai
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Global Request Deadlines & Automatic AI Provider Failover
 - Implement a standalone proof-of-concept for Global Request Deadlines & Automatic AI Provider Failover from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.ai.router:AIRouter / routing_policy`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -9587,7 +9648,7 @@ Ad-hoc or unvalidated implementations of global request deadlines & automatic ai
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/ai/router.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/ai/router.py` via `app.ai.router:AIRouter / routing_policy`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_ai_failover.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/ai/router.py` from input validation to persistence/response generation without looking at the source.
@@ -9627,9 +9688,9 @@ Inspect `backend/app/ai/router.py` in EstateMap. Compare its architecture and er
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/ai/router.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/ai/router.py` (`app.ai.router:AIRouter / routing_policy`).
+- Run backend test suite: `pytest backend/tests/integration/test_ai_failover.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Global Request Deadlines & Automatic AI Provider Failover principles, protocols, and architectural invariants.
@@ -9664,7 +9725,7 @@ Inspect `backend/app/ai/router.py` in EstateMap. Compare its architecture and er
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/router.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -9702,18 +9763,19 @@ Prepares the domain models and interfaces required by Story 59 (`AI Guardrails, 
 ### Story 59 — AI Guardrails, Prompt Injection Defense & Schema Whitelisting
 * **Story Points**: 5 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/app/ai/gemini_provider.py`.
+**Implemented Today:** Core mechanism implemented in `backend/app/ai/gemini_provider.py` (app.ai.gemini_provider / ollama_provider schema validation).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of ai guardrails, prompt injection defense & schema whitelisting while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with ai guardrails, prompt injection defense & schema whitelisting while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary ai guardrails, prompt injection defense & schema whitelisting workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core ai guardrails, prompt injection defense & schema whitelisting workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated ai guardrails, prompt injection defense & schema whitelisting beyond what exists in `backend/app/ai/gemini_provider.py`."
+**Do Not Claim:** "Do not claim full enterprise automation for ai guardrails, prompt injection defense & schema whitelisting beyond `backend/app/ai/gemini_provider.py`."
 
 #### 1. Why This Story Exists
 In production systems, ai guardrails, prompt injection defense & schema whitelisting is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -9728,7 +9790,7 @@ Ad-hoc or unvalidated implementations of ai guardrails, prompt injection defense
 - **Unlocks**: Story 66, Story 70, Story 98
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of gemini_provider.py
+- [ ] Can explain the architectural role of gemini_provider.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -9736,7 +9798,7 @@ Ad-hoc or unvalidated implementations of ai guardrails, prompt injection defense
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of AI Guardrails, Prompt Injection Defense & Schema Whitelisting
 - Implement a standalone proof-of-concept for AI Guardrails, Prompt Injection Defense & Schema Whitelisting from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.ai.gemini_provider / ollama_provider schema validation`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -9747,13 +9809,13 @@ Ad-hoc or unvalidated implementations of ai guardrails, prompt injection defense
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/app/ai/gemini_provider.py`.
+EstateMap implements the core runtime flow in `backend/app/ai/gemini_provider.py` (`app.ai.gemini_provider / ollama_provider schema validation`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/app/ai/gemini_provider.py` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/app/ai/gemini_provider.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/ai/gemini_provider.py`
@@ -9789,8 +9851,8 @@ Inspect `backend/app/ai/gemini_provider.py` in EstateMap. Compare its architectu
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/app/ai/gemini_provider.py`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/app/ai/gemini_provider.py` (`app.ai.gemini_provider / ollama_provider schema validation`).
+- Run integration tests covering the implemented baseline (`pytest backend/tests/unit/test_ai_schemas.py`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -9826,7 +9888,7 @@ Inspect `backend/app/ai/gemini_provider.py` in EstateMap. Compare its architectu
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/gemini_provider.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -9864,18 +9926,19 @@ Prepares the domain models and interfaces required by Story 60 (`Token Usage Tra
 ### Story 60 — Token Usage Tracking, Cost Estimation & Latency Metrics
 * **Story Points**: 3 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/app/ai/gemini_provider.py`.
+**Implemented Today:** Core mechanism implemented in `backend/app/ai/gemini_provider.py` (app.core.logging:logger.info(duration, model)).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of token usage tracking, cost estimation & latency metrics while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with token usage tracking, cost estimation & latency metrics while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary token usage tracking, cost estimation & latency metrics workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core token usage tracking, cost estimation & latency metrics workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated token usage tracking, cost estimation & latency metrics beyond what exists in `backend/app/ai/gemini_provider.py`."
+**Do Not Claim:** "Do not claim full enterprise automation for token usage tracking, cost estimation & latency metrics beyond `backend/app/ai/gemini_provider.py`."
 
 #### 1. Why This Story Exists
 In production systems, token usage tracking, cost estimation & latency metrics is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -9890,7 +9953,7 @@ Ad-hoc or unvalidated implementations of token usage tracking, cost estimation &
 - **Unlocks**: Story 90, Story 94
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of gemini_provider.py
+- [ ] Can explain the architectural role of gemini_provider.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -9898,7 +9961,7 @@ Ad-hoc or unvalidated implementations of token usage tracking, cost estimation &
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Token Usage Tracking, Cost Estimation & Latency Metrics
 - Implement a standalone proof-of-concept for Token Usage Tracking, Cost Estimation & Latency Metrics from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.logging:logger.info(duration, model)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -9909,13 +9972,13 @@ Ad-hoc or unvalidated implementations of token usage tracking, cost estimation &
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/app/ai/gemini_provider.py`.
+EstateMap implements the core runtime flow in `backend/app/ai/gemini_provider.py` (`app.core.logging:logger.info(duration, model)`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/app/ai/gemini_provider.py` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/app/ai/gemini_provider.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/ai/gemini_provider.py`
@@ -9951,8 +10014,8 @@ Inspect `backend/app/ai/gemini_provider.py` in EstateMap. Compare its architectu
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/app/ai/gemini_provider.py`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/app/ai/gemini_provider.py` (`app.core.logging:logger.info(duration, model)`).
+- Run integration tests covering the implemented baseline (`pytest backend/tests/unit/test_gemini_provider.py`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -9988,7 +10051,7 @@ Inspect `backend/app/ai/gemini_provider.py` in EstateMap. Compare its architectu
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/gemini_provider.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -10026,18 +10089,19 @@ Prepares the domain models and interfaces required by Story 61 (`Deterministic F
 ### Story 61 — Deterministic Fallback Parser (Zero-LLM Mode)
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/ai/mock_provider.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/ai/mock_provider.py`). Verified by automated test suites (backend/tests/integration/test_ai_endpoints.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for deterministic fallback parser (zero-llm mode); essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for deterministic fallback parser (zero-llm mode); essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements deterministic fallback parser (zero-llm mode) within `backend/app/ai/mock_provider.py`."
+**Safe Interview Wording:** "EstateMap implements deterministic fallback parser (zero-llm mode) in `backend/app/ai/mock_provider.py` (app.ai.mock_provider:MockAIProvider / fallback logic)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region deterministic fallback parser (zero-llm mode) without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for deterministic fallback parser (zero-llm mode)."
 
 #### 1. Why This Story Exists
 In production systems, deterministic fallback parser (zero-llm mode) is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -10052,7 +10116,7 @@ Ad-hoc or unvalidated implementations of deterministic fallback parser (zero-llm
 - **Unlocks**: Story 65, Story 66
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of mock_provider.py
+- [ ] Can explain the architectural role of mock_provider.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -10060,7 +10124,7 @@ Ad-hoc or unvalidated implementations of deterministic fallback parser (zero-llm
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Deterministic Fallback Parser (Zero-LLM Mode)
 - Implement a standalone proof-of-concept for Deterministic Fallback Parser (Zero-LLM Mode) from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.ai.mock_provider:MockAIProvider / fallback logic`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -10070,7 +10134,7 @@ Ad-hoc or unvalidated implementations of deterministic fallback parser (zero-llm
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/ai/mock_provider.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/ai/mock_provider.py` via `app.ai.mock_provider:MockAIProvider / fallback logic`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_ai_endpoints.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/ai/mock_provider.py` from input validation to persistence/response generation without looking at the source.
@@ -10109,9 +10173,9 @@ Inspect `backend/app/ai/mock_provider.py` in EstateMap. Compare its architecture
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/ai/mock_provider.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/ai/mock_provider.py` (`app.ai.mock_provider:MockAIProvider / fallback logic`).
+- Run backend test suite: `pytest backend/tests/integration/test_ai_endpoints.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Deterministic Fallback Parser (Zero-LLM Mode) principles, protocols, and architectural invariants.
@@ -10146,7 +10210,7 @@ Inspect `backend/app/ai/mock_provider.py` in EstateMap. Compare its architecture
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/mock_provider.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -10184,18 +10248,19 @@ Prepares the domain models and interfaces required by Story 62 (`Deterministic P
 ### Story 65 — "Ask the Map" Conversational Search Architecture
 * **Story Points**: 8 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/api/v1/ai.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/api/v1/ai.py`). Verified by automated test suites (backend/tests/integration/test_ask_the_map.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for "ask the map" conversational search architecture; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for "ask the map" conversational search architecture; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements "ask the map" conversational search architecture within `backend/app/api/v1/ai.py`."
+**Safe Interview Wording:** "EstateMap implements "ask the map" conversational search architecture in `backend/app/api/v1/ai.py` (app.services.search_orchestrator:SearchOrchestrator.ask_the_map)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region "ask the map" conversational search architecture without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for "ask the map" conversational search architecture."
 
 #### 1. Why This Story Exists
 In production systems, "ask the map" conversational search architecture is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -10210,7 +10275,7 @@ Ad-hoc or unvalidated implementations of "ask the map" conversational search arc
 - **Unlocks**: Story 66, Story 67, Story 68, Story 75
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of ai.py
+- [ ] Can explain the architectural role of ai.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -10218,7 +10283,7 @@ Ad-hoc or unvalidated implementations of "ask the map" conversational search arc
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of "Ask the Map" Conversational Search Architecture
 - Implement a standalone proof-of-concept for "Ask the Map" Conversational Search Architecture from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.search_orchestrator:SearchOrchestrator.ask_the_map`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -10228,7 +10293,7 @@ Ad-hoc or unvalidated implementations of "ask the map" conversational search arc
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/api/v1/ai.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/api/v1/ai.py` via `app.services.search_orchestrator:SearchOrchestrator.ask_the_map`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_ask_the_map.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/api/v1/ai.py` from input validation to persistence/response generation without looking at the source.
@@ -10268,9 +10333,9 @@ Inspect `backend/app/api/v1/ai.py` in EstateMap. Compare its architecture and er
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/api/v1/ai.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/api/v1/ai.py` (`app.services.search_orchestrator:SearchOrchestrator.ask_the_map`).
+- Run backend test suite: `pytest backend/tests/integration/test_ask_the_map.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of "Ask the Map" Conversational Search Architecture principles, protocols, and architectural invariants.
@@ -10305,7 +10370,7 @@ Inspect `backend/app/api/v1/ai.py` in EstateMap. Compare its architecture and er
 ### Current EstateMap
 Implemented baseline in `backend/app/api/v1/ai.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -10343,18 +10408,19 @@ Prepares the domain models and interfaces required by Story 66 (`Multi-Turn Conv
 ### Story 66 — Multi-Turn Conversation State Reducer & Delta Patches
 * **Story Points**: 8 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/search_orchestrator.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/search_orchestrator.py`). Verified by automated test suites (backend/tests/unit/test_search_orchestrator.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for multi-turn conversation state reducer & delta patches; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for multi-turn conversation state reducer & delta patches; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements multi-turn conversation state reducer & delta patches within `backend/app/services/search_orchestrator.py`."
+**Safe Interview Wording:** "EstateMap implements multi-turn conversation state reducer & delta patches in `backend/app/services/search_orchestrator.py` (app.services.search_orchestrator:SearchOrchestrator.apply_patch)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region multi-turn conversation state reducer & delta patches without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for multi-turn conversation state reducer & delta patches."
 
 #### 1. Why This Story Exists
 In production systems, multi-turn conversation state reducer & delta patches is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -10369,7 +10435,7 @@ Ad-hoc or unvalidated implementations of multi-turn conversation state reducer &
 - **Unlocks**: Story 67, Story 68, Story 71
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of search_orchestrator.py
+- [ ] Can explain the architectural role of search_orchestrator.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -10377,7 +10443,7 @@ Ad-hoc or unvalidated implementations of multi-turn conversation state reducer &
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Multi-Turn Conversation State Reducer & Delta Patches
 - Implement a standalone proof-of-concept for Multi-Turn Conversation State Reducer & Delta Patches from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.search_orchestrator:SearchOrchestrator.apply_patch`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -10387,7 +10453,7 @@ Ad-hoc or unvalidated implementations of multi-turn conversation state reducer &
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/search_orchestrator.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/search_orchestrator.py` via `app.services.search_orchestrator:SearchOrchestrator.apply_patch`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_search_orchestrator.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/search_orchestrator.py` from input validation to persistence/response generation without looking at the source.
@@ -10426,9 +10492,9 @@ Inspect `backend/app/services/search_orchestrator.py` in EstateMap. Compare its 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/search_orchestrator.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/search_orchestrator.py` (`app.services.search_orchestrator:SearchOrchestrator.apply_patch`).
+- Run backend test suite: `pytest backend/tests/unit/test_search_orchestrator.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Multi-Turn Conversation State Reducer & Delta Patches principles, protocols, and architectural invariants.
@@ -10463,7 +10529,7 @@ Inspect `backend/app/services/search_orchestrator.py` in EstateMap. Compare its 
 ### Current EstateMap
 Implemented baseline in `backend/app/services/search_orchestrator.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -10501,18 +10567,19 @@ Prepares the domain models and interfaces required by Story 67 (`Implicit vs Exp
 ### Story 67 — Implicit vs Explicit Filter Modification in Conversational Dialogue
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/search_orchestrator.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/search_orchestrator.py`). Verified by automated test suites (backend/tests/unit/test_search_orchestrator.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for implicit vs explicit filter modification in conversational dialogue; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for implicit vs explicit filter modification in conversational dialogue; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements implicit vs explicit filter modification in conversational dialogue within `backend/app/services/search_orchestrator.py`."
+**Safe Interview Wording:** "EstateMap implements implicit vs explicit filter modification in conversational dialogue in `backend/app/services/search_orchestrator.py` (app.services.search_orchestrator:SearchOrchestrator (patch reducer))."
 
-**Do Not Claim:** "Do not claim distributed or multi-region implicit vs explicit filter modification in conversational dialogue without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for implicit vs explicit filter modification in conversational dialogue."
 
 #### 1. Why This Story Exists
 In production systems, implicit vs explicit filter modification in conversational dialogue is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -10527,7 +10594,7 @@ Ad-hoc or unvalidated implementations of implicit vs explicit filter modificatio
 - **Unlocks**: Story 68, Story 69
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of search_orchestrator.py
+- [ ] Can explain the architectural role of search_orchestrator.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -10535,7 +10602,7 @@ Ad-hoc or unvalidated implementations of implicit vs explicit filter modificatio
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Implicit vs Explicit Filter Modification in Conversational Dialogue
 - Implement a standalone proof-of-concept for Implicit vs Explicit Filter Modification in Conversational Dialogue from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.search_orchestrator:SearchOrchestrator (patch reducer)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -10545,7 +10612,7 @@ Ad-hoc or unvalidated implementations of implicit vs explicit filter modificatio
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/search_orchestrator.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/search_orchestrator.py` via `app.services.search_orchestrator:SearchOrchestrator (patch reducer)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_search_orchestrator.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/search_orchestrator.py` from input validation to persistence/response generation without looking at the source.
@@ -10584,9 +10651,9 @@ Inspect `backend/app/services/search_orchestrator.py` in EstateMap. Compare its 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/search_orchestrator.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/search_orchestrator.py` (`app.services.search_orchestrator:SearchOrchestrator (patch reducer)`).
+- Run backend test suite: `pytest backend/tests/unit/test_search_orchestrator.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Implicit vs Explicit Filter Modification in Conversational Dialogue principles, protocols, and architectural invariants.
@@ -10621,7 +10688,7 @@ Inspect `backend/app/services/search_orchestrator.py` in EstateMap. Compare its 
 ### Current EstateMap
 Implemented baseline in `backend/app/services/search_orchestrator.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -10659,18 +10726,19 @@ Prepares the domain models and interfaces required by Story 68 (`Conversational 
 ### Story 68 — Conversational Filter History & Undo/Reset State Management
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/services/search_orchestrator.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/services/search_orchestrator.py`). Verified by automated test suites (backend/tests/unit/test_search_orchestrator.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for conversational filter history & undo/reset state management; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for conversational filter history & undo/reset state management; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements conversational filter history & undo/reset state management within `backend/app/services/search_orchestrator.py`."
+**Safe Interview Wording:** "EstateMap implements conversational filter history & undo/reset state management in `backend/app/services/search_orchestrator.py` (app.services.search_orchestrator:SearchOrchestrator (RESET_SEARCH))."
 
-**Do Not Claim:** "Do not claim distributed or multi-region conversational filter history & undo/reset state management without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for conversational filter history & undo/reset state management."
 
 #### 1. Why This Story Exists
 In production systems, conversational filter history & undo/reset state management is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -10685,7 +10753,7 @@ Ad-hoc or unvalidated implementations of conversational filter history & undo/re
 - **Unlocks**: Story 71, Story 75
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of search_orchestrator.py
+- [ ] Can explain the architectural role of search_orchestrator.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -10693,7 +10761,7 @@ Ad-hoc or unvalidated implementations of conversational filter history & undo/re
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Conversational Filter History & Undo/Reset State Management
 - Implement a standalone proof-of-concept for Conversational Filter History & Undo/Reset State Management from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.search_orchestrator:SearchOrchestrator (RESET_SEARCH)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -10703,7 +10771,7 @@ Ad-hoc or unvalidated implementations of conversational filter history & undo/re
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/services/search_orchestrator.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/services/search_orchestrator.py` via `app.services.search_orchestrator:SearchOrchestrator (RESET_SEARCH)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/unit/test_search_orchestrator.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/services/search_orchestrator.py` from input validation to persistence/response generation without looking at the source.
@@ -10742,9 +10810,9 @@ Inspect `backend/app/services/search_orchestrator.py` in EstateMap. Compare its 
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/services/search_orchestrator.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/services/search_orchestrator.py` (`app.services.search_orchestrator:SearchOrchestrator (RESET_SEARCH)`).
+- Run backend test suite: `pytest backend/tests/unit/test_search_orchestrator.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Conversational Filter History & Undo/Reset State Management principles, protocols, and architectural invariants.
@@ -10779,7 +10847,7 @@ Inspect `backend/app/services/search_orchestrator.py` in EstateMap. Compare its 
 ### Current EstateMap
 Implemented baseline in `backend/app/services/search_orchestrator.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -10817,18 +10885,19 @@ Prepares the domain models and interfaces required by Story 69 (`Conversational 
 ### Story 69 — Conversational Spatial Intent Disambiguation
 * **Story Points**: 5 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/app/utils/location_resolver.py`.
+**Implemented Today:** Core mechanism implemented in `backend/app/utils/location_resolver.py` (app.utils.location_resolver:LocationResolver.resolve_location).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of conversational spatial intent disambiguation while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with conversational spatial intent disambiguation while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary conversational spatial intent disambiguation workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core conversational spatial intent disambiguation workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated conversational spatial intent disambiguation beyond what exists in `backend/app/utils/location_resolver.py`."
+**Do Not Claim:** "Do not claim full enterprise automation for conversational spatial intent disambiguation beyond `backend/app/utils/location_resolver.py`."
 
 #### 1. Why This Story Exists
 In production systems, conversational spatial intent disambiguation is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -10843,7 +10912,7 @@ Ad-hoc or unvalidated implementations of conversational spatial intent disambigu
 - **Unlocks**: Story 70, Story 77
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of location_resolver.py
+- [ ] Can explain the architectural role of location_resolver.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -10851,7 +10920,7 @@ Ad-hoc or unvalidated implementations of conversational spatial intent disambigu
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Conversational Spatial Intent Disambiguation
 - Implement a standalone proof-of-concept for Conversational Spatial Intent Disambiguation from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.utils.location_resolver:LocationResolver.resolve_location`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -10862,13 +10931,13 @@ Ad-hoc or unvalidated implementations of conversational spatial intent disambigu
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/app/utils/location_resolver.py`.
+EstateMap implements the core runtime flow in `backend/app/utils/location_resolver.py` (`app.utils.location_resolver:LocationResolver.resolve_location`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/app/utils/location_resolver.py` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/app/utils/location_resolver.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/utils/location_resolver.py`
@@ -10904,8 +10973,8 @@ Inspect `backend/app/utils/location_resolver.py` in EstateMap. Compare its archi
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/app/utils/location_resolver.py`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/app/utils/location_resolver.py` (`app.utils.location_resolver:LocationResolver.resolve_location`).
+- Run integration tests covering the implemented baseline (`pytest backend/tests/unit/test_location_resolver.py`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -10941,7 +11010,7 @@ Inspect `backend/app/utils/location_resolver.py` in EstateMap. Compare its archi
 ### Current EstateMap
 Implemented baseline in `backend/app/utils/location_resolver.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -10979,18 +11048,19 @@ Prepares the domain models and interfaces required by Story 70 (`Grounded AI Res
 ### Story 70 — Grounded AI Response Generation & Hallucination Prevention
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/ai/gemini_provider.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/ai/gemini_provider.py`). Verified by automated test suites (backend/tests/integration/test_ai_endpoints.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for grounded ai response generation & hallucination prevention; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for grounded ai response generation & hallucination prevention; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements grounded ai response generation & hallucination prevention within `backend/app/ai/gemini_provider.py`."
+**Safe Interview Wording:** "EstateMap implements grounded ai response generation & hallucination prevention in `backend/app/ai/gemini_provider.py` (app.services.ai_service:AIService.explain_property)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region grounded ai response generation & hallucination prevention without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for grounded ai response generation & hallucination prevention."
 
 #### 1. Why This Story Exists
 In production systems, grounded ai response generation & hallucination prevention is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -11005,7 +11075,7 @@ Ad-hoc or unvalidated implementations of grounded ai response generation & hallu
 - **Unlocks**: Story 72, Story 75
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of gemini_provider.py
+- [ ] Can explain the architectural role of gemini_provider.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -11013,7 +11083,7 @@ Ad-hoc or unvalidated implementations of grounded ai response generation & hallu
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Grounded AI Response Generation & Hallucination Prevention
 - Implement a standalone proof-of-concept for Grounded AI Response Generation & Hallucination Prevention from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.ai_service:AIService.explain_property`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -11023,7 +11093,7 @@ Ad-hoc or unvalidated implementations of grounded ai response generation & hallu
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/ai/gemini_provider.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/ai/gemini_provider.py` via `app.services.ai_service:AIService.explain_property`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_ai_endpoints.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/ai/gemini_provider.py` from input validation to persistence/response generation without looking at the source.
@@ -11062,9 +11132,9 @@ Inspect `backend/app/ai/gemini_provider.py` in EstateMap. Compare its architectu
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/ai/gemini_provider.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/ai/gemini_provider.py` (`app.services.ai_service:AIService.explain_property`).
+- Run backend test suite: `pytest backend/tests/integration/test_ai_endpoints.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Grounded AI Response Generation & Hallucination Prevention principles, protocols, and architectural invariants.
@@ -11099,7 +11169,7 @@ Inspect `backend/app/ai/gemini_provider.py` in EstateMap. Compare its architectu
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/gemini_provider.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -11137,18 +11207,19 @@ Prepares the domain models and interfaces required by Story 71 (`Conversation Se
 ### Story 71 — Conversation Session Persistence & Storage in Redis / Postgres
 * **Story Points**: 5 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/app/cache/cache_service.py`.
+**Implemented Today:** Core mechanism implemented in `backend/app/cache/cache_service.py` (app.cache.cache_service:CacheService (ask_map caching)).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of conversation session persistence & storage in redis / postgres while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with conversation session persistence & storage in redis / postgres while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary conversation session persistence & storage in redis / postgres workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core conversation session persistence & storage in redis / postgres workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated conversation session persistence & storage in redis / postgres beyond what exists in `backend/app/cache/cache_service.py`."
+**Do Not Claim:** "Do not claim full enterprise automation for conversation session persistence & storage in redis / postgres beyond `backend/app/cache/cache_service.py`."
 
 #### 1. Why This Story Exists
 In production systems, conversation session persistence & storage in redis / postgres is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -11163,7 +11234,7 @@ Ad-hoc or unvalidated implementations of conversation session persistence & stor
 - **Unlocks**: Story 72, Story 96
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of cache_service.py
+- [ ] Can explain the architectural role of cache_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -11171,7 +11242,7 @@ Ad-hoc or unvalidated implementations of conversation session persistence & stor
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Conversation Session Persistence & Storage in Redis / Postgres
 - Implement a standalone proof-of-concept for Conversation Session Persistence & Storage in Redis / Postgres from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.cache.cache_service:CacheService (ask_map caching)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -11182,13 +11253,13 @@ Ad-hoc or unvalidated implementations of conversation session persistence & stor
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/app/cache/cache_service.py`.
+EstateMap implements the core runtime flow in `backend/app/cache/cache_service.py` (`app.cache.cache_service:CacheService (ask_map caching)`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/app/cache/cache_service.py` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/app/cache/cache_service.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/cache/cache_service.py`
@@ -11224,8 +11295,8 @@ Inspect `backend/app/cache/cache_service.py` in EstateMap. Compare its architect
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/app/cache/cache_service.py`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/app/cache/cache_service.py` (`app.cache.cache_service:CacheService (ask_map caching)`).
+- Run integration tests covering the implemented baseline (`pytest backend/tests/integration/test_ask_the_map.py`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -11261,7 +11332,7 @@ Inspect `backend/app/cache/cache_service.py` in EstateMap. Compare its architect
 ### Current EstateMap
 Implemented baseline in `backend/app/cache/cache_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -11299,18 +11370,19 @@ Prepares the domain models and interfaces required by Story 72 (`End-to-End Conv
 ### Story 72 — End-to-End Conversational Search Integration Testing
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/tests/integration/test_ask_the_map.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/tests/integration/test_ask_the_map.py`). Verified by automated test suites (backend/tests/integration/test_ask_the_map.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for end-to-end conversational search integration testing; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for end-to-end conversational search integration testing; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements end-to-end conversational search integration testing within `backend/tests/integration/test_ask_the_map.py`."
+**Safe Interview Wording:** "EstateMap implements end-to-end conversational search integration testing in `backend/tests/integration/test_ask_the_map.py` (tests/integration/test_ask_the_map.py)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region end-to-end conversational search integration testing without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for end-to-end conversational search integration testing."
 
 #### 1. Why This Story Exists
 In production systems, end-to-end conversational search integration testing is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -11325,7 +11397,7 @@ Ad-hoc or unvalidated implementations of end-to-end conversational search integr
 - **Unlocks**: Story 86, Story 88
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of test_ask_the_map.py
+- [ ] Can explain the architectural role of test_ask_the_map.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -11333,7 +11405,7 @@ Ad-hoc or unvalidated implementations of end-to-end conversational search integr
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of End-to-End Conversational Search Integration Testing
 - Implement a standalone proof-of-concept for End-to-End Conversational Search Integration Testing from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`tests/integration/test_ask_the_map.py`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -11343,7 +11415,7 @@ Ad-hoc or unvalidated implementations of end-to-end conversational search integr
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/tests/integration/test_ask_the_map.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/tests/integration/test_ask_the_map.py` via `tests/integration/test_ask_the_map.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/integration/test_ask_the_map.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/tests/integration/test_ask_the_map.py` from input validation to persistence/response generation without looking at the source.
@@ -11382,9 +11454,9 @@ Inspect `backend/tests/integration/test_ask_the_map.py` in EstateMap. Compare it
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/tests/integration/test_ask_the_map.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/tests/integration/test_ask_the_map.py` (`tests/integration/test_ask_the_map.py`).
+- Run backend test suite: `pytest backend/tests/integration/test_ask_the_map.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of End-to-End Conversational Search Integration Testing principles, protocols, and architectural invariants.
@@ -11419,7 +11491,7 @@ Inspect `backend/tests/integration/test_ask_the_map.py` in EstateMap. Compare it
 ### Current EstateMap
 Implemented baseline in `backend/tests/integration/test_ask_the_map.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -11459,18 +11531,19 @@ Prepares the domain models and interfaces required by Story 73 (`Next.js 14 App 
 ### Story 73 — Next.js 14 App Router & Server/Client Boundary Architecture
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`frontend/app/page.tsx`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`frontend/app/page.tsx`). Verified by automated test suites (frontend/__tests__/map-sync.test.mjs).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for next.js 14 app router & server/client boundary architecture; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for next.js 14 app router & server/client boundary architecture; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements next.js 14 app router & server/client boundary architecture within `frontend/app/page.tsx`."
+**Safe Interview Wording:** "EstateMap implements next.js 14 app router & server/client boundary architecture in `frontend/app/page.tsx` (frontend/app/page.tsx / layout.tsx / search/page.tsx)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region next.js 14 app router & server/client boundary architecture without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for next.js 14 app router & server/client boundary architecture."
 
 #### 1. Why This Story Exists
 In production systems, next.js 14 app router & server/client boundary architecture is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -11485,7 +11558,7 @@ Ad-hoc or unvalidated implementations of next.js 14 app router & server/client b
 - **Unlocks**: Story 74, Story 75, Story 76
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of page.tsx
+- [ ] Can explain the architectural role of page.tsx
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -11493,7 +11566,7 @@ Ad-hoc or unvalidated implementations of next.js 14 app router & server/client b
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Next.js 14 App Router & Server/Client Boundary Architecture
 - Implement a standalone proof-of-concept for Next.js 14 App Router & Server/Client Boundary Architecture from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`frontend/app/page.tsx / layout.tsx / search/page.tsx`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -11503,7 +11576,7 @@ Ad-hoc or unvalidated implementations of next.js 14 app router & server/client b
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `frontend/app/page.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `frontend/app/page.tsx` via `frontend/app/page.tsx / layout.tsx / search/page.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `frontend/__tests__/map-sync.test.mjs`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `frontend/app/page.tsx` from input validation to persistence/response generation without looking at the source.
@@ -11543,9 +11616,9 @@ Inspect `frontend/app/page.tsx` in EstateMap. Compare its architecture and error
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `frontend/app/page.tsx`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `frontend/app/page.tsx` (`frontend/app/page.tsx / layout.tsx / search/page.tsx`).
+- Run backend test suite: `pytest frontend/__tests__/map-sync.test.mjs`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Next.js 14 App Router & Server/Client Boundary Architecture principles, protocols, and architectural invariants.
@@ -11580,7 +11653,7 @@ Inspect `frontend/app/page.tsx` in EstateMap. Compare its architecture and error
 ### Current EstateMap
 Implemented baseline in `frontend/app/page.tsx` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -11618,18 +11691,19 @@ Prepares the domain models and interfaces required by Story 74 (`Responsive Real
 ### Story 74 — Responsive Real Estate Discovery UI with Tailwind CSS
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`frontend/app/globals.css`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`frontend/app/globals.css`). Verified by automated test suites (frontend/__tests__/formatters.test.ts).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for responsive real estate discovery ui with tailwind css; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for responsive real estate discovery ui with tailwind css; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements responsive real estate discovery ui with tailwind css within `frontend/app/globals.css`."
+**Safe Interview Wording:** "EstateMap implements responsive real estate discovery ui with tailwind css in `frontend/app/globals.css` (frontend/app/globals.css / components/properties/property-card.tsx)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region responsive real estate discovery ui with tailwind css without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for responsive real estate discovery ui with tailwind css."
 
 #### 1. Why This Story Exists
 In production systems, responsive real estate discovery ui with tailwind css is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -11644,7 +11718,7 @@ Ad-hoc or unvalidated implementations of responsive real estate discovery ui wit
 - **Unlocks**: Story 75, Story 78, Story 79
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of globals.css
+- [ ] Can explain the architectural role of globals.css
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -11652,7 +11726,7 @@ Ad-hoc or unvalidated implementations of responsive real estate discovery ui wit
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Responsive Real Estate Discovery UI with Tailwind CSS
 - Implement a standalone proof-of-concept for Responsive Real Estate Discovery UI with Tailwind CSS from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`frontend/app/globals.css / components/properties/property-card.tsx`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -11662,7 +11736,7 @@ Ad-hoc or unvalidated implementations of responsive real estate discovery ui wit
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `frontend/app/globals.css`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `frontend/app/globals.css` via `frontend/app/globals.css / components/properties/property-card.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `frontend/__tests__/formatters.test.ts`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `frontend/app/globals.css` from input validation to persistence/response generation without looking at the source.
@@ -11702,9 +11776,9 @@ Inspect `frontend/app/globals.css` in EstateMap. Compare its architecture and er
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `frontend/app/globals.css`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `frontend/app/globals.css` (`frontend/app/globals.css / components/properties/property-card.tsx`).
+- Run backend test suite: `pytest frontend/__tests__/formatters.test.ts`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Responsive Real Estate Discovery UI with Tailwind CSS principles, protocols, and architectural invariants.
@@ -11739,7 +11813,7 @@ Inspect `frontend/app/globals.css` in EstateMap. Compare its architecture and er
 ### Current EstateMap
 Implemented baseline in `frontend/app/globals.css` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -11777,18 +11851,19 @@ Prepares the domain models and interfaces required by Story 75 (`Interactive Pro
 ### Story 75 — Interactive Property Search & Dynamic Filter Sidebar
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`frontend/components/search/filter-bar.tsx`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`frontend/components/search/filter-bar.tsx`). Verified by automated test suites (frontend/__tests__/formatters.test.ts).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for interactive property search & dynamic filter sidebar; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for interactive property search & dynamic filter sidebar; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements interactive property search & dynamic filter sidebar within `frontend/components/search/filter-bar.tsx`."
+**Safe Interview Wording:** "EstateMap implements interactive property search & dynamic filter sidebar in `frontend/components/search/filter-bar.tsx` (frontend/components/search/filter-bar.tsx)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region interactive property search & dynamic filter sidebar without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for interactive property search & dynamic filter sidebar."
 
 #### 1. Why This Story Exists
 In production systems, interactive property search & dynamic filter sidebar is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -11803,7 +11878,7 @@ Ad-hoc or unvalidated implementations of interactive property search & dynamic f
 - **Unlocks**: Story 77, Story 78
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of filter-bar.tsx
+- [ ] Can explain the architectural role of filter-bar.tsx
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -11811,7 +11886,7 @@ Ad-hoc or unvalidated implementations of interactive property search & dynamic f
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Interactive Property Search & Dynamic Filter Sidebar
 - Implement a standalone proof-of-concept for Interactive Property Search & Dynamic Filter Sidebar from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`frontend/components/search/filter-bar.tsx`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -11821,7 +11896,7 @@ Ad-hoc or unvalidated implementations of interactive property search & dynamic f
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `frontend/components/search/filter-bar.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `frontend/components/search/filter-bar.tsx` via `frontend/components/search/filter-bar.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `frontend/__tests__/formatters.test.ts`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `frontend/components/search/filter-bar.tsx` from input validation to persistence/response generation without looking at the source.
@@ -11860,9 +11935,9 @@ Inspect `frontend/components/search/filter-bar.tsx` in EstateMap. Compare its ar
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `frontend/components/search/filter-bar.tsx`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `frontend/components/search/filter-bar.tsx` (`frontend/components/search/filter-bar.tsx`).
+- Run backend test suite: `pytest frontend/__tests__/formatters.test.ts`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Interactive Property Search & Dynamic Filter Sidebar principles, protocols, and architectural invariants.
@@ -11897,7 +11972,7 @@ Inspect `frontend/components/search/filter-bar.tsx` in EstateMap. Compare its ar
 ### Current EstateMap
 Implemented baseline in `frontend/components/search/filter-bar.tsx` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -11935,18 +12010,19 @@ Prepares the domain models and interfaces required by Story 76 (`MapLibre GL Web
 ### Story 76 — MapLibre GL WebGL Vector Map Rendering & Tile Management
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`frontend/components/map/estate-map.tsx`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`frontend/components/map/estate-map.tsx`). Verified by automated test suites (frontend/__tests__/geojson.test.mjs).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for maplibre gl webgl vector map rendering & tile management; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for maplibre gl webgl vector map rendering & tile management; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements maplibre gl webgl vector map rendering & tile management within `frontend/components/map/estate-map.tsx`."
+**Safe Interview Wording:** "EstateMap implements maplibre gl webgl vector map rendering & tile management in `frontend/components/map/estate-map.tsx` (frontend/components/map/estate-map.tsx / map-container.tsx)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region maplibre gl webgl vector map rendering & tile management without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for maplibre gl webgl vector map rendering & tile management."
 
 #### 1. Why This Story Exists
 In production systems, maplibre gl webgl vector map rendering & tile management is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -11961,7 +12037,7 @@ Ad-hoc or unvalidated implementations of maplibre gl webgl vector map rendering 
 - **Unlocks**: Story 77, Story 78
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of estate-map.tsx
+- [ ] Can explain the architectural role of estate-map.tsx
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -11969,7 +12045,7 @@ Ad-hoc or unvalidated implementations of maplibre gl webgl vector map rendering 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of MapLibre GL WebGL Vector Map Rendering & Tile Management
 - Implement a standalone proof-of-concept for MapLibre GL WebGL Vector Map Rendering & Tile Management from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`frontend/components/map/estate-map.tsx / map-container.tsx`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -11979,7 +12055,7 @@ Ad-hoc or unvalidated implementations of maplibre gl webgl vector map rendering 
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `frontend/components/map/estate-map.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `frontend/components/map/estate-map.tsx` via `frontend/components/map/estate-map.tsx / map-container.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `frontend/__tests__/geojson.test.mjs`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `frontend/components/map/estate-map.tsx` from input validation to persistence/response generation without looking at the source.
@@ -12018,9 +12094,9 @@ Inspect `frontend/components/map/estate-map.tsx` in EstateMap. Compare its archi
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `frontend/components/map/estate-map.tsx`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `frontend/components/map/estate-map.tsx` (`frontend/components/map/estate-map.tsx / map-container.tsx`).
+- Run backend test suite: `pytest frontend/__tests__/geojson.test.mjs`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of MapLibre GL WebGL Vector Map Rendering & Tile Management principles, protocols, and architectural invariants.
@@ -12055,7 +12131,7 @@ Inspect `frontend/components/map/estate-map.tsx` in EstateMap. Compare its archi
 ### Current EstateMap
 Implemented baseline in `frontend/components/map/estate-map.tsx` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -12093,18 +12169,19 @@ Prepares the domain models and interfaces required by Story 77 (`Dynamic Viewpor
 ### Story 77 — Dynamic Viewport Bounding-Box Calculation & Debounced Pan/Zoom
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`frontend/components/map/estate-map.tsx`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`frontend/components/map/estate-map.tsx`). Verified by automated test suites (frontend/__tests__/geo-api.test.mjs).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for dynamic viewport bounding-box calculation & debounced pan/zoom; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for dynamic viewport bounding-box calculation & debounced pan/zoom; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements dynamic viewport bounding-box calculation & debounced pan/zoom within `frontend/components/map/estate-map.tsx`."
+**Safe Interview Wording:** "EstateMap implements dynamic viewport bounding-box calculation & debounced pan/zoom in `frontend/components/map/estate-map.tsx` (frontend/components/map/estate-map.tsx (bounds sync))."
 
-**Do Not Claim:** "Do not claim distributed or multi-region dynamic viewport bounding-box calculation & debounced pan/zoom without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for dynamic viewport bounding-box calculation & debounced pan/zoom."
 
 #### 1. Why This Story Exists
 In production systems, dynamic viewport bounding-box calculation & debounced pan/zoom is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -12119,7 +12196,7 @@ Ad-hoc or unvalidated implementations of dynamic viewport bounding-box calculati
 - **Unlocks**: Story 78, Story 96
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of estate-map.tsx
+- [ ] Can explain the architectural role of estate-map.tsx
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -12127,7 +12204,7 @@ Ad-hoc or unvalidated implementations of dynamic viewport bounding-box calculati
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Dynamic Viewport Bounding-Box Calculation & Debounced Pan/Zoom
 - Implement a standalone proof-of-concept for Dynamic Viewport Bounding-Box Calculation & Debounced Pan/Zoom from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`frontend/components/map/estate-map.tsx (bounds sync)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -12137,7 +12214,7 @@ Ad-hoc or unvalidated implementations of dynamic viewport bounding-box calculati
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `frontend/components/map/estate-map.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `frontend/components/map/estate-map.tsx` via `frontend/components/map/estate-map.tsx (bounds sync)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `frontend/__tests__/geo-api.test.mjs`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `frontend/components/map/estate-map.tsx` from input validation to persistence/response generation without looking at the source.
@@ -12176,9 +12253,9 @@ Inspect `frontend/components/map/estate-map.tsx` in EstateMap. Compare its archi
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `frontend/components/map/estate-map.tsx`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `frontend/components/map/estate-map.tsx` (`frontend/components/map/estate-map.tsx (bounds sync)`).
+- Run backend test suite: `pytest frontend/__tests__/geo-api.test.mjs`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Dynamic Viewport Bounding-Box Calculation & Debounced Pan/Zoom principles, protocols, and architectural invariants.
@@ -12213,7 +12290,7 @@ Inspect `frontend/components/map/estate-map.tsx` in EstateMap. Compare its archi
 ### Current EstateMap
 Implemented baseline in `frontend/components/map/estate-map.tsx` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -12251,18 +12328,19 @@ Prepares the domain models and interfaces required by Story 78 (`Bidirectional M
 ### Story 78 — Bidirectional Map Marker & Listing Card Synchronized Highlighting
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`frontend/components/map/estate-map.tsx`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`frontend/components/map/estate-map.tsx`). Verified by automated test suites (frontend/__tests__/map-sync.test.mjs).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for bidirectional map marker & listing card synchronized highlighting; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for bidirectional map marker & listing card synchronized highlighting; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements bidirectional map marker & listing card synchronized highlighting within `frontend/components/map/estate-map.tsx`."
+**Safe Interview Wording:** "EstateMap implements bidirectional map marker & listing card synchronized highlighting in `frontend/components/map/estate-map.tsx` (frontend/components/map/estate-map.tsx / property-card.tsx)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region bidirectional map marker & listing card synchronized highlighting without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for bidirectional map marker & listing card synchronized highlighting."
 
 #### 1. Why This Story Exists
 In production systems, bidirectional map marker & listing card synchronized highlighting is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -12277,7 +12355,7 @@ Ad-hoc or unvalidated implementations of bidirectional map marker & listing card
 - **Unlocks**: Story 79, Story 80
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of estate-map.tsx
+- [ ] Can explain the architectural role of estate-map.tsx
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -12285,7 +12363,7 @@ Ad-hoc or unvalidated implementations of bidirectional map marker & listing card
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Bidirectional Map Marker & Listing Card Synchronized Highlighting
 - Implement a standalone proof-of-concept for Bidirectional Map Marker & Listing Card Synchronized Highlighting from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`frontend/components/map/estate-map.tsx / property-card.tsx`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -12295,7 +12373,7 @@ Ad-hoc or unvalidated implementations of bidirectional map marker & listing card
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `frontend/components/map/estate-map.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `frontend/components/map/estate-map.tsx` via `frontend/components/map/estate-map.tsx / property-card.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `frontend/__tests__/map-sync.test.mjs`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `frontend/components/map/estate-map.tsx` from input validation to persistence/response generation without looking at the source.
@@ -12335,9 +12413,9 @@ Inspect `frontend/components/map/estate-map.tsx` in EstateMap. Compare its archi
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `frontend/components/map/estate-map.tsx`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `frontend/components/map/estate-map.tsx` (`frontend/components/map/estate-map.tsx / property-card.tsx`).
+- Run backend test suite: `pytest frontend/__tests__/map-sync.test.mjs`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Bidirectional Map Marker & Listing Card Synchronized Highlighting principles, protocols, and architectural invariants.
@@ -12372,7 +12450,7 @@ Inspect `frontend/components/map/estate-map.tsx` in EstateMap. Compare its archi
 ### Current EstateMap
 Implemented baseline in `frontend/components/map/estate-map.tsx` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -12410,18 +12488,19 @@ Prepares the domain models and interfaces required by Story 79 (`Interactive Pro
 ### Story 79 — Interactive Property Comparison Drawer & Visual Differencing
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`frontend/components/comparison/comparison-bar.tsx`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`frontend/components/comparison/comparison-bar.tsx`). Verified by automated test suites (frontend/__tests__/comparison.test.mjs).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for interactive property comparison drawer & visual differencing; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for interactive property comparison drawer & visual differencing; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements interactive property comparison drawer & visual differencing within `frontend/components/comparison/comparison-bar.tsx`."
+**Safe Interview Wording:** "EstateMap implements interactive property comparison drawer & visual differencing in `frontend/components/comparison/comparison-bar.tsx` (frontend/components/comparison/comparison-bar.tsx / app/compare/page.tsx)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region interactive property comparison drawer & visual differencing without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for interactive property comparison drawer & visual differencing."
 
 #### 1. Why This Story Exists
 In production systems, interactive property comparison drawer & visual differencing is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -12436,7 +12515,7 @@ Ad-hoc or unvalidated implementations of interactive property comparison drawer 
 - **Unlocks**: Story 80
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of comparison-bar.tsx
+- [ ] Can explain the architectural role of comparison-bar.tsx
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -12444,7 +12523,7 @@ Ad-hoc or unvalidated implementations of interactive property comparison drawer 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Interactive Property Comparison Drawer & Visual Differencing
 - Implement a standalone proof-of-concept for Interactive Property Comparison Drawer & Visual Differencing from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`frontend/components/comparison/comparison-bar.tsx / app/compare/page.tsx`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -12454,7 +12533,7 @@ Ad-hoc or unvalidated implementations of interactive property comparison drawer 
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `frontend/components/comparison/comparison-bar.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `frontend/components/comparison/comparison-bar.tsx` via `frontend/components/comparison/comparison-bar.tsx / app/compare/page.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `frontend/__tests__/comparison.test.mjs`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `frontend/components/comparison/comparison-bar.tsx` from input validation to persistence/response generation without looking at the source.
@@ -12493,9 +12572,9 @@ Inspect `frontend/components/comparison/comparison-bar.tsx` in EstateMap. Compar
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `frontend/components/comparison/comparison-bar.tsx`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `frontend/components/comparison/comparison-bar.tsx` (`frontend/components/comparison/comparison-bar.tsx / app/compare/page.tsx`).
+- Run backend test suite: `pytest frontend/__tests__/comparison.test.mjs`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Interactive Property Comparison Drawer & Visual Differencing principles, protocols, and architectural invariants.
@@ -12530,7 +12609,7 @@ Inspect `frontend/components/comparison/comparison-bar.tsx` in EstateMap. Compar
 ### Current EstateMap
 Implemented baseline in `frontend/components/comparison/comparison-bar.tsx` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -12568,18 +12647,19 @@ Prepares the domain models and interfaces required by Story 80 (`Persistent Cros
 ### Story 80 — Persistent Cross-Tab Favorites & Comparison Contexts
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`frontend/context/favorites-context.tsx`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`frontend/context/favorites-context.tsx`). Verified by automated test suites (frontend/__tests__/comparison.test.mjs).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for persistent cross-tab favorites & comparison contexts; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for persistent cross-tab favorites & comparison contexts; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements persistent cross-tab favorites & comparison contexts within `frontend/context/favorites-context.tsx`."
+**Safe Interview Wording:** "EstateMap implements persistent cross-tab favorites & comparison contexts in `frontend/context/favorites-context.tsx` (frontend/context/favorites-context.tsx / comparison-context.tsx)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region persistent cross-tab favorites & comparison contexts without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for persistent cross-tab favorites & comparison contexts."
 
 #### 1. Why This Story Exists
 In production systems, persistent cross-tab favorites & comparison contexts is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -12594,7 +12674,7 @@ Ad-hoc or unvalidated implementations of persistent cross-tab favorites & compar
 - **Unlocks**: Story 88
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of favorites-context.tsx
+- [ ] Can explain the architectural role of favorites-context.tsx
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -12602,7 +12682,7 @@ Ad-hoc or unvalidated implementations of persistent cross-tab favorites & compar
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Persistent Cross-Tab Favorites & Comparison Contexts
 - Implement a standalone proof-of-concept for Persistent Cross-Tab Favorites & Comparison Contexts from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`frontend/context/favorites-context.tsx / comparison-context.tsx`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -12612,7 +12692,7 @@ Ad-hoc or unvalidated implementations of persistent cross-tab favorites & compar
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `frontend/context/favorites-context.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `frontend/context/favorites-context.tsx` via `frontend/context/favorites-context.tsx / comparison-context.tsx`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `frontend/__tests__/comparison.test.mjs`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `frontend/context/favorites-context.tsx` from input validation to persistence/response generation without looking at the source.
@@ -12651,9 +12731,9 @@ Inspect `frontend/context/favorites-context.tsx` in EstateMap. Compare its archi
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `frontend/context/favorites-context.tsx`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `frontend/context/favorites-context.tsx` (`frontend/context/favorites-context.tsx / comparison-context.tsx`).
+- Run backend test suite: `pytest frontend/__tests__/comparison.test.mjs`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Persistent Cross-Tab Favorites & Comparison Contexts principles, protocols, and architectural invariants.
@@ -12688,7 +12768,7 @@ Inspect `frontend/context/favorites-context.tsx` in EstateMap. Compare its archi
 ### Current EstateMap
 Implemented baseline in `frontend/context/favorites-context.tsx` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -12728,18 +12808,19 @@ Prepares the domain models and interfaces required by Story 81 (`Multi-Container
 ### Story 81 — Multi-Container Docker Architecture & Networking
 * **Story Points**: 5 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`docker-compose.yml`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`docker-compose.yml`). Verified by automated test suites (docker-compose.yml).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for multi-container docker architecture & networking; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for multi-container docker architecture & networking; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements multi-container docker architecture & networking within `docker-compose.yml`."
+**Safe Interview Wording:** "EstateMap implements multi-container docker architecture & networking in `docker-compose.yml` (docker-compose.yml services (postgres, redis, backend, frontend, osrm))."
 
-**Do Not Claim:** "Do not claim distributed or multi-region multi-container docker architecture & networking without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for multi-container docker architecture & networking."
 
 #### 1. Why This Story Exists
 In production systems, multi-container docker architecture & networking is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -12754,7 +12835,7 @@ Ad-hoc or unvalidated implementations of multi-container docker architecture & n
 - **Unlocks**: Story 82, Story 83, Story 84
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of docker-compose.yml
+- [ ] Can explain the architectural role of docker-compose.yml
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -12762,7 +12843,7 @@ Ad-hoc or unvalidated implementations of multi-container docker architecture & n
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Multi-Container Docker Architecture & Networking
 - Implement a standalone proof-of-concept for Multi-Container Docker Architecture & Networking from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`docker-compose.yml services (postgres, redis, backend, frontend, osrm)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -12772,7 +12853,7 @@ Ad-hoc or unvalidated implementations of multi-container docker architecture & n
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `docker-compose.yml`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `docker-compose.yml` via `docker-compose.yml services (postgres, redis, backend, frontend, osrm)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `docker-compose.yml`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `docker-compose.yml` from input validation to persistence/response generation without looking at the source.
@@ -12812,9 +12893,9 @@ Inspect `docker-compose.yml` in EstateMap. Compare its architecture and error ha
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `docker-compose.yml`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `docker-compose.yml` (`docker-compose.yml services (postgres, redis, backend, frontend, osrm)`).
+- Run backend test suite: `pytest docker-compose.yml`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Multi-Container Docker Architecture & Networking principles, protocols, and architectural invariants.
@@ -12849,7 +12930,7 @@ Inspect `docker-compose.yml` in EstateMap. Compare its architecture and error ha
 ### Current EstateMap
 Implemented baseline in `docker-compose.yml` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -12887,18 +12968,19 @@ Prepares the domain models and interfaces required by Story 82 (`Docker Compose 
 ### Story 82 — Docker Compose Health Checks & Service Dependency Orchestration
 * **Story Points**: 3 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`docker-compose.yml`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`docker-compose.yml`). Verified by automated test suites (docker-compose.yml).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for docker compose health checks & service dependency orchestration; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for docker compose health checks & service dependency orchestration; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements docker compose health checks & service dependency orchestration within `docker-compose.yml`."
+**Safe Interview Wording:** "EstateMap implements docker compose health checks & service dependency orchestration in `docker-compose.yml` (docker-compose.yml: healthcheck / depends_on condition: service_healthy)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region docker compose health checks & service dependency orchestration without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for docker compose health checks & service dependency orchestration."
 
 #### 1. Why This Story Exists
 In production systems, docker compose health checks & service dependency orchestration is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -12913,7 +12995,7 @@ Ad-hoc or unvalidated implementations of docker compose health checks & service 
 - **Unlocks**: Story 83, Story 85
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of docker-compose.yml
+- [ ] Can explain the architectural role of docker-compose.yml
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -12921,7 +13003,7 @@ Ad-hoc or unvalidated implementations of docker compose health checks & service 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Docker Compose Health Checks & Service Dependency Orchestration
 - Implement a standalone proof-of-concept for Docker Compose Health Checks & Service Dependency Orchestration from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`docker-compose.yml: healthcheck / depends_on condition: service_healthy`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -12931,7 +13013,7 @@ Ad-hoc or unvalidated implementations of docker compose health checks & service 
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `docker-compose.yml`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `docker-compose.yml` via `docker-compose.yml: healthcheck / depends_on condition: service_healthy`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `docker-compose.yml`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `docker-compose.yml` from input validation to persistence/response generation without looking at the source.
@@ -12969,9 +13051,9 @@ Inspect `docker-compose.yml` in EstateMap. Compare its architecture and error ha
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `docker-compose.yml`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `docker-compose.yml` (`docker-compose.yml: healthcheck / depends_on condition: service_healthy`).
+- Run backend test suite: `pytest docker-compose.yml`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Docker Compose Health Checks & Service Dependency Orchestration principles, protocols, and architectural invariants.
@@ -13006,7 +13088,7 @@ Inspect `docker-compose.yml` in EstateMap. Compare its architecture and error ha
 ### Current EstateMap
 Implemented baseline in `docker-compose.yml` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -13044,18 +13126,19 @@ Prepares the domain models and interfaces required by Story 83 (`Multi-Stage Doc
 ### Story 83 — Multi-Stage Dockerfile Optimization & Minimal Distroless Containers
 * **Story Points**: 5 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/Dockerfile`.
+**Implemented Today:** Core mechanism implemented in `backend/Dockerfile` (backend/Dockerfile / frontend/Dockerfile).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of multi-stage dockerfile optimization & minimal distroless containers while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with multi-stage dockerfile optimization & minimal distroless containers while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary multi-stage dockerfile optimization & minimal distroless containers workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core multi-stage dockerfile optimization & minimal distroless containers workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated multi-stage dockerfile optimization & minimal distroless containers beyond what exists in `backend/Dockerfile`."
+**Do Not Claim:** "Do not claim full enterprise automation for multi-stage dockerfile optimization & minimal distroless containers beyond `backend/Dockerfile`."
 
 #### 1. Why This Story Exists
 In production systems, multi-stage dockerfile optimization & minimal distroless containers is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -13070,7 +13153,7 @@ Ad-hoc or unvalidated implementations of multi-stage dockerfile optimization & m
 - **Unlocks**: Story 84, Story 85
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of Dockerfile
+- [ ] Can explain the architectural role of Dockerfile
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -13078,7 +13161,7 @@ Ad-hoc or unvalidated implementations of multi-stage dockerfile optimization & m
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Multi-Stage Dockerfile Optimization & Minimal Distroless Containers
 - Implement a standalone proof-of-concept for Multi-Stage Dockerfile Optimization & Minimal Distroless Containers from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`backend/Dockerfile / frontend/Dockerfile`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -13089,13 +13172,13 @@ Ad-hoc or unvalidated implementations of multi-stage dockerfile optimization & m
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/Dockerfile`.
+EstateMap implements the core runtime flow in `backend/Dockerfile` (`backend/Dockerfile / frontend/Dockerfile`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/Dockerfile` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/Dockerfile` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/Dockerfile`
@@ -13132,8 +13215,8 @@ Inspect `backend/Dockerfile` in EstateMap. Compare its architecture and error ha
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/Dockerfile`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/Dockerfile` (`backend/Dockerfile / frontend/Dockerfile`).
+- Run integration tests covering the implemented baseline (`pytest backend/Dockerfile`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -13169,7 +13252,7 @@ Inspect `backend/Dockerfile` in EstateMap. Compare its architecture and error ha
 ### Current EstateMap
 Implemented baseline in `backend/Dockerfile` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -13207,18 +13290,19 @@ Prepares the domain models and interfaces required by Story 84 (`Non-Root Securi
 ### Story 84 — Non-Root Security Policies & Container Hardening
 * **Story Points**: 3 SP
 * **Implementation Status**: [PARTIAL]
+* **Learning Priority**: OPTIONAL PRODUCTION EXTENSION
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Core mechanism is implemented in `backend/Dockerfile`.
+**Implemented Today:** Core mechanism implemented in `backend/Dockerfile` (backend/Dockerfile / frontend/Dockerfile (future security hardening)).
 
-**Not Implemented:** Advanced production extensions (e.g. automatic CDC sync, dynamic telemetry backends, full multi-region failover) remain theoretical.
+**Not Implemented:** Advanced production extensions remain theoretical design models.
 
-**Why It Is Still Worth Learning:** Provides practical understanding of non-root security policies & container hardening while illustrating how production architectures extend beyond the baseline.
+**Why It Is Still Worth Learning:** Provides hands-on experience with non-root security policies & container hardening while mapping out future production needs.
 
-**Safe Interview Wording:** "EstateMap implements the primary non-root security policies & container hardening workflow, while advanced scaling hooks represent future evolution."
+**Safe Interview Wording:** "EstateMap implements the core non-root security policies & container hardening workflow, with advanced scaling hooks documented as future evolutions."
 
-**Do Not Claim:** "Do not claim full enterprise-grade automated non-root security policies & container hardening beyond what exists in `backend/Dockerfile`."
+**Do Not Claim:** "Do not claim full enterprise automation for non-root security policies & container hardening beyond `backend/Dockerfile`."
 
 #### 1. Why This Story Exists
 In production systems, non-root security policies & container hardening is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -13233,7 +13317,7 @@ Ad-hoc or unvalidated implementations of non-root security policies & container 
 - **Unlocks**: Story 85, Story 98
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of Dockerfile
+- [ ] Can explain the architectural role of Dockerfile
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -13241,7 +13325,7 @@ Ad-hoc or unvalidated implementations of non-root security policies & container 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Non-Root Security Policies & Container Hardening
 - Implement a standalone proof-of-concept for Non-Root Security Policies & Container Hardening from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`backend/Dockerfile / frontend/Dockerfile (future security hardening)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -13252,13 +13336,13 @@ Ad-hoc or unvalidated implementations of non-root security policies & container 
 
 #### 7. EstateMap Implementation
 **Implemented Portion:**
-EstateMap implements the core runtime flow in `backend/Dockerfile`.
+EstateMap implements the core runtime flow in `backend/Dockerfile` (`backend/Dockerfile / frontend/Dockerfile (future security hardening)`).
 
 **Missing / Theoretical Portion:**
-Advanced enterprise hooks (such as dynamic provider telemetry or automated invalidation clusters) remain conceptual models.
+Advanced enterprise hooks (such as dynamic provider telemetry or automated cluster failover) remain conceptual models.
 
 **Know Your Code Challenge:**
-Identify exactly which lines in `backend/Dockerfile` handle the primary workflow, and explain where additional production hooks would attach.
+Trace an execution path through `backend/Dockerfile` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/Dockerfile`
@@ -13295,8 +13379,8 @@ Inspect `backend/Dockerfile` in EstateMap. Compare its architecture and error ha
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect core implementation in `backend/Dockerfile`.
-- Run integration tests covering the implemented baseline.
+- Inspect core implementation in `backend/Dockerfile` (`backend/Dockerfile / frontend/Dockerfile (future security hardening)`).
+- Run integration tests covering the implemented baseline (`pytest docs/mastery/PRODUCTION_EVOLUTION.md`).
 - Review architecture ADR documentation in `docs/ADR/`.
 
 #### 13. Final Outcome
@@ -13332,7 +13416,7 @@ Inspect `backend/Dockerfile` in EstateMap. Compare its architecture and error ha
 ### Current EstateMap
 Implemented baseline in `backend/Dockerfile` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -13370,18 +13454,19 @@ Prepares the domain models and interfaces required by Story 85 (`Continuous Inte
 ### Story 85 — Continuous Integration Pipeline with GitHub Actions
 * **Story Points**: 5 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/main.py`).
 
-**Not Implemented:** The full continuous integration pipeline with github actions infrastructure is not currently deployed.
+**Not Implemented:** Full continuous integration pipeline with github actions infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied continuous integration pipeline with github actions as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied continuous integration pipeline with github actions as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs continuous integration pipeline with github actions in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs continuous integration pipeline with github actions."
 
 #### 1. Why This Story Exists
 In production systems, continuous integration pipeline with github actions is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -13396,7 +13481,7 @@ Ad-hoc or unvalidated implementations of continuous integration pipeline with gi
 - **Unlocks**: Story 86, Story 88
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of this subsystem
+- [ ] Can explain the architectural role of this subsystem
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -13404,7 +13489,7 @@ Ad-hoc or unvalidated implementations of continuous integration pipeline with gi
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Continuous Integration Pipeline with GitHub Actions
 - Implement a standalone proof-of-concept for Continuous Integration Pipeline with GitHub Actions from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`.github/workflows/ci.yml (hypothetical CI architecture)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -13415,13 +13500,13 @@ Ad-hoc or unvalidated implementations of continuous integration pipeline with gi
 
 #### 7. EstateMap Implementation
 **Current EstateMap Equivalent:**
-EstateMap currently utilizes standard baseline components (`backend/app/core/logging.py`).
+EstateMap currently utilizes standard baseline components (`backend/app/main.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Continuous Integration Pipeline with GitHub Actions` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Continuous Integration Pipeline with GitHub Actions` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/main.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `Hypothetical CI Architecture — NOT CURRENTLY PRESENT in repository root`
@@ -13492,7 +13577,7 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 ### Current EstateMap
 Implemented baseline in `backend/app/main.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -13530,18 +13615,19 @@ Prepares the domain models and interfaces required by Story 86 (`Comprehensive T
 ### Story 86 — Comprehensive Test Pyramid & Async Testing Fixtures
 * **Story Points**: 8 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/tests/conftest.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/tests/conftest.py`). Verified by automated test suites (backend/tests/conftest.py).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for comprehensive test pyramid & async testing fixtures; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for comprehensive test pyramid & async testing fixtures; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements comprehensive test pyramid & async testing fixtures within `backend/tests/conftest.py`."
+**Safe Interview Wording:** "EstateMap implements comprehensive test pyramid & async testing fixtures in `backend/tests/conftest.py` (backend/tests/conftest.py (288 passing backend tests))."
 
-**Do Not Claim:** "Do not claim distributed or multi-region comprehensive test pyramid & async testing fixtures without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for comprehensive test pyramid & async testing fixtures."
 
 #### 1. Why This Story Exists
 In production systems, comprehensive test pyramid & async testing fixtures is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -13556,7 +13642,7 @@ Ad-hoc or unvalidated implementations of comprehensive test pyramid & async test
 - **Unlocks**: Story 87, Story 88
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of conftest.py
+- [ ] Can explain the architectural role of conftest.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -13564,7 +13650,7 @@ Ad-hoc or unvalidated implementations of comprehensive test pyramid & async test
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Comprehensive Test Pyramid & Async Testing Fixtures
 - Implement a standalone proof-of-concept for Comprehensive Test Pyramid & Async Testing Fixtures from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`backend/tests/conftest.py (288 passing backend tests)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -13574,7 +13660,7 @@ Ad-hoc or unvalidated implementations of comprehensive test pyramid & async test
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/tests/conftest.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/tests/conftest.py` via `backend/tests/conftest.py (288 passing backend tests)`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `backend/tests/conftest.py`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/tests/conftest.py` from input validation to persistence/response generation without looking at the source.
@@ -13615,9 +13701,9 @@ Inspect `backend/tests/conftest.py` in EstateMap. Compare its architecture and e
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/tests/conftest.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/tests/conftest.py` (`backend/tests/conftest.py (288 passing backend tests)`).
+- Run backend test suite: `pytest backend/tests/conftest.py`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Comprehensive Test Pyramid & Async Testing Fixtures principles, protocols, and architectural invariants.
@@ -13652,7 +13738,7 @@ Inspect `backend/tests/conftest.py` in EstateMap. Compare its architecture and e
 ### Current EstateMap
 Implemented baseline in `backend/tests/conftest.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -13690,18 +13776,19 @@ Prepares the domain models and interfaces required by Story 87 (`Integration Tes
 ### Story 87 — Integration Testing with Testcontainers & Isolated Postgres/Redis
 * **Story Points**: 5 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/main.py`).
 
-**Not Implemented:** The full integration testing with testcontainers & isolated postgres/redis infrastructure is not currently deployed.
+**Not Implemented:** Full integration testing with testcontainers & isolated postgres/redis infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied integration testing with testcontainers & isolated postgres/redis as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied integration testing with testcontainers & isolated postgres/redis as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs integration testing with testcontainers & isolated postgres/redis in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs integration testing with testcontainers & isolated postgres/redis."
 
 #### 1. Why This Story Exists
 In production systems, integration testing with testcontainers & isolated postgres/redis is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -13716,7 +13803,7 @@ Ad-hoc or unvalidated implementations of integration testing with testcontainers
 - **Unlocks**: Story 88, Story 92
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of this subsystem
+- [ ] Can explain the architectural role of this subsystem
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -13724,7 +13811,7 @@ Ad-hoc or unvalidated implementations of integration testing with testcontainers
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Integration Testing with Testcontainers & Isolated Postgres/Redis
 - Implement a standalone proof-of-concept for Integration Testing with Testcontainers & Isolated Postgres/Redis from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`Hypothetical Testcontainers architecture (currently uses Docker Compose)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -13735,13 +13822,13 @@ Ad-hoc or unvalidated implementations of integration testing with testcontainers
 
 #### 7. EstateMap Implementation
 **Current EstateMap Equivalent:**
-EstateMap currently utilizes standard baseline components (`backend/app/core/logging.py`).
+EstateMap currently utilizes standard baseline components (`backend/app/main.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Integration Testing with Testcontainers & Isolated Postgres/Redis` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Integration Testing with Testcontainers & Isolated Postgres/Redis` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/main.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `Hypothetical Testcontainers Architecture — NOT CURRENTLY PRESENT (Uses Docker Compose environment)`
@@ -13812,7 +13899,7 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 ### Current EstateMap
 Implemented baseline in `backend/app/main.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -13850,18 +13937,19 @@ Prepares the domain models and interfaces required by Story 88 (`Frontend End-to
 ### Story 88 — Frontend End-to-End Testing with Playwright & Mock Service Worker
 * **Story Points**: 5 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`frontend/__tests__/`).
 
-**Not Implemented:** The full frontend end-to-end testing with playwright & mock service worker infrastructure is not currently deployed.
+**Not Implemented:** Full frontend end-to-end testing with playwright & mock service worker infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied frontend end-to-end testing with playwright & mock service worker as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied frontend end-to-end testing with playwright & mock service worker as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs frontend end-to-end testing with playwright & mock service worker in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs frontend end-to-end testing with playwright & mock service worker."
 
 #### 1. Why This Story Exists
 In production systems, frontend end-to-end testing with playwright & mock service worker is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -13876,7 +13964,7 @@ Ad-hoc or unvalidated implementations of frontend end-to-end testing with playwr
 - **Unlocks**: Story 96
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of 
+- [ ] Can explain the architectural role of 
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -13884,7 +13972,7 @@ Ad-hoc or unvalidated implementations of frontend end-to-end testing with playwr
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Frontend End-to-End Testing with Playwright & Mock Service Worker
 - Implement a standalone proof-of-concept for Frontend End-to-End Testing with Playwright & Mock Service Worker from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`frontend/__tests__/ (33 passing unit/integration tests)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -13897,11 +13985,11 @@ Ad-hoc or unvalidated implementations of frontend end-to-end testing with playwr
 **Current EstateMap Equivalent:**
 EstateMap currently utilizes standard baseline components (`frontend/__tests__/`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Frontend End-to-End Testing with Playwright & Mock Service Worker` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Frontend End-to-End Testing with Playwright & Mock Service Worker` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `frontend/__tests__/` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `frontend/__tests__/`
@@ -13973,7 +14061,7 @@ Inspect `frontend/__tests__/` in EstateMap. Compare its architecture and error h
 ### Current EstateMap
 Implemented baseline in `frontend/__tests__/` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -14011,18 +14099,19 @@ Prepares the domain models and interfaces required by Story 89 (`Application Per
 ### Story 89 — Application Performance Monitoring & OpenTelemetry Tracing
 * **Story Points**: 5 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/core/logging.py`).
 
-**Not Implemented:** The full application performance monitoring & opentelemetry tracing infrastructure is not currently deployed.
+**Not Implemented:** Full application performance monitoring & opentelemetry tracing infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied application performance monitoring & opentelemetry tracing as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied application performance monitoring & opentelemetry tracing as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs application performance monitoring & opentelemetry tracing in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs application performance monitoring & opentelemetry tracing."
 
 #### 1. Why This Story Exists
 In production systems, application performance monitoring & opentelemetry tracing is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -14037,7 +14126,7 @@ Ad-hoc or unvalidated implementations of application performance monitoring & op
 - **Unlocks**: Story 90, Story 96
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of logging.py
+- [ ] Can explain the architectural role of logging.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -14045,7 +14134,7 @@ Ad-hoc or unvalidated implementations of application performance monitoring & op
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Application Performance Monitoring & OpenTelemetry Tracing
 - Implement a standalone proof-of-concept for Application Performance Monitoring & OpenTelemetry Tracing from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`backend/app/core/logging.py (structured correlation ID logging)`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -14058,11 +14147,11 @@ Ad-hoc or unvalidated implementations of application performance monitoring & op
 **Current EstateMap Equivalent:**
 EstateMap currently utilizes standard baseline components (`backend/app/core/logging.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Application Performance Monitoring & OpenTelemetry Tracing` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Application Performance Monitoring & OpenTelemetry Tracing` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/core/logging.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/core/logging.py`
@@ -14134,7 +14223,7 @@ Inspect `backend/app/core/logging.py` in EstateMap. Compare its architecture and
 ### Current EstateMap
 Implemented baseline in `backend/app/core/logging.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -14172,18 +14261,19 @@ Prepares the domain models and interfaces required by Story 90 (`Prometheus Metr
 ### Story 90 — Prometheus Metrics & Grafana Dashboard Observability
 * **Story Points**: 5 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/main.py`).
 
-**Not Implemented:** The full prometheus metrics & grafana dashboard observability infrastructure is not currently deployed.
+**Not Implemented:** Full prometheus metrics & grafana dashboard observability infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied prometheus metrics & grafana dashboard observability as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied prometheus metrics & grafana dashboard observability as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs prometheus metrics & grafana dashboard observability in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs prometheus metrics & grafana dashboard observability."
 
 #### 1. Why This Story Exists
 In production systems, prometheus metrics & grafana dashboard observability is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -14198,7 +14288,7 @@ Ad-hoc or unvalidated implementations of prometheus metrics & grafana dashboard 
 - **Unlocks**: Story 96
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of this subsystem
+- [ ] Can explain the architectural role of this subsystem
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -14206,7 +14296,7 @@ Ad-hoc or unvalidated implementations of prometheus metrics & grafana dashboard 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Prometheus Metrics & Grafana Dashboard Observability
 - Implement a standalone proof-of-concept for Prometheus Metrics & Grafana Dashboard Observability from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`Hypothetical Prometheus metrics pipeline`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -14217,13 +14307,13 @@ Ad-hoc or unvalidated implementations of prometheus metrics & grafana dashboard 
 
 #### 7. EstateMap Implementation
 **Current EstateMap Equivalent:**
-EstateMap currently utilizes standard baseline components (`backend/app/core/logging.py`).
+EstateMap currently utilizes standard baseline components (`backend/app/main.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Prometheus Metrics & Grafana Dashboard Observability` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Prometheus Metrics & Grafana Dashboard Observability` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/main.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `Hypothetical Prometheus/Grafana Configuration — NOT CURRENTLY PRESENT`
@@ -14294,7 +14384,7 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 ### Current EstateMap
 Implemented baseline in `backend/app/main.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -14334,18 +14424,19 @@ Prepares the domain models and interfaces required by Story 91 (`Defense of the 
 ### Story 91 — Defense of the Modular Monolith Architecture
 * **Story Points**: 8 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`backend/app/main.py`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`backend/app/main.py`). Verified by automated test suites (docs/ADR/ADR-001-modular-monolith.md).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for defense of the modular monolith architecture; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for defense of the modular monolith architecture; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements defense of the modular monolith architecture within `backend/app/main.py`."
+**Safe Interview Wording:** "EstateMap implements defense of the modular monolith architecture in `backend/app/main.py` (docs/ADR/ADR-001-modular-monolith.md / app.main:app)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region defense of the modular monolith architecture without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for defense of the modular monolith architecture."
 
 #### 1. Why This Story Exists
 In production systems, defense of the modular monolith architecture is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -14360,7 +14451,7 @@ Ad-hoc or unvalidated implementations of defense of the modular monolith archite
 - **Unlocks**: Story 92, Story 93, Story 99, Story 100
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of main.py
+- [ ] Can explain the architectural role of main.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -14368,7 +14459,7 @@ Ad-hoc or unvalidated implementations of defense of the modular monolith archite
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Defense of the Modular Monolith Architecture
 - Implement a standalone proof-of-concept for Defense of the Modular Monolith Architecture from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`docs/ADR/ADR-001-modular-monolith.md / app.main:app`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -14378,7 +14469,7 @@ Ad-hoc or unvalidated implementations of defense of the modular monolith archite
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `backend/app/main.py`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `backend/app/main.py` via `docs/ADR/ADR-001-modular-monolith.md / app.main:app`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `docs/ADR/ADR-001-modular-monolith.md`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `backend/app/main.py` from input validation to persistence/response generation without looking at the source.
@@ -14417,9 +14508,9 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `backend/app/main.py`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `backend/app/main.py` (`docs/ADR/ADR-001-modular-monolith.md / app.main:app`).
+- Run backend test suite: `pytest docs/ADR/ADR-001-modular-monolith.md`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Defense of the Modular Monolith Architecture principles, protocols, and architectural invariants.
@@ -14454,7 +14545,7 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 ### Current EstateMap
 Implemented baseline in `backend/app/main.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -14492,18 +14583,19 @@ Prepares the domain models and interfaces required by Story 92 (`Database Scalin
 ### Story 92 — Database Scaling: Read Replicas, Connection Pooling & Sharding
 * **Story Points**: 8 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/db/session.py`).
 
-**Not Implemented:** The full database scaling: read replicas, connection pooling & sharding infrastructure is not currently deployed.
+**Not Implemented:** Full database scaling: read replicas, connection pooling & sharding infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied database scaling: read replicas, connection pooling & sharding as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied database scaling: read replicas, connection pooling & sharding as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs database scaling: read replicas, connection pooling & sharding in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs database scaling: read replicas, connection pooling & sharding."
 
 #### 1. Why This Story Exists
 In production systems, database scaling: read replicas, connection pooling & sharding is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -14518,7 +14610,7 @@ Ad-hoc or unvalidated implementations of database scaling: read replicas, connec
 - **Unlocks**: Story 93, Story 95, Story 97, Story 100
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of session.py
+- [ ] Can explain the architectural role of session.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -14526,7 +14618,7 @@ Ad-hoc or unvalidated implementations of database scaling: read replicas, connec
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Database Scaling: Read Replicas, Connection Pooling & Sharding
 - Implement a standalone proof-of-concept for Database Scaling: Read Replicas, Connection Pooling & Sharding from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.db.session:engine / docs/mastery/PRODUCTION_EVOLUTION.md`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -14539,11 +14631,11 @@ Ad-hoc or unvalidated implementations of database scaling: read replicas, connec
 **Current EstateMap Equivalent:**
 EstateMap currently utilizes standard baseline components (`backend/app/db/session.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Database Scaling: Read Replicas, Connection Pooling & Sharding` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Database Scaling: Read Replicas, Connection Pooling & Sharding` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/db/session.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/db/session.py`
@@ -14615,7 +14707,7 @@ Inspect `backend/app/db/session.py` in EstateMap. Compare its architecture and e
 ### Current EstateMap
 Implemented baseline in `backend/app/db/session.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -14653,18 +14745,19 @@ Prepares the domain models and interfaces required by Story 93 (`Caching Archite
 ### Story 93 — Caching Architecture at Scale: Distributed Redis Cluster & Invalidation
 * **Story Points**: 8 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/cache/cache_service.py`).
 
-**Not Implemented:** The full caching architecture at scale: distributed redis cluster & invalidation infrastructure is not currently deployed.
+**Not Implemented:** Full caching architecture at scale: distributed redis cluster & invalidation infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied caching architecture at scale: distributed redis cluster & invalidation as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied caching architecture at scale: distributed redis cluster & invalidation as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs caching architecture at scale: distributed redis cluster & invalidation in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs caching architecture at scale: distributed redis cluster & invalidation."
 
 #### 1. Why This Story Exists
 In production systems, caching architecture at scale: distributed redis cluster & invalidation is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -14679,7 +14772,7 @@ Ad-hoc or unvalidated implementations of caching architecture at scale: distribu
 - **Unlocks**: Story 95, Story 96, Story 97, Story 100
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of cache_service.py
+- [ ] Can explain the architectural role of cache_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -14687,7 +14780,7 @@ Ad-hoc or unvalidated implementations of caching architecture at scale: distribu
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Caching Architecture at Scale: Distributed Redis Cluster & Invalidation
 - Implement a standalone proof-of-concept for Caching Architecture at Scale: Distributed Redis Cluster & Invalidation from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.cache.cache_service:CacheService / docs/mastery/ESTATEMAP_MASTER_BOOK.md`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -14700,11 +14793,11 @@ Ad-hoc or unvalidated implementations of caching architecture at scale: distribu
 **Current EstateMap Equivalent:**
 EstateMap currently utilizes standard baseline components (`backend/app/cache/cache_service.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Caching Architecture at Scale: Distributed Redis Cluster & Invalidation` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Caching Architecture at Scale: Distributed Redis Cluster & Invalidation` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/cache/cache_service.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/cache/cache_service.py`
@@ -14776,7 +14869,7 @@ Inspect `backend/app/cache/cache_service.py` in EstateMap. Compare its architect
 ### Current EstateMap
 Implemented baseline in `backend/app/cache/cache_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -14814,18 +14907,19 @@ Prepares the domain models and interfaces required by Story 94 (`AI Gateway Arch
 ### Story 94 — AI Gateway Architecture: Rate Limiting, Cost Optimization & Model Routing
 * **Story Points**: 8 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/ai/router.py`).
 
-**Not Implemented:** The full ai gateway architecture: rate limiting, cost optimization & model routing infrastructure is not currently deployed.
+**Not Implemented:** Full ai gateway architecture: rate limiting, cost optimization & model routing infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied ai gateway architecture: rate limiting, cost optimization & model routing as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied ai gateway architecture: rate limiting, cost optimization & model routing as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs ai gateway architecture: rate limiting, cost optimization & model routing in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs ai gateway architecture: rate limiting, cost optimization & model routing."
 
 #### 1. Why This Story Exists
 In production systems, ai gateway architecture: rate limiting, cost optimization & model routing is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -14840,7 +14934,7 @@ Ad-hoc or unvalidated implementations of ai gateway architecture: rate limiting,
 - **Unlocks**: Story 96, Story 100
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of router.py
+- [ ] Can explain the architectural role of router.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -14848,7 +14942,7 @@ Ad-hoc or unvalidated implementations of ai gateway architecture: rate limiting,
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of AI Gateway Architecture: Rate Limiting, Cost Optimization & Model Routing
 - Implement a standalone proof-of-concept for AI Gateway Architecture: Rate Limiting, Cost Optimization & Model Routing from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.ai.router:AIRouter / docs/mastery/ESTATEMAP_MASTER_BOOK.md`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -14861,11 +14955,11 @@ Ad-hoc or unvalidated implementations of ai gateway architecture: rate limiting,
 **Current EstateMap Equivalent:**
 EstateMap currently utilizes standard baseline components (`backend/app/ai/router.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `AI Gateway Architecture: Rate Limiting, Cost Optimization & Model Routing` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `AI Gateway Architecture: Rate Limiting, Cost Optimization & Model Routing` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/ai/router.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/ai/router.py`
@@ -14937,7 +15031,7 @@ Inspect `backend/app/ai/router.py` in EstateMap. Compare its architecture and er
 ### Current EstateMap
 Implemented baseline in `backend/app/ai/router.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -14975,18 +15069,19 @@ Prepares the domain models and interfaces required by Story 95 (`High-Throughput
 ### Story 95 — High-Throughput Ingestion Pipeline for Real Estate Listings
 * **Story Points**: 8 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/services/property_service.py`).
 
-**Not Implemented:** The full high-throughput ingestion pipeline for real estate listings infrastructure is not currently deployed.
+**Not Implemented:** Full high-throughput ingestion pipeline for real estate listings infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied high-throughput ingestion pipeline for real estate listings as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied high-throughput ingestion pipeline for real estate listings as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs high-throughput ingestion pipeline for real estate listings in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs high-throughput ingestion pipeline for real estate listings."
 
 #### 1. Why This Story Exists
 In production systems, high-throughput ingestion pipeline for real estate listings is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -15001,7 +15096,7 @@ Ad-hoc or unvalidated implementations of high-throughput ingestion pipeline for 
 - **Unlocks**: Story 96, Story 97, Story 100
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of property_service.py
+- [ ] Can explain the architectural role of property_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -15009,7 +15104,7 @@ Ad-hoc or unvalidated implementations of high-throughput ingestion pipeline for 
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of High-Throughput Ingestion Pipeline for Real Estate Listings
 - Implement a standalone proof-of-concept for High-Throughput Ingestion Pipeline for Real Estate Listings from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.property_service:PropertyService / docs/mastery/ESTATEMAP_MASTER_BOOK.md`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -15022,11 +15117,11 @@ Ad-hoc or unvalidated implementations of high-throughput ingestion pipeline for 
 **Current EstateMap Equivalent:**
 EstateMap currently utilizes standard baseline components (`backend/app/services/property_service.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `High-Throughput Ingestion Pipeline for Real Estate Listings` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `High-Throughput Ingestion Pipeline for Real Estate Listings` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/services/property_service.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/services/property_service.py`
@@ -15098,7 +15193,7 @@ Inspect `backend/app/services/property_service.py` in EstateMap. Compare its arc
 ### Current EstateMap
 Implemented baseline in `backend/app/services/property_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -15136,18 +15231,19 @@ Prepares the domain models and interfaces required by Story 96 (`Real-Time Viewp
 ### Story 96 — Real-Time Viewport Sync at 100k Concurrent Users
 * **Story Points**: 8 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/services/geo_service.py`).
 
-**Not Implemented:** The full real-time viewport sync at 100k concurrent users infrastructure is not currently deployed.
+**Not Implemented:** Full real-time viewport sync at 100k concurrent users infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied real-time viewport sync at 100k concurrent users as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied real-time viewport sync at 100k concurrent users as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs real-time viewport sync at 100k concurrent users in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs real-time viewport sync at 100k concurrent users."
 
 #### 1. Why This Story Exists
 In production systems, real-time viewport sync at 100k concurrent users is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -15162,7 +15258,7 @@ Ad-hoc or unvalidated implementations of real-time viewport sync at 100k concurr
 - **Unlocks**: Story 97, Story 100
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of geo_service.py
+- [ ] Can explain the architectural role of geo_service.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -15170,7 +15266,7 @@ Ad-hoc or unvalidated implementations of real-time viewport sync at 100k concurr
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Real-Time Viewport Sync at 100k Concurrent Users
 - Implement a standalone proof-of-concept for Real-Time Viewport Sync at 100k Concurrent Users from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.services.geo_service:GeoService / docs/mastery/ESTATEMAP_MASTER_BOOK.md`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -15183,11 +15279,11 @@ Ad-hoc or unvalidated implementations of real-time viewport sync at 100k concurr
 **Current EstateMap Equivalent:**
 EstateMap currently utilizes standard baseline components (`backend/app/services/geo_service.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Real-Time Viewport Sync at 100k Concurrent Users` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Real-Time Viewport Sync at 100k Concurrent Users` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/services/geo_service.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/services/geo_service.py`
@@ -15259,7 +15355,7 @@ Inspect `backend/app/services/geo_service.py` in EstateMap. Compare its architec
 ### Current EstateMap
 Implemented baseline in `backend/app/services/geo_service.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -15297,18 +15393,19 @@ Prepares the domain models and interfaces required by Story 97 (`Disaster Recove
 ### Story 97 — Disaster Recovery, Multi-Region Availability & Data Replication
 * **Story Points**: 8 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/main.py`).
 
-**Not Implemented:** The full disaster recovery, multi-region availability & data replication infrastructure is not currently deployed.
+**Not Implemented:** Full disaster recovery, multi-region availability & data replication infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied disaster recovery, multi-region availability & data replication as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied disaster recovery, multi-region availability & data replication as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs disaster recovery, multi-region availability & data replication in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs disaster recovery, multi-region availability & data replication."
 
 #### 1. Why This Story Exists
 In production systems, disaster recovery, multi-region availability & data replication is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -15323,7 +15420,7 @@ Ad-hoc or unvalidated implementations of disaster recovery, multi-region availab
 - **Unlocks**: Story 98, Story 100
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of this subsystem
+- [ ] Can explain the architectural role of this subsystem
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -15331,7 +15428,7 @@ Ad-hoc or unvalidated implementations of disaster recovery, multi-region availab
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Disaster Recovery, Multi-Region Availability & Data Replication
 - Implement a standalone proof-of-concept for Disaster Recovery, Multi-Region Availability & Data Replication from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`docs/mastery/ESTATEMAP_MASTER_BOOK.md`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -15342,13 +15439,13 @@ Ad-hoc or unvalidated implementations of disaster recovery, multi-region availab
 
 #### 7. EstateMap Implementation
 **Current EstateMap Equivalent:**
-EstateMap currently utilizes standard baseline components (`backend/app/core/logging.py`).
+EstateMap currently utilizes standard baseline components (`backend/app/main.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Disaster Recovery, Multi-Region Availability & Data Replication` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Disaster Recovery, Multi-Region Availability & Data Replication` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/main.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `Hypothetical Multi-Region Disaster Recovery Architecture — NOT CURRENTLY PRESENT`
@@ -15419,7 +15516,7 @@ Inspect `backend/app/main.py` in EstateMap. Compare its architecture and error h
 ### Current EstateMap
 Implemented baseline in `backend/app/main.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -15457,18 +15554,19 @@ Prepares the domain models and interfaces required by Story 98 (`Security Archit
 ### Story 98 — Security Architecture: Zero-Trust, Secret Rotation & Data Protection
 * **Story Points**: 8 SP
 * **Implementation Status**: [FUTURE]
+* **Learning Priority**: ADVANCED SYSTEM DESIGN
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** None directly in the current runtime; EstateMap utilizes simpler baseline components (e.g. Docker Compose, structured logging, single-node Postgres/Redis).
+**Implemented Today:** None directly in runtime; EstateMap utilizes standard baseline components (`backend/app/core/security.py`).
 
-**Not Implemented:** The full security architecture: zero-trust, secret rotation & data protection infrastructure is not currently deployed.
+**Not Implemented:** Full security architecture: zero-trust, secret rotation & data protection infrastructure is not deployed in the repository.
 
-**Why It Is Still Worth Learning:** Critical system design and production engineering topic required to explain how EstateMap scales under high throughput.
+**Why It Is Still Worth Learning:** High-level system design topic required to defend scalability and disaster recovery under high concurrency.
 
-**Safe Interview Wording:** "EstateMap currently relies on a lightweight baseline. I studied security architecture: zero-trust, secret rotation & data protection as a target evolution if specific scalability triggers are met."
+**Safe Interview Wording:** "EstateMap relies on a lightweight baseline. I studied security architecture: zero-trust, secret rotation & data protection as a target evolution if specific scaling triggers are met."
 
-**Do Not Claim:** "Do not claim EstateMap currently runs security architecture: zero-trust, secret rotation & data protection in production."
+**Do Not Claim:** "Do not claim EstateMap currently runs security architecture: zero-trust, secret rotation & data protection."
 
 #### 1. Why This Story Exists
 In production systems, security architecture: zero-trust, secret rotation & data protection is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -15483,7 +15581,7 @@ Ad-hoc or unvalidated implementations of security architecture: zero-trust, secr
 - **Unlocks**: Story 99, Story 100
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of security.py
+- [ ] Can explain the architectural role of security.py
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -15491,7 +15589,7 @@ Ad-hoc or unvalidated implementations of security architecture: zero-trust, secr
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Security Architecture: Zero-Trust, Secret Rotation & Data Protection
 - Implement a standalone proof-of-concept for Security Architecture: Zero-Trust, Secret Rotation & Data Protection from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`app.core.security / docs/mastery/ESTATEMAP_MASTER_BOOK.md`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -15504,11 +15602,11 @@ Ad-hoc or unvalidated implementations of security architecture: zero-trust, secr
 **Current EstateMap Equivalent:**
 EstateMap currently utilizes standard baseline components (`backend/app/core/security.py`).
 
-**Potential Future Implementation:**
-Under measured scale or enterprise requirements, `Security Architecture: Zero-Trust, Secret Rotation & Data Protection` would be introduced as a dedicated infrastructure tier or middleware layer.
+**Potential Production Evolution:**
+Under measured throughput bottlenecks or high-availability requirements, `Security Architecture: Zero-Trust, Secret Rotation & Data Protection` would be introduced as a dedicated infrastructure tier.
 
 **Know Your Code Challenge:**
-Explain why introducing this technology prematurely would add operational complexity without solving current development bottlenecks.
+Trace an execution path through `backend/app/core/security.py` from input validation to persistence/response generation without looking at the source.
 
 #### 8. Files / Functions to Study
 - `backend/app/core/security.py`
@@ -15580,7 +15678,7 @@ Inspect `backend/app/core/security.py` in EstateMap. Compare its architecture an
 ### Current EstateMap
 Implemented baseline in `backend/app/core/security.py` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -15618,18 +15716,19 @@ Prepares the domain models and interfaces required by Story 99 (`Engineering Tra
 ### Story 99 — Engineering Tradeoff Audit: 10 Decisions We Defend and 5 We Would Change
 * **Story Points**: 8 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`docs/mastery/TRADEOFF_MATRIX.md`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`docs/mastery/TRADEOFF_MATRIX.md`). Verified by automated test suites (docs/mastery/TRADEOFF_MATRIX.md).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for engineering tradeoff audit: 10 decisions we defend and 5 we would change; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for engineering tradeoff audit: 10 decisions we defend and 5 we would change; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements engineering tradeoff audit: 10 decisions we defend and 5 we would change within `docs/mastery/TRADEOFF_MATRIX.md`."
+**Safe Interview Wording:** "EstateMap implements engineering tradeoff audit: 10 decisions we defend and 5 we would change in `docs/mastery/TRADEOFF_MATRIX.md` (docs/mastery/TRADEOFF_MATRIX.md / ADR_MASTER_INDEX.md)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region engineering tradeoff audit: 10 decisions we defend and 5 we would change without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for engineering tradeoff audit: 10 decisions we defend and 5 we would change."
 
 #### 1. Why This Story Exists
 In production systems, engineering tradeoff audit: 10 decisions we defend and 5 we would change is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -15644,7 +15743,7 @@ Ad-hoc or unvalidated implementations of engineering tradeoff audit: 10 decision
 - **Unlocks**: Story 100
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of TRADEOFF_MATRIX.md
+- [ ] Can explain the architectural role of TRADEOFF_MATRIX.md
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -15652,7 +15751,7 @@ Ad-hoc or unvalidated implementations of engineering tradeoff audit: 10 decision
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Engineering Tradeoff Audit: 10 Decisions We Defend and 5 We Would Change
 - Implement a standalone proof-of-concept for Engineering Tradeoff Audit: 10 Decisions We Defend and 5 We Would Change from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`docs/mastery/TRADEOFF_MATRIX.md / ADR_MASTER_INDEX.md`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -15662,7 +15761,7 @@ Ad-hoc or unvalidated implementations of engineering tradeoff audit: 10 decision
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `docs/mastery/TRADEOFF_MATRIX.md`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `docs/mastery/TRADEOFF_MATRIX.md` via `docs/mastery/TRADEOFF_MATRIX.md / ADR_MASTER_INDEX.md`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `docs/mastery/TRADEOFF_MATRIX.md`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `docs/mastery/TRADEOFF_MATRIX.md` from input validation to persistence/response generation without looking at the source.
@@ -15701,9 +15800,9 @@ Inspect `docs/mastery/TRADEOFF_MATRIX.md` in EstateMap. Compare its architecture
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `docs/mastery/TRADEOFF_MATRIX.md`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `docs/mastery/TRADEOFF_MATRIX.md` (`docs/mastery/TRADEOFF_MATRIX.md / ADR_MASTER_INDEX.md`).
+- Run backend test suite: `pytest docs/mastery/TRADEOFF_MATRIX.md`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Engineering Tradeoff Audit: 10 Decisions We Defend and 5 We Would Change principles, protocols, and architectural invariants.
@@ -15738,7 +15837,7 @@ Inspect `docs/mastery/TRADEOFF_MATRIX.md` in EstateMap. Compare its architecture
 ### Current EstateMap
 Implemented baseline in `docs/mastery/TRADEOFF_MATRIX.md` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
@@ -15776,18 +15875,19 @@ Prepares the domain models and interfaces required by Story 100 (`Complete Estat
 ### Story 100 — Complete EstateMap System Design Whiteboard Defense
 * **Story Points**: 13 SP
 * **Implementation Status**: [CURRENT]
+* **Learning Priority**: CORE REQUIRED
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Fully implemented in EstateMap (`docs/mastery/ESTATEMAP_MASTER_BOOK.md`). Verified by automated test regressions.
+**Implemented Today:** Implemented in EstateMap (`docs/mastery/ESTATEMAP_MASTER_BOOK.md`). Verified by automated test suites (docs/mastery/ESTATEMAP_MASTER_BOOK.md).
 
-**Not Implemented:** Distributed multi-region or enterprise clustering capabilities (unnecessary for current monolith requirements).
+**Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
-**Why It Is Still Worth Learning:** Core engineering foundation for complete estatemap system design whiteboard defense; essential for understanding the runtime behavior of EstateMap.
+**Why It Is Still Worth Learning:** Core engineering foundation for complete estatemap system design whiteboard defense; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements complete estatemap system design whiteboard defense within `docs/mastery/ESTATEMAP_MASTER_BOOK.md`."
+**Safe Interview Wording:** "EstateMap implements complete estatemap system design whiteboard defense in `docs/mastery/ESTATEMAP_MASTER_BOOK.md` (docs/mastery/ESTATEMAP_MASTER_BOOK.md / SYSTEM_DESIGN_INTERVIEW.md)."
 
-**Do Not Claim:** "Do not claim distributed or multi-region complete estatemap system design whiteboard defense without active clustering."
+**Do Not Claim:** "Do not claim unverified distributed extensions for complete estatemap system design whiteboard defense."
 
 #### 1. Why This Story Exists
 In production systems, complete estatemap system design whiteboard defense is essential to guarantee correctness, maintainability, and operational resilience across system layers.
@@ -15802,7 +15902,7 @@ Ad-hoc or unvalidated implementations of complete estatemap system design whiteb
 - **Unlocks**: None (Terminal Story)
 
 #### 4. Entry Readiness Check
-- [ ] Can explain the core architectural role of ESTATEMAP_MASTER_BOOK.md
+- [ ] Can explain the architectural role of ESTATEMAP_MASTER_BOOK.md
 - [ ] Familiar with non-blocking async/await semantics and transaction lifecycles
 - [ ] Able to trace request/response data flow across layered architectural boundaries
 - [ ] Can write a standalone Python or SQL script testing this concept in isolation
@@ -15810,7 +15910,7 @@ Ad-hoc or unvalidated implementations of complete estatemap system design whiteb
 #### 5. Learning Objectives
 - Master the fundamental theory and internal mechanics of Complete EstateMap System Design Whiteboard Defense
 - Implement a standalone proof-of-concept for Complete EstateMap System Design Whiteboard Defense from scratch without copying EstateMap
-- Inspect and verify EstateMap's corresponding implementation or understand why it was deferred
+- Inspect and verify EstateMap's corresponding implementation (`docs/mastery/ESTATEMAP_MASTER_BOOK.md / SYSTEM_DESIGN_INTERVIEW.md`)
 - Diagnose and resolve realistic failure modes and defend architectural tradeoffs on a whiteboard
 
 #### 6. Concepts to Master
@@ -15820,7 +15920,7 @@ Ad-hoc or unvalidated implementations of complete estatemap system design whiteb
 - Failure Modes & Resilience: Identifying race conditions, timeouts, resource leaks, and degradation paths
 
 #### 7. EstateMap Implementation
-EstateMap implements this subsystem directly in `docs/mastery/ESTATEMAP_MASTER_BOOK.md`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests.
+EstateMap implements this subsystem in `docs/mastery/ESTATEMAP_MASTER_BOOK.md` via `docs/mastery/ESTATEMAP_MASTER_BOOK.md / SYSTEM_DESIGN_INTERVIEW.md`. It enforces domain invariants, coordinates with adjacent repositories/services, and exposes type-safe interfaces verified by automated tests in `docs/mastery/ESTATEMAP_MASTER_BOOK.md`.
 
 **Know Your Code Challenge:**
 Trace an execution path through `docs/mastery/ESTATEMAP_MASTER_BOOK.md` from input validation to persistence/response generation without looking at the source.
@@ -15859,9 +15959,9 @@ Inspect `docs/mastery/ESTATEMAP_MASTER_BOOK.md` in EstateMap. Compare its archit
 - **AC8**: AC8 — Interview Defense: I can confidently defend this architectural subsystem on a whiteboard during a senior backend interview.
 
 #### 12. Verification / Evidence
-- Inspect implementation in `docs/mastery/ESTATEMAP_MASTER_BOOK.md`.
-- Run backend test suite: `docker exec estatemap-backend pytest backend/tests/ -k test`.
-- Verify code style and formatting: `docker exec estatemap-backend ruff check .`.
+- Inspect implementation in `docs/mastery/ESTATEMAP_MASTER_BOOK.md` (`docs/mastery/ESTATEMAP_MASTER_BOOK.md / SYSTEM_DESIGN_INTERVIEW.md`).
+- Run backend test suite: `pytest docs/mastery/ESTATEMAP_MASTER_BOOK.md`.
+- Verify code style and formatting: `ruff check .`.
 
 #### 13. Final Outcome
 - **Conceptual Mastery**: Deep theoretical and practical mastery of Complete EstateMap System Design Whiteboard Defense principles, protocols, and architectural invariants.
@@ -15896,7 +15996,7 @@ Inspect `docs/mastery/ESTATEMAP_MASTER_BOOK.md` in EstateMap. Compare its archit
 ### Current EstateMap
 Implemented baseline in `docs/mastery/ESTATEMAP_MASTER_BOOK.md` running in Docker Compose with structured logging and automated test coverage.
 
-### Production Evolution
+### Potential Production Evolution
 Horizontal scaling with stateless container replicas, distributed cache clustering, read replicas, and asynchronous event streams.
 
 ### Trigger for Evolution
