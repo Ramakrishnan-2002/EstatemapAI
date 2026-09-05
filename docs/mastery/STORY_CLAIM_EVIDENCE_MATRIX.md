@@ -81,5 +81,5 @@
 | **84** | Environment Variable Validation & Configuration Invariants | `[PARTIAL]` | `backend/app/core/config.py` | `SettingsConfigDict / strict environment parsing` | `backend/tests/unit/test_health.py` |
 | **86** | Automated Regression Testing Architecture & Pytest Test Harness | `[CURRENT]` | `backend/tests/conftest.py` | `288 pytest unit/integration tests with Asyncpg fixture setup` | `backend/tests/` |
 | **91** | Modular Monolith vs Microservices Architecture Tradeoffs | `[CURRENT]` | `backend/app/main.py` | `FastAPI modular monolithic domain organization` | `backend/app/` |
-| **99** | EstateMap Architectural Decision Records (ADRs) & Tradeoffs | `[CURRENT]` | `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` | `ADR Catalog: Modular Monolith, PostGIS, Multi-Provider AI, MapLibre, Redis` | `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` |
-| **100** | End-to-End System Design Whiteboard Defense & Mastery Synthesis | `[CURRENT]` | `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` | `EstateMap End-to-End System Design Defense Framework` | `docs/mastery/` |
+| **99** | EstateMap Architectural Decision Records (ADRs) & Tradeoffs | `[CURRENT]` | `docs/mastery/ARCHITECTURE.md` | `ADR Catalog: Modular Monolith, PostGIS, Multi-Provider AI, MapLibre, Redis` | `docs/mastery/ARCHITECTURE.md` |
+| **100** | End-to-End System Design Whiteboard Defense & Mastery Synthesis | `[CURRENT]` | `docs/mastery/ARCHITECTURE.md` | `EstateMap End-to-End System Design Defense Framework` | `docs/mastery/` |

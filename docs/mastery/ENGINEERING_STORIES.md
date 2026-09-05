@@ -6004,7 +6004,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - `backend/app/ai/base.py`
 - `backend/app/services/search_orchestrator.py`
 - Primary Symbol / Class / Function: `LLM architecture comparison: RAG vs Tool Calling vs State Machines`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -6025,18 +6025,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `backend/app/ai/base.py`.
 2. Verify the implementation of `LLM architecture comparison: RAG vs Tool Calling vs State Machines`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `backend/app/ai/base.py` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -6045,7 +6045,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `backend/app/ai/base.py`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -9492,7 +9492,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 #### 3. Concrete File & Symbol References
 - `Hypothetical GitHub Actions Workflow — NOT CURRENTLY PRESENT`
 - Primary Symbol / Class / Function: `CI/CD automated test runner & container registry push`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -9513,18 +9513,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `Hypothetical GitHub Actions Workflow — NOT CURRENTLY PRESENT`.
 2. Verify the implementation of `CI/CD automated test runner & container registry push`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `Hypothetical GitHub Actions Workflow — NOT CURRENTLY PRESENT` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -9533,7 +9533,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `Hypothetical GitHub Actions Workflow — NOT CURRENTLY PRESENT`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -9717,7 +9717,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 #### 3. Concrete File & Symbol References
 - `Hypothetical Testcontainers Python Suite — NOT CURRENTLY PRESENT`
 - Primary Symbol / Class / Function: `Ephemeral PostgreSQL + Redis containers per test session`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -9738,18 +9738,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `Hypothetical Testcontainers Python Suite — NOT CURRENTLY PRESENT`.
 2. Verify the implementation of `Ephemeral PostgreSQL + Redis containers per test session`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `Hypothetical Testcontainers Python Suite — NOT CURRENTLY PRESENT` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -9758,7 +9758,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `Hypothetical Testcontainers Python Suite — NOT CURRENTLY PRESENT`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -9941,7 +9941,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - `backend/app/core/logging.py`
 - `backend/app/core/middleware.py`
 - Primary Symbol / Class / Function: `Hypothetical Prometheus /metrics endpoint`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -9962,18 +9962,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `backend/app/core/logging.py`.
 2. Verify the implementation of `Hypothetical Prometheus /metrics endpoint`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `backend/app/core/logging.py` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -9982,7 +9982,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `backend/app/core/logging.py`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -10052,7 +10052,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 #### 3. Concrete File & Symbol References
 - `Hypothetical OpenTelemetry Tracer — NOT CURRENTLY PRESENT`
 - Primary Symbol / Class / Function: `W3C Trace Context propagation across HTTP, Redis, and DB calls`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -10073,18 +10073,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `Hypothetical OpenTelemetry Tracer — NOT CURRENTLY PRESENT`.
 2. Verify the implementation of `W3C Trace Context propagation across HTTP, Redis, and DB calls`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `Hypothetical OpenTelemetry Tracer — NOT CURRENTLY PRESENT` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -10093,7 +10093,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `Hypothetical OpenTelemetry Tracer — NOT CURRENTLY PRESENT`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -10165,7 +10165,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 3. Concrete File & Symbol References
 - `backend/app/main.py`
-- `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- `docs/mastery/ARCHITECTURE.md`
 - Primary Symbol / Class / Function: `FastAPI modular monolithic domain organization`
 - Verification Test Harness: `backend/app/`
 
@@ -10279,7 +10279,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - `backend/app/db/session.py`
 - `Hypothetical Database Sharding Topology`
 - Primary Symbol / Class / Function: `PostgreSQL primary-replica replication & spatial shard routing`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -10300,18 +10300,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `backend/app/db/session.py`.
 2. Verify the implementation of `PostgreSQL primary-replica replication & spatial shard routing`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `backend/app/db/session.py` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -10320,7 +10320,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `backend/app/db/session.py`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -10391,7 +10391,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - `backend/app/cache/cache_service.py`
 - `Hypothetical Redis Cluster Topology`
 - Primary Symbol / Class / Function: `Redis Cluster 16384 hash slot partitioning & geo-replication`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -10412,18 +10412,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `backend/app/cache/cache_service.py`.
 2. Verify the implementation of `Redis Cluster 16384 hash slot partitioning & geo-replication`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `backend/app/cache/cache_service.py` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -10432,7 +10432,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `backend/app/cache/cache_service.py`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -10503,7 +10503,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - `backend/app/ai/router.py`
 - `Hypothetical AI Gateway Queue`
 - Primary Symbol / Class / Function: `Asynchronous task queues (Celery/RabbitMQ) for batch LLM inference`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -10524,18 +10524,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `backend/app/ai/router.py`.
 2. Verify the implementation of `Asynchronous task queues (Celery/RabbitMQ) for batch LLM inference`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `backend/app/ai/router.py` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -10544,7 +10544,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `backend/app/ai/router.py`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -10615,7 +10615,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - `backend/app/services/property_service.py`
 - `Hypothetical Kafka / CDC Ingestion`
 - Primary Symbol / Class / Function: `Debezium CDC streaming property updates to Kafka topic`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -10636,18 +10636,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `backend/app/services/property_service.py`.
 2. Verify the implementation of `Debezium CDC streaming property updates to Kafka topic`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `backend/app/services/property_service.py` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -10656,7 +10656,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `backend/app/services/property_service.py`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -10727,7 +10727,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - `backend/app/services/geo_service.py`
 - `Hypothetical WebSocket Connection Pool`
 - Primary Symbol / Class / Function: `WebSocket server broadcasting viewport property updates`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -10748,18 +10748,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `backend/app/services/geo_service.py`.
 2. Verify the implementation of `WebSocket server broadcasting viewport property updates`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `backend/app/services/geo_service.py` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -10768,7 +10768,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `backend/app/services/geo_service.py`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -10838,7 +10838,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 #### 3. Concrete File & Symbol References
 - `Hypothetical Multi-Region Deployment Architecture`
 - Primary Symbol / Class / Function: `Anycast DNS routing, cross-region replication, and failover`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -10859,18 +10859,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `Hypothetical Multi-Region Deployment Architecture`.
 2. Verify the implementation of `Anycast DNS routing, cross-region replication, and failover`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `Hypothetical Multi-Region Deployment Architecture` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -10879,7 +10879,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `Hypothetical Multi-Region Deployment Architecture`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -10950,7 +10950,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - `backend/app/core/security.py`
 - `Hypothetical HashiCorp Vault Integration`
 - Primary Symbol / Class / Function: `mTLS service communication and dynamic short-lived credentials`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -10971,18 +10971,18 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 1. Inspect the source file `backend/app/core/security.py`.
 2. Verify the implementation of `mTLS service communication and dynamic short-lived credentials`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
 1. **Experiment Setup:** Inspect `backend/app/core/security.py` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -10991,7 +10991,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 
 #### 9. Final Outcome Verification Checklist
 - [ ] Source implementation reviewed in `backend/app/core/security.py`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -11042,13 +11042,13 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Implemented in EstateMap (`docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`). Verified by automated test suites (docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md).
+**Implemented Today:** Implemented in EstateMap (`docs/mastery/ARCHITECTURE.md`). Verified by automated test suites (docs/mastery/ARCHITECTURE.md).
 
 **Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
 **Why It Is Still Worth Learning:** Core engineering foundation for estatemap architectural decision records (adrs) & tradeoffs; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements estatemap architectural decision records (adrs) & tradeoffs in `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` (ADR Catalog: Modular Monolith, PostGIS, Multi-Provider AI, MapLibre, Redis)."
+**Safe Interview Wording:** "EstateMap implements estatemap architectural decision records (adrs) & tradeoffs in `docs/mastery/ARCHITECTURE.md` (ADR Catalog: Modular Monolith, PostGIS, Multi-Provider AI, MapLibre, Redis)."
 
 **Do Not Claim:** "Do not claim unverified distributed extensions for estatemap architectural decision records (adrs) & tradeoffs."
 
@@ -11059,9 +11059,9 @@ Comprehensive catalog of 15 Architectural Decision Records documenting rejected 
 EstateMap employs this specific pattern to ensure high cohesion, low coupling, deterministic behavior, and clear isolation of concerns across all layers.
 
 #### 3. Concrete File & Symbol References
-- `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- `docs/mastery/ARCHITECTURE.md`
 - Primary Symbol / Class / Function: `ADR Catalog: Modular Monolith, PostGIS, Multi-Provider AI, MapLibre, Redis`
-- Verification Test Harness: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- Verification Test Harness: `docs/mastery/ARCHITECTURE.md`
 
 #### 4. Mental Model & Visual Flow
 ```text
@@ -11079,21 +11079,21 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - [ ] Verify environment dependencies in `docker-compose.yml`
 
 #### 6. Step-by-Step Implementation Blueprint
-1. Inspect the source file `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+1. Inspect the source file `docs/mastery/ARCHITECTURE.md`.
 2. Verify the implementation of `ADR Catalog: Modular Monolith, PostGIS, Multi-Provider AI, MapLibre, Redis`.
 3. Validate domain invariants, error boundaries, and return type contracts.
-4. Execute the associated regression test: `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+4. Execute the associated regression test: `docs/mastery/ARCHITECTURE.md`.
 
 #### 7. Break It Yourself & Debug Lab
-1. **Experiment Setup:** Inspect `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` to test behavior under deliberate edge-case parameters or constraint modifications.
-2. **Execution:** Run `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` and observe the resulting system behavior or error handling paths.
+1. **Experiment Setup:** Inspect `docs/mastery/ARCHITECTURE.md` to test behavior under deliberate edge-case parameters or constraint modifications.
+2. **Execution:** Run `docs/mastery/ARCHITECTURE.md` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
 
 #### 8. Acceptance Criteria
 - **AC1:** Module conforms strictly to type signatures and domain constraints.
 - **AC2:** All exceptions are handled gracefully with appropriate RFC 7807 problem details or logged warnings.
-- **AC3:** Regression test `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` passes with zero errors.
+- **AC3:** Regression test `docs/mastery/ARCHITECTURE.md` passes with zero errors.
 - **AC4:** Observability telemetry is emitted with correlation IDs where applicable.
 - **AC5:** No unvalidated external inputs bypass domain schema boundaries; prompt-injection risks are strictly mitigated by treating all model output as untrusted structured data.
 - **AC6:** Resource lifecycle (connections, memory) is safely managed and freed.
@@ -11101,8 +11101,8 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - **AC8:** Code structure conforms to EstateMap clean architecture boundaries.
 
 #### 9. Final Outcome Verification Checklist
-- [ ] Source implementation reviewed in `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
-- [ ] Test harness `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` executed and passing.
+- [ ] Source implementation reviewed in `docs/mastery/ARCHITECTURE.md`.
+- [ ] Test harness `docs/mastery/ARCHITECTURE.md` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
 #### 10. Common Traps & Anti-Patterns
@@ -11136,7 +11136,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - "How would you evolve this architecture if throughput increased 100x?"
 
 #### 18. Self-Study Exercises
-1. Trace the code path in `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` from entrypoint to database/cache execution.
+1. Trace the code path in `docs/mastery/ARCHITECTURE.md` from entrypoint to database/cache execution.
 2. Implement a standalone minimal prototype in a scratch script.
 
 #### 19. Related Stories in the Graph
@@ -11153,13 +11153,13 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 * **Study Status**: [ ] Not Started | [ ] In Progress | [ ] Implemented | [ ] Verified | [ ] Mastered
 
 #### EstateMap Reality Check
-**Implemented Today:** Implemented in EstateMap (`docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`). Verified by automated test suites (docs/mastery/).
+**Implemented Today:** Implemented in EstateMap (`docs/mastery/ARCHITECTURE.md`). Verified by automated test suites (docs/mastery/).
 
 **Not Implemented:** Distributed multi-region or enterprise clustering (unnecessary for current monolith baseline).
 
 **Why It Is Still Worth Learning:** Core engineering foundation for end-to-end system design whiteboard defense & mastery synthesis; essential for understanding runtime architecture.
 
-**Safe Interview Wording:** "EstateMap implements end-to-end system design whiteboard defense & mastery synthesis in `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` (EstateMap End-to-End System Design Defense Framework)."
+**Safe Interview Wording:** "EstateMap implements end-to-end system design whiteboard defense & mastery synthesis in `docs/mastery/ARCHITECTURE.md` (EstateMap End-to-End System Design Defense Framework)."
 
 **Do Not Claim:** "Do not claim unverified distributed extensions for end-to-end system design whiteboard defense & mastery synthesis."
 
@@ -11170,7 +11170,7 @@ Comprehensive synthesis defending EstateMap architecture, data flow, failure mod
 EstateMap employs this specific pattern to ensure high cohesion, low coupling, deterministic behavior, and clear isolation of concerns across all layers.
 
 #### 3. Concrete File & Symbol References
-- `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`
+- `docs/mastery/ARCHITECTURE.md`
 - `docs/mastery/ENGINEERING_STORIES.md`
 - Primary Symbol / Class / Function: `EstateMap End-to-End System Design Defense Framework`
 - Verification Test Harness: `docs/mastery/`
@@ -11191,13 +11191,13 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - [ ] Verify environment dependencies in `docker-compose.yml`
 
 #### 6. Step-by-Step Implementation Blueprint
-1. Inspect the source file `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+1. Inspect the source file `docs/mastery/ARCHITECTURE.md`.
 2. Verify the implementation of `EstateMap End-to-End System Design Defense Framework`.
 3. Validate domain invariants, error boundaries, and return type contracts.
 4. Execute the associated regression test: `docs/mastery/`.
 
 #### 7. Break It Yourself & Debug Lab
-1. **Experiment Setup:** Inspect `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` to test behavior under deliberate edge-case parameters or constraint modifications.
+1. **Experiment Setup:** Inspect `docs/mastery/ARCHITECTURE.md` to test behavior under deliberate edge-case parameters or constraint modifications.
 2. **Execution:** Run `docs/mastery/` and observe the resulting system behavior or error handling paths.
 3. **Diagnosis:** Use `EXPLAIN ANALYZE` or structured logging to observe actual runtime resource utilization and query planner decisions.
 4. **Restoration:** Revert any temporary changes and confirm all test assertions pass cleanly.
@@ -11213,7 +11213,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - **AC8:** Code structure conforms to EstateMap clean architecture boundaries.
 
 #### 9. Final Outcome Verification Checklist
-- [ ] Source implementation reviewed in `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md`.
+- [ ] Source implementation reviewed in `docs/mastery/ARCHITECTURE.md`.
 - [ ] Test harness `docs/mastery/` executed and passing.
 - [ ] Whiteboard mental model verified against system design requirements.
 
@@ -11248,7 +11248,7 @@ EstateMap employs this specific pattern to ensure high cohesion, low coupling, d
 - "How would you evolve this architecture if throughput increased 100x?"
 
 #### 18. Self-Study Exercises
-1. Trace the code path in `docs/mastery/CANONICAL_ARCHITECTURE_TRUTH.md` from entrypoint to database/cache execution.
+1. Trace the code path in `docs/mastery/ARCHITECTURE.md` from entrypoint to database/cache execution.
 2. Implement a standalone minimal prototype in a scratch script.
 
 #### 19. Related Stories in the Graph

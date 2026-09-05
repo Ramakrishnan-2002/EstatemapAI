@@ -1,3 +1,6 @@
+# EstateMap AI — System Design Master Book & Engineering Guide
+> **Document Status: Authoritative Textbook & System Design Case Study**
+
 # EstateMap AI — System Design & Engineering Master Book
 
 > **The Definitive Engineering Guide and Architectural Defense for the EstateMap AI Platform.**  
@@ -769,3 +772,4 @@ EstateMap AI is engineered with **Fail-Safe Defaults**:
 * **Ollama Timeout**: Fails over to Gemini Cloud within the remaining global deadline.
 * **Gemini Quota Exceeded**: Fails over to Ollama Local or Deterministic Rule-Based Fallback.
 * **OSRM Server Down**: Falls back to spherical distance approximation with clear fallback UI badges.
+

@@ -1,3 +1,6 @@
+# EstateMap AI — Canonical Architecture Truth & System Topology
+> **Document Status: Authoritative Architecture Specification (Canonical Truth)**
+
 # EstateMap AI — Canonical Architecture Truth
 > **Authoritative Executable Architecture Specification**
 > *Reconciled directly from the codebase, tests, migrations, and runtime configuration.*
@@ -167,3 +170,4 @@ flowchart TD
 2. **Conversational State Ownership:** The server is stateless. The client application passes `ConversationalSearchState` with each request; `SearchOrchestrator` applies patches and returns the new state. No Redis session memory exists.
 3. **Rate Limiter Concurrency:** Implemented via Redis `pipeline()`. Reduces network RTTs but does not provide multi-command ACID transaction guarantees unless executed as a Redis Lua script (`EVAL`).
 4. **Routing Engine:** Configured by default with in-memory mock calculations (`mock`) or fallback to public OSRM demo server (`http://router.project-osrm.org`). No dedicated OSRM Docker container is provisioned in the baseline compose stack.
+

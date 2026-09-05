@@ -4,7 +4,7 @@
 Welcome to the EstateMap AI engineering curriculum. This system is designed for senior backend/SDE interview preparation, system design defense, and deep hands-on mastery.
 
 ## Document Inventory
-- [`CANONICAL_ARCHITECTURE_TRUTH.md`](CANONICAL_ARCHITECTURE_TRUTH.md) — Authoritative executable architecture and module truth.
+- [`ARCHITECTURE.md`](ARCHITECTURE.md) — Authoritative executable architecture and module truth.
 - [`ENGINEERING_STORIES.md`](ENGINEERING_STORIES.md) — 100 complete engineering stories adhering to the 22-section master contract.
 - [`CURRICULUM_INTEGRITY_AUDIT.md`](CURRICULUM_INTEGRITY_AUDIT.md) — Forensic audit metrics, DAG cycle validation, and review samples.
 - [`STORY_CLAIM_EVIDENCE_MATRIX.md`](STORY_CLAIM_EVIDENCE_MATRIX.md) — Symbol-level code and automated test mappings for all 80 code stories.
